@@ -37,7 +37,7 @@ function ShowDiv(id)
 	//show only one div
 	let selectedDiv = document.getElementById(id);
 	selectedDiv.style.visibility = "visible";
-	
+	/*
 	if(id != 'game'){
 		window.clearInterval(interval);
 		window.clearInterval(intervalMonsters);
@@ -46,7 +46,7 @@ function ShowDiv(id)
 		window.clearInterval(intervalCherry);
 		mainMusic.pause();
 		mainMusic.currentTime = 0;
-	}
+	}*/
 }
 
 /*************************ABOUT*********************************/
@@ -68,4 +68,94 @@ var dialog = document.getElementById('about');
 		if (!isInDialog) {
 			dialog.close();
 		}
+});
+
+
+//check register form
+//https://stackoverflow.com/questions/14460925/how-to-add-validation-rules-with-messages-in-jquery-validation
+//https://jqueryvalidation.org/
+$(document).ready(function(){
+	$("#registerForm").validate({
+		rules: {
+			UsernameRegister: {
+				required: true,
+				minlength: 1,
+				doesUsernameNotExist: true,
+			},
+			PasswordRegister: {
+				required: true,
+				minlength: 6,
+				isLegalPassword: true,
+			},
+			FirstName: { 
+				required:true,
+				minlength: 1,
+				checkIfOnlyLetters: true,
+			},
+			LastName: {
+				required:true,
+				minlength: 1,
+				checkIfOnlyLetters: true,
+			},					
+			Email: {
+				required: true,
+				email: true
+			},
+			BirthDate: {
+				required: true,
+				minlength: 2,
+			},
+		},
+		messages: {
+			UsernameRegister: {
+				required:"Please enter a username",
+				minlength: "Please enter a username",
+				doesUsernameNotExist: "This username already exists, please enter another username",
+			},
+			PasswordRegister: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 6 characters long",
+				isLegalPassword: "The password must include only letters and digits",
+			},
+			FirstName: {
+				required: "Please enter your First Name",
+				minlength: "Please enter your First Name",
+				checkIfOnlyLetters: "First name must include only letters",
+				},
+			LastName: {
+				required: "Please enter your Last Name",
+				minlength: "Please enter your Last Name",
+				checkIfOnlyLetters: "Last name must include only letters",
+			},
+			Email: {
+				required: "Please enter a valid email address",
+				email: "This is not a valid email, please enter a valid email address",
+			},
+			BirthDate: {
+				required: "Please enter your birth date",	
+				minlength: "Please enter your birth date",	
+			},
+		},
+
+		submitHandler : function(form) {
+			AddUser(document.getElementById('UsernameRegister').value,document.getElementById('PasswordRegister').value,
+			document.getElementById('FirstName').value,document.getElementById('LastName').value,document.getElementById('Email').value,document.getElementById('BirthDate').value);	
+			//form.submit();
+		},
+	}); 
+
+	$.validator.addMethod("doesUsernameNotExist", function(value ,element) {
+		return this.optional(element) || !(value in savedUsers);
+	});
+
+	//https://stackoverflow.com/questions/18746234/jquery-validate-plugin-password-check-minimum-requirements-regex
+	$.validator.addMethod("isLegalPassword", function(value , element) {
+		return this.optional(element) || /[A-Za-z]/i.test(value) && /\d/.test(value);
+	});
+
+	$.validator.addMethod("checkIfOnlyLetters", function(value , element) {
+		return this.optional(element) || /^[A-Za-z]+$/i.test(value) ;
+		
+	});
+
 });
