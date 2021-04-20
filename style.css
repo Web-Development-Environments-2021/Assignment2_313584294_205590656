@@ -1,0 +1,246 @@
+body{
+	background-image: url("./resources/background.png");
+	color: white;
+	font-family: fantasy;
+	height:100%;
+	padding:0;
+	margin:0;
+	font-size: 20px;
+	min-height: 98vh;
+}
+.view{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	padding:0;
+	padding-top: 0;
+	margin:0;
+	background-image: url("./resources/background.png");
+}
+
+label.error{
+    position:fixed;
+	color: red;
+    background-repeat:no-repeat;
+    padding-left: 10px;
+    margin-left: .5em;
+    vertical-align:left-side;
+}
+
+.menu ul {
+	margin: 0;
+	background-color: #0C090A;
+	font-size: px;
+}
+  
+#tableHeader{
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	table-layout: fixed;
+	padding:0;
+	margin:0;
+	padding-bottom: 0;
+}
+
+#divMain{
+	background-color: black;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	text-align: center; 
+	padding:0;
+	margin:0;
+}
+
+#pacman{
+	border: 2px solid;
+	border-radius: 5px;
+	border-style:dotted;
+	border-color:yellow;
+	border-width: 6px;
+	font-size: 45px; 
+	text-shadow: 2px 2px 8px yellow;
+}
+
+#welcomeToFreePacman{
+	width: 700px;
+	height: 230px;
+}
+#pacmanTitleMiddle{
+	width: 400px;
+	height: 100px;
+}
+#pacmanLogoRight{
+	width: 100px;
+	height: 55px;
+}
+
+
+#header_center{
+	left:50%;
+	top: 0px;
+}	
+.button{
+	background-color: black;
+	color: white;
+	border: 3px solid navy; 
+	border-radius: 10px;
+	font-size: 24px;
+	font-family: fantasy; 
+}
+.button:hover {
+	background-color: mediumblue;
+	/*font-weight: bold;*/
+ 
+}
+.button2{
+	background-color: black;
+	color: white;
+	border: 3px solid navy; 
+	border-radius: 10px;
+	font-size: 24px;
+	font-family: fantasy;
+	width:100%;
+}
+.button2:hover {
+	background-color: mediumblue;
+	/*font-weight: bold;*/
+	
+}
+
+#menu{
+	font-family: fantasy;
+	font-size: 20px
+
+}
+a.item {
+	background-color: #0C090A;
+	border-radius: 20px;
+	color: white;
+	padding: 7px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0px 2px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+a.item:hover {
+	background-color: #463E3F;
+	border-radius: 10px;
+	padding: 7px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0px 2px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+#chooseSettings{
+	color:white; 
+	font-family: system-ui; 
+	font-size: 18px;
+	font-weight: 50;
+}
+#game{
+	color:white; 
+	font-family: system-ui; 
+	font-size: 14px;
+	font-weight: 50;
+	background-color: black;
+}
+.buttonSettings{
+	background-color: black;
+	color: white;
+	border: 3px solid navy; 
+	border-radius: 10px;
+	padding: 0.4px 0.4px 0.4px 0.4px;
+	width: 130px;
+	height: 25px;
+	font-size: 12px;
+	font-family: system-ui; 
+}
+.buttonSettings:hover {
+	background-color: mediumblue;
+	/*font-weight: bold;*/
+}
+#inputSettings{
+	text-align: center;
+}
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: #B6B6B4;
+  }
+#about{
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	background-color: black;
+}
+#showGameSettingsTableRight{
+	table-layout: fixed;
+	width: 250px;  
+	text-align: left;
+	/*background-image: linear-gradient(mediumblue, royalblue mediumblue);	*/  
+	padding:0;
+	margin:0;
+	padding-bottom: 0;
+	position: absolute;
+	top: 5px;
+	right: 9px;
+	height: 79%;
+	border: 5px solid darkblue;
+	text-align: center;
+	font-family: system-ui; 
+	font-size: 14px;
+}
+  #showGameSettingsTableLeft{
+	table-layout: fixed;
+	width: 251px;  
+	text-align: left;
+	/*background-image: linear-gradient(mediumblue, royalblue, mediumblue);	 */ 
+	padding:0;
+	margin:0;
+	padding-bottom: 0;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	height: 79%;
+	border: 5px solid darkblue;
+	text-align: center;
+	font-family: system-ui; 
+	font-size: 18px;
+  }
+  #canvas{
+	  top:5px;
+	  background-image: url("./resources/blue.jpeg");
+	  padding:0;
+		margin:0;
+		border: 5px solid darkblue;
+		position: relative;
+  }
+  #close{
+	float: right;
+  }
+  #pacmanGirl{
+	width: 180px;
+	height: 200px;
+  }
+  #pacmanBoy{
+	width: 130px;
+	height: 150px;
+  }
+  #readyPic{
+	width: 320px;
+	height: 380px;
+	align-content: center;
+  }

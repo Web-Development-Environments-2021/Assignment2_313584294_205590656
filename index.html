@@ -1,21 +1,162 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Pacman Game by Lahan & Nicole</title>
+		<link rel="stylesheet" type="text/css"  href="style.css" /> 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
+	<!--<script type="text/javascript" src="./app.js"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 	</head>
 
 	<body>
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
+		<div id="divTop">
+			<header>
+				<table id="tableHeader">
+					<tr>
+						<td align = "left">
+							<label style="color:#666362; font-family: fantasy; font-size: 13px;">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
+						</td>
+						<td>							
+							<img align="center" src="./resources/PacMan.PNG" id="pacmanTitleMiddle">	
+						</td>
+						<td>
+							<img align="right" src="./resources/PacManEat.PNG" id="pacmanLogoRight">
+						</td>	
+					</tr>
+				</table>    
+			</header>
+			<div id="menu" class="menu" align="center">
+				<ul>
+					<a button="#welcome" onclick="ShowDiv('welcome')" class="item" style="color:yellow;">Welcome</a>|
+					<a button="#register" onclick="ShowDiv('register')" class="item" style="color:yellow;">Register</a>|
+					<a button="#login" onclick="ShowDiv('login')" class="item" style="color:yellow;">Login</a>|
+					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
+				</ul>
+			</div>
+			
+			<div id="welcome" style="visibility: hidden;" class="view" align="center">
+				<br>
+				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
+				<br>
+				<button class="button" style="font-family: fantasy; font-size: 28px" onclick="ShowDiv('register')">Register</button>
+				<br><br>
+				<button class="button" style="font-family: fantasy; font-size: 28px" onclick="ShowDiv('login')">Login</button>
+				<br>
+			</div>
+
+			<div id="register" style="visibility: visible;" class="view">
+				<form id = "registerForm" method ="get" action = "">
+					<table id="registerTable" align="center">
+						<br><br>
+						<tr >
+							<td >
+								<label> Username:</label>
+							</td>
+							<td >
+								<label> 
+									<input id="UsernameRegister" name="UsernameRegister" type="text" class="check" >
+								</label>
+							</td>					
+						</tr>
+						<tr>
+							<td >
+								<label> Password:</label>
+							</td>
+							<td >
+								<label> 
+									<input id="PasswordRegister" name="PasswordRegister" type="password" class="check" >
+								</label>
+							</td>
+						</tr>
+						<tr >
+							<td >
+								<label> First Name: </label>
+							</td>
+							<td >
+								<label>
+									<input id="FirstName" name="FirstName" type="text" class="check" >
+								</label>
+							</td>			
+						</tr>
+						<tr>
+							<td >
+								<label> Last Name: </label>
+							</td>
+							<td >
+								<label> 
+									<input id="LastName" name="LastName" type="text" class="check" >
+								</label>
+							</td>		
+						</tr>
+						<tr >
+							<td >
+								<label> Email:</label>
+							</td>
+							<td >
+								<label> 
+									<input id="Email" name="Email" type="email" placeholder = "name@domain.com" class="check" >
+								</label>
+							</td>		
+						</tr>
+						<tr >
+							<td >
+								<label> Birth Date: </label>
+							</td>
+							<td >
+								<label> 
+									<input id="BirthDate" name="BirthDate" type="date" class="check"><br>
+								</label>
+							</td>	
+						</tr>
+						<tr >
+    						<th colspan="2"><br>
+								<button class="button" id="submitForm" type="submit" >Submit</button>
+							</th>
+						</tr>
+					</table>    
+				</form>
+			</div>
+
+			<div id="login" style="visibility:hidden;" class="view">
+			</div>
+
+			<dialog id="about" style ="font-family: system-ui;  background-color: #FFDFDD; color:red;" align="center">	
+				<p align="center">
+					<button id="close" onclick="CloseDialog()" >X</button>
+					<b>Created by: Lahan Barmocha & Nicole Dezoraive</b>
+					<br>
+					<img src="./resources/L&N.PNG" id="Lahan&Nicole"><br>
+					In this website we used the jquery Validation Plugin to validate the user inputs from the register form.
+					<br>
+					We didn't use any templates.
+					<br>
+					The hardest part of this project was finding bugs. We learned that debugging in JS isn't as simple to execute as
+					<br>
+					in other programming languages and can become a bit frustrating.
+					<br>
+					Another part of the project that was hard was making the monsters move properly. They can't eat anything on the board
+					<br>
+					 and they can't step over eachother. This part took us the longest to do.
+				</p>
+			</dialog>
+			
+			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
+			</div>
+			<div id="game" style="visibility: hidden;" class="view">
+			</div>
+			<div id="score" style="visibility: hidden;">
+				<label for="lblScore">SCORE:</label>
+				<input id="lblScore" type="text" />
+			</div>
+			<div id="time" style="visibility: hidden;">
+				<label for="lblTime">TIME:</label>
+				<input id="lblTime" type="text" />
+			</div>
 		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		
 	</body>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="./settings.js"></script>
 </html>
