@@ -46,7 +46,7 @@
 				<br>
 			</div>
 
-			<div id="register" style="visibility: visible;" class="view">
+			<div id="register" style="visibility: hidden ;" class="view">
 				<form id = "registerForm" method ="get" action = "">
 					<table id="registerTable" align="center">
 						<br><br>
@@ -119,24 +119,33 @@
 				</form>
 			</div>
 
-			<div id="login" style="visibility:hidden;" class="view">
-			
-				<br>
-				<label for="Username">Username:</label>
-				<br>
-				<input id="usernameLogin" name="username" value="" type="text" class="check" 
-				onclick="document.getElementById('usernameLogin').value=''">
-				<br>
-				<br>
-				<label for="Password">Password:</label>
-				<br>
-				<input id="passwordLogin" name="password" value="" type="password" class="check" 
-				onclick="document.getElementById('passwordLogin').value=''">
-				<br>
-				<br>
-				<br>
-				<input id="btn" type="button" value="Login"> 
-
+			<div id="login" style="visibility:visible ;" class="view">
+				<form id = "loginForm" method ="get" action = "">
+					<table id="loginTable" align="center">
+						<tr >
+							<td >
+								<label> Username:</label>
+							</td>
+							<td >
+								<label> 
+									<input id="usernameLogin" name="username" value="" type="text" class="check" >
+								</label>
+							</td>					
+						</tr>
+						<tr >
+							<td >
+								<label> Password:</label>
+							</td>
+							<td >
+								<label> 
+									<input id="passwordLogin" name="password" value="" type="password" class="check" >								</label>
+							</td>					
+						</tr>
+						<tr >
+    						<th colspan="2"><br>
+								<button class="button" id="login" type="submit" >Submit</button>
+							</th>
+						</tr>
 			</div>
 
 			<dialog id="about" style ="font-family: system-ui;  background-color: #FFDFDD; color:red;" align="center">	
