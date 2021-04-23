@@ -9,6 +9,7 @@ class User{
 		this.lastName = lastName;
 		this.email = email;
 		this.birthDate = birthDate;
+		
 	}
 }
 
