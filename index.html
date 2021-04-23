@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  lang="en">
 	<head>
 		<title>Pacman Game by Lahan & Nicole</title>
 		<link rel="stylesheet" type="text/css"  href="style.css" /> 
@@ -8,6 +8,33 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+	
+	<!--slider code-->
+	<meta charset="utf-8">  
+      <title>jQuery UI Slider functionality</title>  
+      <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+      <!-- Javascript -->  
+      <script>  
+         $(function() {  
+            $( "#slider-4" ).slider({  
+               orientation:"horizontal"   
+            });  
+            $( "#slider-5" ).slider({  
+               orientation:"horizontal",  
+               value:50,
+			   animate:"slow",  
+               min: 50,  
+               max: 90, 
+               slide: function( event, ui ) {  
+                  $( "#minval" ).val( ui.value );  
+               }      
+            });  
+            $( "#minval" ).val( $( "#slider-5" ).slider( "value" ) );  
+         });  
+      </script>  
+
 	</head>
 
 	<body>
@@ -35,7 +62,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
-			
+		
 			<div id="welcome" style="visibility: visible;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
@@ -119,7 +146,7 @@
 				</form>
 			</div>
 
-			<div id="login" style="visibility:visible ;" class="view">
+			<div id="login" style="visibility: hidden ;" class="view">
 				<form id = "loginForm" method ="get" action = "">
 					<table id="loginTable" align="center">
 						<tr >
@@ -146,6 +173,8 @@
 								<button class="button" id="login" type="submit" >Submit</button>
 							</th>
 						</tr>
+					</table>
+				</form>
 			</div>
 
 			<dialog id="about" style ="font-family: system-ui;  background-color: #FFDFDD; color:red;" align="center">	
@@ -169,17 +198,100 @@
 			</dialog>
 
 			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
+			<form>
+				<table>
+					<h3>Please enter your prefernces</h3>
+						<tr>
+							<td>
+								<button class="buttonSettings" onclick="keyUp = updateUp()">Choose up key<br><br>
+								</button>
+							</td>
+							<td>
+								<input type="text" id="up_key" size="12" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="buttonSettings" onclick="keyDown = updateDown()">Choose down key<br><br>
+								</button>
+							</td>
+							<td>
+								<input type="text" id="down_key" size="12" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="buttonSettings" onclick="keyRight = updateRight()">Choose right key<br><br>
+								</button>
+							</td>
+							<td>
+								<input type="text" id="Right_key" size="12" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="buttonSettings" onclick="keyLeft = updateLeft()">Choose left key<br><br>
+								</button>
+							</td>
+							<td>
+								<input type="text" id="Left_key" size="12" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>  
+								   <label>Number of balls:</label>  
+								   <input type="text" id="minval"   
+									  style="border:0 ; color:blue; font-weight:bold;">  
+								</p>  
+								<div id="slider-5"></div>  
+							</td>
+						</tr>
+				</table>
+			</form>
 			</div>
-			<div id="game" style="visibility: hidden;" class="view">
+			<div id="game" style="visibility: visible;" class="view">
+				<table id ="leftSideGameInfo" align="left">
+					<tr>
+						<td>
+							<label for="userName">User name:</label>
+						</td>
+						<td>
+							<label id="showUserName" type="text"></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="score" style="visibility: visible;">
+								<label for="lblScore">SCORE:</label>
+								<input id="lblScore" type="text" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="time" style="visibility: visible;">
+								<label for="lblTime">TIME:</label>
+								<input id="lblTime" type="text" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label style="font-size: 26px; font-family: fantasy;">GOOD LUCK!</label>
+						</td>
+					</tr>
+				</table>
+				<canvas id="canvas" height="422" width="600" ></canvas>
+				<table id ="RightSideGameSetting" align="right" >
+					<tr>
+						<td colspan="2">
+							<label style="font-size: 26px; font-family: fantasy;">Game Setting:</label>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<div id="score" style="visibility: hidden;">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time" style="visibility: hidden;">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
+
 			<footer id="downPage"  style="font-family: system-ui; font-size: 12px;" class="footer" align= "center">
 				<label style="text-align: left;">contact the developers: nicoled@post.bgu.ac.il | barmocha@post.bgu.ac.il 	&nbsp&nbsp&nbsp   אתר זה נבנה במסגרת קורס סביבות פיתוח באינטרנט במאי 2021</label>
 			</footer>
