@@ -132,6 +132,16 @@ a.item:hover {
 	font-size: 18px;
 	font-weight: 50;
 }
+h3{
+	color: black;
+	font-family: fantasy;
+
+}
+label{
+	color: black;
+	font-weight: bold;
+
+}
 #game{
 	color:white; 
 	font-family: system-ui; 
@@ -210,6 +220,14 @@ a.item:hover {
 		margin:0;
 		border: 5px solid darkblue;
 		position: relative;
+		align-content: center;
+		padding: 5px;
+		margin: 20px;
+  }
+  #RightSideGameSetting{
+	align-content: right;
+	padding: 5px;
+	margin: 20px;
   }
   #close{
 	float: right;
