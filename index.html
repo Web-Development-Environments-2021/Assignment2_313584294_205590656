@@ -39,10 +39,10 @@
 	<body>
 		<!--<div id="divTop">-->
 			<header>
-				<table id="tableHeader">
+				<table id="headerHome">
 					<tr>
 						<td align = "left">
-							<label style="color:#666362; font-family: fantasy; font-size: 13px;">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
+							<label style="color:#666362; font-family: fantasy; font-size: 13px;" align = "left">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
 						</td>
 						<td>							
 							<img align="center" src="./resources/PacMan.PNG" id="pacmanTitleMiddle">	
@@ -51,7 +51,7 @@
 							<img align="right" src="./resources/PacManEat.PNG" id="pacmanLogoRight">
 						</td>	
 					</tr>
-				</table>    
+				</table>   
 			</header>
 			<div id="menu" class="menu" align="center">
 				<ul>
@@ -61,8 +61,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
-		
-			<div id="welcome" style="visibility: visible;" class="view" align="center">
+			<div id="welcome" style="visibility: hidden;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
 				<br>
@@ -147,6 +146,7 @@
 
 			<div id="login" style="visibility: hidden ;" class="view">
 				<form id = "loginForm" method ="get" action = "">
+					<br><br><br>
 					<table id="loginTable" align="center">
 						<tr >
 							<td >
@@ -154,22 +154,24 @@
 							</td>
 							<td >
 								<label> 
-									<input id="usernameLogin" name="username" value="" type="text" class="check" >
+									<input id="usernameLogin" name="username" value="" type="text" onclick="document.getElementById('usernameLogin').value=''" class="check" >
 								</label>
 							</td>					
 						</tr>
 						<tr >
 							<td >
+								<br>
 								<label> Password:</label>
 							</td>
 							<td >
+								<br>
 								<label> 
-									<input id="passwordLogin" name="password" value="" type="password" class="check" >								</label>
+									<input id="passwordLogin" name="password" value="" type="password" onclick="document.getElementById('passwordLogin').value=''" class="check" >								</label>
 							</td>					
 						</tr>
 						<tr >
     						<th colspan="2"><br>
-								<button class="button" id="login" type="submit" >Submit</button>
+								<button class="button" id="login" onclick="CheckLogIn(document.getElementById('usernameLogin').value, document.getElementById('passwordLogin').value)">Login</button>
 							</th>
 						</tr>
 					</table>
@@ -196,60 +198,137 @@
 				</p>
 			</dialog>
 
-			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
+			<div id="chooseSettings" align="center" style="visibility: visible;" class="view">
 			<form>
 				<table>
 					<h3>Please enter your prefernces</h3>
-						<tr>
-							<td>
-								<button class="buttonSettings" onclick="keyUp = updateUp()">Choose up key<br><br>
-								</button>
-							</td>
-							<td>
-								<input type="text" id="up_key" size="12" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button class="buttonSettings" onclick="keyDown = updateDown()">Choose down key<br><br>
-								</button>
-							</td>
-							<td>
-								<input type="text" id="down_key" size="12" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button class="buttonSettings" onclick="keyRight = updateRight()">Choose right key<br><br>
-								</button>
-							</td>
-							<td>
-								<input type="text" id="Right_key" size="12" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<button class="buttonSettings" onclick="keyLeft = updateLeft()">Choose left key<br><br>
-								</button>
-							</td>
-							<td>
-								<input type="text" id="Left_key" size="12" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p>  
-								   <label>Number of balls:</label>  
-								   <input type="text" id="minval"   
-									  style="border:0 ; color:blue; font-weight:bold;">  
-								</p>  
-								<div id="slider-5"></div>  
-							</td>
-						</tr>
+					<tr>
+						<td>
+							<label class="settings" onclick="keyUp = updateUp()">Choose up key</label><br>
+						</td>
+						<td>
+							<input type="text" id="up_key" size="12" value=""><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings" onclick="keyDown = updateDown()">Choose down key</label><br>
+						</td>
+						<td>
+							<input type="text" id="down_key" size="12" value=""><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings" onclick="keyRight = updateRight()">Choose right key</label><br>
+						</td>
+						<td>
+							<input type="text" id="Right_key" size="12" value=""><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings" onclick="keyLeft = updateLeft()">Choose left key</label>
+							<br>
+						</td>
+						<td>
+							<input type="text" id="Left_key" size="12" value=""><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+								
+								<label class="settings">Number of balls:</label>  
+								<input type="text" id="minval" size="1" style="border:0 ; color:blue; font-weight:bold;">  
+						</td>
+						<td>
+						<div id="slider-5"></div>  
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Color of 5 pt ball:</label>
+						</td>
+						<td>
+							<select name="list" id="colorBall5" >
+								<option value="deeppink">deeppink</option>
+								<option value="red">red</option>
+								<option value="lime">lime</option>
+								<option value="orange">orange</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Color of 15 pt ball:</label>
+						</td>
+						<td>
+							<select name="list" id="colorBall15" >
+								<option value="deeppink">deeppink</option>
+								<option value="red">red</option>
+								<option value="lime">lime</option>
+								<option value="orange">orange</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Color of 25 pt ball:</label>
+						</td>
+						<td>
+							<select name="list" id="colorBall25" >
+								<option value="deeppink">deeppink</option>
+								<option value="red">red</option>
+								<option value="lime">lime</option>
+								<option value="orange">orange</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Number of Monsters:</label>
+						</td>
+						<td>
+							<select name="list" id="numOfMonsters" >
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Game duration (sec):</label>
+						</td>
+						<td>
+							<input id="gameDuration" type="text" size="12" value="min 60" onclick="document.getElementById('gameDuration').value=''"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="button" onclick="random()">Random</button>
+						</td>
+						<td>
+							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
+							document.getElementById('down_key').value, document.getElementById('right_key').value,
+							document.getElementById('left_key').value, document.getElementById('numOfBalls').value,
+							document.getElementById('colorBall5').value,document.getElementById('colorBall15').value,
+							document.getElementById('colorBall25').value,document.getElementById('numOfMonsters').value,
+							document.getElementById('gameDuration').value)">Submit</button>
+						</td>
+					</tr>
 				</table>
 			</form>
 			</div>
-			<div id="game" style="visibility: visible;" class="view">
+			<div id="ready" style="visibility: hidden;" class="view" align="center">
+				<br>
+				<button class="button" style="font-family: fantasy; font-size: 30px" onclick="ShowDiv('game'); Start()">START</button>
+				<br>
+				<img align="center" src="./resources/ready.jpg" id="readyPic"><br>
+				<br>	
+			</div>
+			<div id="game" style="visibility: hidden;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
 						<td>
@@ -261,7 +340,7 @@
 					</tr>
 					<tr>
 						<td>
-							<div id="score" style="visibility: visible;">
+							<div id="score" style="visibility: hidden;">
 								<label for="lblScore">SCORE:</label>
 								<input id="lblScore" type="text" />
 							</div>
@@ -269,7 +348,7 @@
 					</tr>
 					<tr>
 						<td>
-							<div id="time" style="visibility: visible;">
+							<div id="time" style="visibility: hidden;">
 								<label for="lblTime">TIME:</label>
 								<input id="lblTime" type="text" />
 							</div>
