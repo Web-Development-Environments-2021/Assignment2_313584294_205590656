@@ -9,12 +9,11 @@ class User{
 		this.lastName = lastName;
 		this.email = email;
 		this.birthDate = birthDate;
-		
 	}
 }
 
 $(document).ready(function(){
-	var user = new User('b','b','b','b','b@gmail.com','25.09.1994');
+	var user = new User('k','k','k','k','k@gmail.com','25.09.1994');
 	savedUsers.push(user);
 	currentUser = user;        
 })
@@ -38,16 +37,16 @@ function ShowDiv(id)
 	//show only one div
 	let selectedDiv = document.getElementById(id);
 	selectedDiv.style.visibility = "visible";
-	/*
+	
 	if(id != 'game'){
-		window.clearInterval(interval);
-		window.clearInterval(intervalMonsters);
-		window.clearInterval(intervalStar);
-		window.clearInterval(intervalStrawberry);
-		window.clearInterval(intervalCherry);
-		mainMusic.pause();
-		mainMusic.currentTime = 0;
-	}*/
+		//window.clearInterval(interval);
+		//window.clearInterval(intervalMonsters);
+		//window.clearInterval(intervalStar);
+		//window.clearInterval(intervalStrawberry);
+		//window.clearInterval(intervalCherry);
+		//mainMusic.pause();
+		//mainMusic.currentTime = 0;
+	}
 }
 
 /*************************ABOUT*********************************/
@@ -57,7 +56,6 @@ function ShowDialog(){
 function CloseDialog(){
 	document.getElementById("about").close();
 }
-
 //close the about dialog when click outside of it with the mouse
 //to close the new html <dialog> tag by clicking on its ::backdrop
 //https://stackoverflow.com/questions/25864259/how-to-close-the-new-html-dialog-tag-by-clicking-on-its-backdrop
@@ -155,8 +153,69 @@ $(document).ready(function(){
 	});
 
 	$.validator.addMethod("checkIfOnlyLetters", function(value , element) {
-		return this.optional(element) || /^[A-Za-z]+$/i.test(value) ;
+		return this.optional(element) || /^[A-Za-z]+$/i.test(value) || /^[a-zA-Z]+$/i.test(value) ;
 		
 	});
 
 });
+
+function AddUser(username ,password ,firstName ,lastName ,email ,birthDate){
+	var user = new User(username , password, firstName ,lastName ,email ,birthDate);
+	savedUsers.push(user);
+	currentUser = user;
+	ShowDiv('login');	
+}
+
+function CheckLogIn(username,password){
+	if(username != "" && password != ""){
+		var isExist = false;
+		savedUsers.forEach(user => {
+			if(user.username==username && user.password==password){
+				isExist = true;
+				currUser = user;
+			}
+		});
+		if(isExist){
+			ShowDiv('chooseSettings');
+		}
+		else{
+			window.alert("The username or password is incorrect, Please try again.");
+		}   
+	}
+	else{
+		window.alert("Please insert a username and password");
+	}
+}
+
+function random(){
+	document.getElementById('up_key').value = 'ArrowUp';
+	document.getElementById('down_key').value = 'ArrowDown';
+	document.getElementById('right_key').value = 'ArrowRight';
+	document.getElementById('left_key').value = 'ArrowLeft';
+	document.getElementById('numOfBalls').value = getRandomNumber(50, 91);
+	var colors = new Array();
+	colors[1] = 'deeppink';
+	colors[2] = 'lime';
+	colors[3] = 'red';
+	colors[4] = 'orange';
+
+	var color5 = getRandomNumber(1, 5);
+	var color15 = getRandomNumber(1, 5);
+	while(color5 == color15){
+		color15 = getRandomNumber(1, 5);
+	}
+	var color25 = getRandomNumber(1, 5);
+	while(color5 == color25 || color15 == color25){
+		color25 = getRandomNumber(1, 5);
+	}
+
+	document.getElementById('colorBall5').value = colors[color5];
+	document.getElementById('colorBall15').value = colors[color15];
+	document.getElementById('colorBall25').value = colors[color25];
+	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
+	document.getElementById('gameDuration').value = getRandomNumber(60, 181);
+}
+
+function getRandomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min) + min);
+}
