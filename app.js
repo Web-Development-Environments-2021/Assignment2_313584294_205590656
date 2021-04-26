@@ -62,6 +62,15 @@ var intervalBoom;
 shape.i = null;
 shape.j = null;
 
+/************************** new game  *************************/
+function newGame(){
+	backgroundMusic.currentTime = 0;
+	window.clearInterval(interval);
+	window.clearInterval(intervalMonsters);
+	window.clearInterval(intervalPoints_50);
+	window.clearInterval(intervalBoom);
+	Start();
+}
 
 /************************** mute or umute  *************************/
 function mute(){ // Turns from unmute to mute
@@ -81,28 +90,10 @@ function unmute (){ //// Turns from mute to unmute
 	isMeut = false;	
 }
 
-/************************** new game  *************************/
-function newGame(){
-	backgroundMusic.currentTime = 0;
-	window.clearInterval(interval);
-	window.clearInterval(intervalMonsters);
-	window.clearInterval(intervalPoints_50);
-	window.clearInterval(intervalBoom);
-	Start();
-}
 
 function Start() {
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
-	if(!isMeut){
-		backgroundMusic.play();
-	}
-	
-	// var backgroundCanvas = new Image();
-	// backgroundCanvas.src = "./resources/black.jpg";
-	loseSound = new Audio('./resources/loseSound.mp3');
-	winSound = new Audio('./resources/winSound.mp3');
-	encounterSound = new Audio('./resources/encounterSound.mp3');
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -119,6 +110,16 @@ function Start() {
 	extraTime = 0;
 	lives = 5;
 	points_50_Game =true;
+
+	if(!isMeut){
+		backgroundMusic.play();
+	}
+	loseSound = new Audio('./resources/loseSound.mp3');
+	winSound = new Audio('./resources/winSound.mp3');
+	encounterSound = new Audio('./resources/encounterSound.mp3');
+	
+	
+	
 	keyUp = $("#up_key").val();
 	keyDown = $("#down_key").val();
 	keyRight = $("#right_key").val();
@@ -163,7 +164,7 @@ function Start() {
 						food_25--;
 						board[i][j] = 25;
 					};
-				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt &&  pacman_remain>0 ) { //pacman
+				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt  ) { //pacman
 					shape.i = i;
 					shape.j = j;
 					pacman_remain--;
@@ -249,6 +250,168 @@ function GetKeyPressed() {
 	if (keysDown[keyLeft]) {
 		direction = "left";
 		return 4;
+	}
+}
+
+
+function Draw() {
+	canvas.width = canvas.width; //clean board
+	showScore.value = score;
+	showTime.value = time_elapsed;
+	for (var i = 0; i < 14; i++) {
+		for (var j = 0; j < 8; j++) {
+			var center = new Object();
+			center.x = i * 60 + 30;
+			center.y = j * 60 + 30;
+			if (board[i][j] == 999) { //place of pacman
+				context.beginPath();
+				context.fillStyle = pac_color; //color
+				if(direction === "up"){//pacman move up
+					context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle up 
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();  
+				}
+				else if(direction === "down"){//pacman move down
+					context.arc(center.x, center.y, 30, 0.65 * Math.PI, 0.35 * Math.PI); // half circle down
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				else if(direction === "left"){//pacman move left
+					context.arc(center.x, center.y, 30, 1.15 * Math.PI, 0.85 * Math.PI); // half circle left
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				else {//pacman move right	
+					context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle right
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				context.lineTo(center.x, center.y);
+				context.fillStyle = pac_color; //color
+				context.fill();
+				//context.stroke();
+				context.beginPath();
+				context.fillStyle = "black"; //color
+				if(direction === "up"){//pacman move up
+					context.arc(center.x + 15, center.y - 5, 5, 0, 2 * Math.PI); // circle
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				else if(direction === "down"){//pacman move down
+					context.arc(center.x - 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				else if(direction === "left"){//pacman move left
+					context.arc(center.x - 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				else {//pacman move right
+					context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+					// context.beginPath();
+					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+					// context.fillStyle = "black"; //color of 5
+					// context.fill();
+				}
+				context.fillStyle = "black"; //color
+				context.fill();
+				context.stroke();
+			} else if (board[i][j] == 5) { // place of ball 5
+				context.beginPath();
+				context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
+				context.fillStyle = colorBalls_5; //color of 5
+				context.fill();
+			}
+			else if (board[i][j] == 15) { // place of ball 15
+				context.beginPath();
+				context.arc(center.x, center.y, 9, 0, 2 * Math.PI); // circle
+				context.fillStyle = colorBalls_15; //color of 15
+				context.fill();
+			}
+			else if (board[i][j] == 25) { // place of ball 25
+				context.beginPath();
+				context.arc(center.x, center.y, 12, 0, 2 * Math.PI); // circle
+				context.fillStyle = colorBalls_25; //color of 25
+				context.fill();
+			}
+			else if(board[i][j] == 111){ //monster1
+				var ghost1Img = new Image;
+				monster1.i = i;
+				monster1.j = j;
+				ghost1Img.src = "./resources/ghost1.png";
+				context.beginPath();
+				context.drawImage(ghost1Img,center.x - 30, center.y - 30, 60, 60 * ghost1Img.height / ghost1Img.width);	
+			} 
+			else if(board[i][j] == 112){ //monster2
+				var ghost2Img = new Image;
+				monster2.i = i;
+				monster2.j = j;
+				ghost2Img.src = "./resources/ghost2.png";
+				context.beginPath();
+				context.drawImage(ghost2Img,center.x - 30, center.y - 30, 60, 60 * ghost2Img.height / ghost2Img.width);
+			} 
+			else if(board[i][j] == 113){ //monster3
+				var ghost3Img = new Image;
+				monster3.i = i;
+				monster3.j = j;
+				ghost3Img.src = "./resources/ghost3.png";
+				context.beginPath();
+				context.drawImage(ghost3Img,center.x - 30, center.y - 30, 60, 60 * ghost3Img.height / ghost3Img.width);
+			} 
+			//ghost4
+			else if(board[i][j] == 114){//monster4
+				var ghost4Img = new Image;
+				monster4.i = i;
+				monster4.j = j;
+				ghost4Img.src = "./resources/ghost4.png";
+				context.beginPath();
+				context.drawImage(ghost4Img,center.x - 30, center.y - 30, 60, 60 * ghost4Img.height / ghost4Img.width);
+			}
+			else if (board[i][j] == 4) {//wall
+				var wallImg = new Image;
+				wallImg.src="./resources/wallwhite.png"
+				context.beginPath();
+				context.drawImage(wallImg,center.x - 30, center.y - 30, 60, 60 * wallImg.height / wallImg.width);
+			}
+			//clock
+			else if (board[i][j] == 10) {
+				var clockImg = new Image;
+				clockImg.src="./resources/clock.png"
+				context.beginPath();
+				context.drawImage(clockImg,center.x - 30, center.y - 30, 60, 60 * clockImg.height / clockImg.width);
+			}
+			//point_50
+			else if(board[i][j] == 50 && points_50_Game){
+				var starImg = new Image;
+				starImg.src = "./resources/50points.png";
+				context.beginPath();
+				context.drawImage(starImg,center.x - 30, center.y - 30, 60, 60 * starImg.height / starImg.width);
+			}
+			//boom
+			else if (board[i][j] == 700){
+				var boom = new Image;
+				boom.src = "./resources/boom.png";		
+				context.beginPath();
+				context.drawImage(boom,center.x - 30, center.y - 30, 60, 60 * boom.height / boom.width);
+				disapeerBoom.i = i;
+				disapeerBoom.j = j;	
+			}
+		}
 	}
 }
 
@@ -440,134 +603,6 @@ function GhostEatMe(){
 }
 
 
-function Draw() {
-	canvas.width = canvas.width; //clean board
-	showScore.value = score;
-	showTime.value = time_elapsed;
-	for (var i = 0; i < 14; i++) {
-		for (var j = 0; j < 8; j++) {
-			var center = new Object();
-			center.x = i * 60 + 30;
-			center.y = j * 60 + 30;
-			if (board[i][j] == 999) { //place of pacman
-				context.beginPath();
-				// context.fillStyle = pac_color; //color
-				if(direction === "up"){//pacman move up
-					context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle up   
-				}
-				else if(direction === "down"){//pacman move down
-					context.arc(center.x, center.y, 30, 0.65 * Math.PI, 0.35 * Math.PI); // half circle down
-				}
-				else if(direction === "left"){//pacman move left
-					context.arc(center.x, center.y, 30, 1.15 * Math.PI, 0.85 * Math.PI); // half circle left
-				}
-				else {//pacman move right	
-					context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle right
-				}
-				context.lineTo(center.x, center.y);
-				context.fillStyle = pac_color; //color
-				context.fill();
-				//context.stroke();
-				context.beginPath();
-				//context.fillStyle = "black"; //color
-				if(direction === "up"){//pacman move up
-					context.arc(center.x + 15, center.y - 5, 5, 0, 2 * Math.PI); // circle
-				}
-				else if(direction === "down"){//pacman move down
-					context.arc(center.x - 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
-				}
-				else if(direction === "left"){//pacman move left
-					context.arc(center.x - 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-				}
-				else {//pacman move right
-					context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-				}
-				context.fillStyle = "black"; //color
-				context.fill();
-				//context.stroke();
-			} else if (board[i][j] == 5) { // place of ball 5
-				context.beginPath();
-				context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-				context.fillStyle = colorBalls_5; //color of 5
-				context.fill();
-			}
-			else if (board[i][j] == 15) { // place of ball 15
-				context.beginPath();
-				context.arc(center.x, center.y, 9, 0, 2 * Math.PI); // circle
-				context.fillStyle = colorBalls_15; //color of 15
-				context.fill();
-			}
-			else if (board[i][j] == 25) { // place of ball 25
-				context.beginPath();
-				context.arc(center.x, center.y, 12, 0, 2 * Math.PI); // circle
-				context.fillStyle = colorBalls_25; //color of 25
-				context.fill();
-			}
-			else if(board[i][j] == 111){ //monster1
-				var ghost1Img = new Image;
-				monster1.i = i;
-				monster1.j = j;
-				ghost1Img.src = "./resources/ghost1.png";
-				context.beginPath();
-				context.drawImage(ghost1Img,center.x - 30, center.y - 30, 60, 60 * ghost1Img.height / ghost1Img.width);	
-			} 
-			else if(board[i][j] == 112){ //monster2
-				var ghost2Img = new Image;
-				monster2.i = i;
-				monster2.j = j;
-				ghost2Img.src = "./resources/ghost2.png";
-				context.beginPath();
-				context.drawImage(ghost2Img,center.x - 30, center.y - 30, 60, 60 * ghost2Img.height / ghost2Img.width);
-			} 
-			else if(board[i][j] == 113){ //monster3
-				var ghost3Img = new Image;
-				monster3.i = i;
-				monster3.j = j;
-				ghost3Img.src = "./resources/ghost3.png";
-				context.beginPath();
-				context.drawImage(ghost3Img,center.x - 30, center.y - 30, 60, 60 * ghost3Img.height / ghost3Img.width);
-			} 
-			//ghost4
-			else if(board[i][j] == 114){//monster4
-				var ghost4Img = new Image;
-				monster4.i = i;
-				monster4.j = j;
-				ghost4Img.src = "./resources/ghost4.png";
-				context.beginPath();
-				context.drawImage(ghost4Img,center.x - 30, center.y - 30, 60, 60 * ghost4Img.height / ghost4Img.width);
-			}
-			else if (board[i][j] == 4) {//wall
-				var wallImg = new Image;
-				wallImg.src="./resources/wallwhite.png"
-				context.beginPath();
-				context.drawImage(wallImg,center.x - 30, center.y - 30, 60, 60 * wallImg.height / wallImg.width);
-			}
-			//clock
-			else if (board[i][j] == 10) {
-				var clockImg = new Image;
-				clockImg.src="./resources/clock.png"
-				context.beginPath();
-				context.drawImage(clockImg,center.x - 30, center.y - 30, 60, 60 * clockImg.height / clockImg.width);
-			}
-			//point_50
-			else if(board[i][j] == 50 && points_50_Game){
-				var starImg = new Image;
-				starImg.src = "./resources/50points.png";
-				context.beginPath();
-				context.drawImage(starImg,center.x - 30, center.y - 30, 60, 60 * starImg.height / starImg.width);
-			}
-			//boom
-			else if (board[i][j] == 700){
-				var boom = new Image;
-				boom.src = "./resources/boom.png";		
-				context.beginPath();
-				context.drawImage(boom,center.x - 30, center.y - 30, 60, 60 * boom.height / boom.width);
-				disapeerBoom.i = i;
-				disapeerBoom.j = j;	
-			}
-		}
-	}
-}
 
 function UpdatePosition() {
 	if(shape.i != null && shape.j != null){
@@ -594,10 +629,35 @@ function UpdatePosition() {
 			shape.i++;
 		}
 	}
-	if (board[shape.i][shape.j] == 1) {
-		score++;
+	if (board[shape.i][shape.j] == 5) {
+		score+= 5;
+		board[shape.i][shape.j] = 0;
+		foodLeftOnBoard--;
 	}
-	board[shape.i][shape.j] = 2;
+	else if(board[shape.i][shape.j] == 15){
+		score+= 15;
+		board[shape.i][shape.j] = 0;
+		foodLeftOnBoard--;
+	}
+	else if(board[shape.i][shape.j] == 25){
+		score+= 25;
+		board[shape.i][shape.j] = 0;
+		foodLeftOnBoard--;
+	}
+	else if(board[shape.i][shape.j] == 111 || board[shape.i][shape.j] == 112 || board[shape.i][shape.j] == 113 || board[shape.i][shape.j] == 114){
+		monstersMove();
+		board[shape.i][shape.j]=700;
+	}
+	else if(board[shape.i][shape.j] == 50){
+		score+= 50;
+		board[shape.i][shape.j] = points_50.notSeen;
+		points_50_Game = false;
+	}
+	else if(board[shape.i][shape.j] == 10){
+		extraTime = 20;
+		board[shape.i][shape.j] == 0;
+	}	
+	board[shape.i][shape.j] = 999;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
 	if (score >= 20 && time_elapsed <= 10) {
