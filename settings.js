@@ -40,13 +40,11 @@ function ShowDiv(id)
 	selectedDiv.style.visibility = "visible";
 	
 	if(id != 'game'){
-		//window.clearInterval(interval);
-		//window.clearInterval(intervalMonsters);
-		//window.clearInterval(intervalStar);
-		//window.clearInterval(intervalStrawberry);
-		//window.clearInterval(intervalCherry);
-		//mainMusic.pause();
-		//mainMusic.currentTime = 0;
+		window.clearInterval(interval);
+		window.clearInterval(intervalMonsters);
+		window.clearInterval(intervalPoints_50);
+		backgroundMusic.pause();
+		backgroundMusic.currentTime = 0;
 	}
 }
 

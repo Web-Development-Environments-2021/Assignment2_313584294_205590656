@@ -111,7 +111,7 @@ function Start() {
 	ballsLeftToEat = numOfBalls;
 	var food_5 = Math.floor(numOfBalls*0.6);
 	var food_15 = Math.floor(numOfBalls*0.3);
-	var food_25 = Math.floor(numOfBalls*0.1);
+	var food_25 = food_remain-food_5-food_15;
 	var numOfMonstersLeftArrangeOnBoard = numOfMonsters;
 	var serialNumberOfMonsters=111 //start from 111
 	var pacman_remain = 1;
@@ -143,8 +143,8 @@ function Start() {
 			//Moving score
 			else if(i == 4 && j == 0){
 				board[i][j] = 50;
-				//star.i = i;
-				//star.j =j;
+				points_50.i = i;
+				points_50.j =j;
 			}
 			//balls , pacman , empty
 			else {
@@ -195,8 +195,8 @@ function Start() {
 	}
 
 	// add clock
-	var emptyCell = findRandomEmptyCell(board);
-	board[emptyCell[0]][emptyCell[1]] = 10;
+	var findEmptyCell = findRandomEmptyCell(board);
+	board[findEmptyCell[0]][findEmptyCell[1]] = 10;
 
 	keysDown = {};
 	addEventListener("keydown",	function(e) {
@@ -377,8 +377,8 @@ function UpdatePosition() {
 	keysDown[keyLeft] = false;
 
 	if(lives == 0){
-		mainMusic.pause();
-		mainMusic.currentTime = 0;
+		backgroundMusic.pause();
+		backgroundMusic.currentTime = 0;
 		if(!isMeut){
 			loseSound.play();
 		}
@@ -390,8 +390,8 @@ function UpdatePosition() {
 	}
 	else if (time_elapsed <= 0.00){
 		if (score < 100){
-			mainMusic.pause();
-			mainMusic.currentTime = 0;
+			backgroundMusic.pause();
+			backgroundMusic.currentTime = 0;
 			if(!isMeut){
 				loseSound.play();
 			}
@@ -402,17 +402,15 @@ function UpdatePosition() {
 			window.clearInterval(intervalBoom);
 		}
 		else{
-			mainMusic.pause();
-			mainMusic.currentTime = 0;
+			backgroundMusic.pause();
+			backgroundMusic.currentTime = 0;
 			if(!isMeut){
 				winSound.play();
 			}
 			window.alert("Winner!!!");
 			window.clearInterval(interval);
 			window.clearInterval(intervalMonsters);
-			window.clearInterval(intervalStar);
-			window.clearInterval(intervalStrawberry);
-			window.clearInterval(intervalCherry);
+			window.clearInterval(intervalPoints_50);
 			window.clearInterval(intervalBoom);
 		}
 	}
@@ -425,7 +423,7 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < 14; i++) {
 		for (var j = 0; j < 8; j++) {
 			var center = new Object();
 			center.x = i * 60 + 30;
@@ -498,9 +496,9 @@ function GhostEatPacman(){
 	}
 	lives--;
 	score = score - 10;
-	var emptyCell = findRandomEmptyCell(board);
-	shape.i = emptyCell[0];
-	shape.j = emptyCell[1];
+	var findEmptyCell = findRandomEmptyCell(board);
+	shape.i = findEmptyCell[0];
+	shape.j = findEmptyCell[1];
 	board[shape.i][shape.j] = 2;
 	document.getElementById('showScore').innerHTML = score;
 	document.getElementById('showLives').innerHTML = lives;
