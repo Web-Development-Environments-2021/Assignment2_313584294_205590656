@@ -14,7 +14,7 @@ class User{
 }
 
 $(document).ready(function(){
-	var user = new User('k','k','k','k','p@gmail.com','8.12.1994');
+	var user = new User('k','k','k','k','k@gmail.com','8.12.1994');
 	savedUsers.push(user);
 	currentUser = user;        
 })
