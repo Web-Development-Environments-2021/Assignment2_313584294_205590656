@@ -1,56 +1,106 @@
 var context;
 var shape = new Object();
+shape.i = null;
+shape.j = null;
 var board;
 var score;
 var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
-var numOfBalls;
-var ballsLeftToEat;
+var durationOfGame;
+var extraTime;
+var blocked;
+
 var numOfMonsters;
+var monster1 = new Object();
+var monster2 = new Object();
+var monster3 = new Object();
+var monster4 = new Object();
+monster1.id = 111;
+monster2.id = 112;
+monster3.id = 113;
+monster4.id = 114;
+monster1.behind = false;
+monster2.behind = false;
+monster3.behind = false;
+monster4.behind = false;
+var intervalMonsters;
+
+var points_50 = new Object();
+var points_50_Game;
+var intervalPoints_50;
+points_50.notSeen = 0;
+points_50.id = 50;
+
 var isMeut = false;
-var mainMusic = new Audio('./resources/pacmanMusic.mp3');
+var backgroundMusic = new Audio('./resources/pacmanMusic.mp3');
 var loseSound;
 var winSound;
+var encounterSound;
+
+var numOfBalls;
+var ballsLeftToEat;
 var colorBalls_5;
 var colorBalls_15;
 var colorBalls_25;
+
 var keyUp;
 var keyDown;
 var keyRight;
 var keyLeft;
 var direction;
+var lives;
+
+var disapeerBoom = new Object();
+disapeerBoom.i = null;
+disapeerBoom.j = null;
+var intervalBoom;
 
 
-$(document).ready(function() {
-	canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");
-	Start();
-});
 
+
+// $(document).ready(function() {
+// 	canvas = document.getElementById("canvas");
+// 	context = canvas.getContext("2d");
+// 	Start();
+// });
+
+/************************** mute or umute  *************************/
 function mute(){
-	mainMusic.pause();
+	backgroundMusic.pause();
 	loseSound.pause();
+	encounterSound.pause();
 	$("#mute").hide();
 	$("#unmute").show();
 	isMeut = true;	
 }
 function unmute (){
-	mainMusic.play();
+	backgroundMusic.play();
 	loseSound.play();
+	encounterSound.play();
 	$("#unmute").hide();
 	$("#mute").show();	
 	isMeut = false;	
 }
 
+/************************** new game  *************************/
+function newGame(){
+	backgroundMusic.currentTime = 0;
+	window.clearInterval(interval);
+	window.clearInterval(intervalMonsters);
+	window.clearInterval(intervalPoints_50);
+	window.clearInterval(intervalBoom);
+	Start();
+}
+
 function Start() {
 	if(!isMeut){
-		mainMusic.play();
+		backgroundMusic.play();
 	}
 	loseSound = new Audio('./resources/loseSound.mp3');
 	winSound = new Audio('./resources/winSound.mp3');
-	boing = new Audio('./resources/boing.mp3');
+	encounterSound = new Audio('./resources/encounterSound.mp3');
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -288,4 +338,19 @@ function UpdatePosition() {
 	} else {
 		Draw();
 	}
+}
+
+function GhostEatPacman(){
+	board[shape.i][shape.j] = 700;
+	if(!isMeut){
+		encounterSound.play();
+	}
+	lives--;
+	score = score - 10;
+	var emptyCell = findRandomEmptyCell(board);
+	shape.i = emptyCell[0];
+	shape.j = emptyCell[1];
+	board[shape.i][shape.j] = 2;
+	document.getElementById('showScore').innerHTML = score;
+	document.getElementById('showLives').innerHTML = lives;
 }

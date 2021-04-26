@@ -1,6 +1,7 @@
 var savedUsers = new Array();
 var currentUser;
 
+
 class User{
 	constructor(username , password , firstName , lastName , email ,birthDate) {
 		this.username = username;
