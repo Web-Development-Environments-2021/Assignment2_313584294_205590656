@@ -12,7 +12,7 @@
 	<meta charset="utf-8">  
       <title>jQuery UI Slider functionality</title>  
       <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
       <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
  
 
@@ -54,7 +54,7 @@
 	<meta charset="utf-8">  
 		<title>jQuery UI selectable-1</title>  
 		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+		<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  -->
 		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
 
 		<!--slider balls number-->
@@ -273,7 +273,6 @@
 			</dialog>
 
 			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
-			<form>
 				<table>
 					<h3>Please enter your prefernces</h3>
 					<tr>
@@ -310,18 +309,25 @@
 						</td>
 					</tr>
 					<tr>
-
 					</tr>
-					<!--
 					<tr>
 						<td>
-								<label class="settings">Number of balls:</label>  
-								<input type="text" id="numOfBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
+							<label class="settings">Number of balls:</label>  
+							<input type="text" id="numOfBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
 						</td>
 						<td>
 							<div id="slider-numBalls"></div>  
 						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings">Number of balls:</label>
+						</td>
+						<td>
+							<input type="text" id="numOfBalls" size="12" value="" onclick="document.getElementById('numOfBalls').value=''"/>
+						</td>
 					</tr>	
+					<!--
 					 <tr>
 						<td>
 							<label class="settings">Color of 5 pt ball:</label>
@@ -393,7 +399,6 @@
 						</td>
 					</tr>
 				</table>
-			</form>
 			</div>
 			<div id="ready" style="visibility: hidden;" class="view" align="center">
 				<br>
