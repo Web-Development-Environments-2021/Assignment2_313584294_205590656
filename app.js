@@ -12,6 +12,7 @@ var durationOfGame;
 var extraTime;
 var blocked;
 
+//Monsters
 var numOfMonsters;
 var monster1 = new Object();
 var monster2 = new Object();
@@ -27,12 +28,14 @@ monster3.behind = false;
 monster4.behind = false;
 var intervalMonsters;
 
+//points_50
 var points_50 = new Object();
 var points_50_Game;
 var intervalPoints_50;
 points_50.notSeen = 0;
 points_50.id = 50;
 
+//Music
 var isMeut = false;
 var backgroundMusic = new Audio('./resources/pacmanMusic.mp3');
 var loseSound;
@@ -52,22 +55,15 @@ var keyLeft;
 var direction;
 var lives;
 
+//boom
 var disapeerBoom = new Object();
 disapeerBoom.i = null;
 disapeerBoom.j = null;
 var intervalBoom;
 
 
-
-
-// $(document).ready(function() {
-// 	canvas = document.getElementById("canvas");
-// 	context = canvas.getContext("2d");
-// 	Start();
-// });
-
 /************************** mute or umute  *************************/
-function mute(){
+function mute(){ // Turns from unmute to mute
 	backgroundMusic.pause();
 	loseSound.pause();
 	encounterSound.pause();
@@ -75,7 +71,7 @@ function mute(){
 	$("#unmute").show();
 	isMeut = true;	
 }
-function unmute (){
+function unmute (){ //// Turns from mute to unmute
 	backgroundMusic.play();
 	loseSound.play();
 	encounterSound.play();
@@ -107,12 +103,12 @@ function Start() {
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
-	var cnt = 100;
+	var cnt = 140;
 	var food_remain = numOfBalls;
 	ballsLeftToEat = numOfBalls;
 	var food_5 = Math.floor(numOfBalls*0.6);
 	var food_15 = Math.floor(numOfBalls*0.3);
-	var food_25 = food_remain-food_5-food_15;
+	var food_25 = Math.floor(numOfBalls*0.1);
 	var numOfMonstersLeftArrangeOnBoard = numOfMonsters;
 	var serialNumberOfMonsters=111 //start from 111
 	var pacman_remain = 1;
@@ -125,7 +121,7 @@ function Start() {
 		board[i] = new Array();
 		for (var j = 0; j < 8; j++) {
 			// place of monsters
-			if(((i == 0 && j == 0) || (i == 0 && j == 7) || (i == 9 && j == 0) || (i == 9 && j == 7)) && numOfMonstersLeftArrangeOnBoard > 0){
+			if(((i == 0 && j == 0) || (i == 0 && j == 7) || (i == 13 && j == 0) || (i == 13 && j == 7)) && numOfMonstersLeftArrangeOnBoard > 0){
 				board[i][j] = serialNumberOfMonsters;
 				serialNumberOfMonsters++;
 				numOfMonstersLeftArrangeOnBoard--;
@@ -135,7 +131,7 @@ function Start() {
 			(i==7 && j==3) || (i==6 && j==2) || (i==5 && j==5) || (i==5 && j==6) || (i==2 && j==6) || (i==2 && j==7) ){
 				board[i][j] = 4;
 			}
-			//Moving score
+			//Moving score - 50 point
 			else if(i == 4 && j == 0){
 				board[i][j] = 50;
 				points_50.i = i;
@@ -159,7 +155,7 @@ function Start() {
 						food_25--;
 						board[i][j] = 25;
 					};
-				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) { //pacman
+				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt &&  pacman_remain>0 ) { //pacman
 					shape.i = i;
 					shape.j = j;
 					pacman_remain--;
@@ -193,22 +189,30 @@ function Start() {
 	var findEmptyCell = findRandomEmptyCell(board);
 	board[findEmptyCell[0]][findEmptyCell[1]] = 10;
 
+	
 	keysDown = {};
-	addEventListener(
-		"keydown",
-		function(e) {
-			keysDown[e.keyCode] = true;
-		},
-		false
+	addEventListener("keydown",	function(e) {
+		if(e.key == keyUp)
+		keysDown[keyUp] = true;
+		if(e.key == keyDown)
+		keysDown[keyDown] = true;
+		if(e.key == keyRight)
+		keysDown[keyRight] = true;
+		if(e.key == keyLeft)
+		keysDown[keyLeft] = true;
+	},
+	false
 	);
-	addEventListener(
-		"keyup",
-		function(e) {
-			keysDown[e.keyCode] = false;
-		},
-		false
+	addEventListener("keyup",function(e) {
+		keysDown[e.keyCode] = false;
+	},
+	false
 	);
-	interval = setInterval(UpdatePosition, 250);
+
+	interval = setInterval(UpdatePosition, 5);
+	intervalMonsters = setInterval(monsters_Move, 700);
+	intervalPoints_50 = setInterval(Points_50_Move, 650);
+	intervalBoom = setInterval(Boom_Move,1500);
 }
 
 function findRandomEmptyCell(board) {
@@ -288,6 +292,7 @@ function Boom_Move() {
 		board[disapeerBoom.i][disapeerBoom.j] = 0;
 	}
 }
+
 function Points_50_Move(){
 	if(points_50_Game && UpdateNextStepMonster(points_50) == false){ //pacman eat 50 points
 		board[points_50.i][points_50.j] = 0;
@@ -296,6 +301,7 @@ function Points_50_Move(){
 		points_50.notSeen = 0;
 	}
 }
+
 function UpdatePosition() {
 	if(shape.i != null && shape.j != null){
 		board[shape.i][shape.j] = 0;
@@ -339,7 +345,7 @@ function UpdatePosition() {
 		ballsLeftToEat--;
 	}
 	else if(board[shape.i][shape.j] == 111 || board[shape.i][shape.j] == 112 || board[shape.i][shape.j] == 113 || board[shape.i][shape.j] == 114){ //Collision with a monster
-		monstersMove();
+		monsters_Move();
 		board[shape.i][shape.j]=700; //Collision
 	}
 	else if(board[shape.i][shape.j] == 50){ //50 points
@@ -406,6 +412,25 @@ function UpdatePosition() {
 		Draw();
 	}
 }
+
+
+function GhostEatMe(){
+	//mainMusic.pause();
+	board[shape.i][shape.j] = 700;
+	//mainMusic.play();
+	if(!isMeut){
+		boing.play();
+	}
+	lives--;
+	score = score - 10;
+	var emptyCell = findRandomEmptyCell(board);
+	shape.i = emptyCell[0];
+	shape.j = emptyCell[1];
+	board[shape.i][shape.j] = 2;
+	document.getElementById('showScore').innerHTML = score;
+	document.getElementById('showLives').innerHTML = lives;
+}
+
 
 function Draw() {
 	canvas.width = canvas.width; //clean board
@@ -515,7 +540,7 @@ function Draw() {
 			//point_50
 			else if(board[i][j] == 50 && points_50_Game){
 				var starImg = new Image;
-				starImg.src = "./resources/star.png";
+				starImg.src = "./resources/50points.png";
 				context.beginPath();
 				context.drawImage(starImg,center.x - 30, center.y - 30, 60, 60 * starImg.height / starImg.width);
 			}
@@ -586,3 +611,69 @@ function GhostEatPacman(){
 	document.getElementById('showScore').innerHTML = score;
 	document.getElementById('showLives').innerHTML = lives;
 }
+
+
+function UpdateNextStepMonster(monster) { //to change
+	var x=monster.i;
+	var y= monster.j;
+	var move;
+	var priority = iAmClose(monster);
+	var monsterCanMove = false;
+	var firstTry = true;
+	var try1 = 0;
+	var try2 = 0;
+	var try3 = 0;
+	var try4 = 0;
+	var tryAllMoves = 0;
+	while ((!monsterCanMove  && tryAllMoves < 10)){
+		if(priority > 0 && firstTry){
+			move = priority;
+			firstTry = false;
+		}
+		else{
+			move = Math.floor(Math.random() * 5 + 1);
+		}
+		
+		if (move == 1) { // up
+			if (y > 0 && board[x][y-1] != 4 && board[x][y-1]!= 3 && board[x][y-1] != 101 && board[x][y-1] != 102 && board[x][y-1] != 103 && board[x][y-1] != 104 && board[x][y-1] != 8 && board[x][y-1] != 9 && board[x][y-1] != 500 && board[x][y-1] != 600) {
+				y = y -1;
+				monsterCanMove=true;
+				try1 = 1;
+			}	
+		}
+		if (move == 2) { //down
+			if (y < 7 &&  board[x][y+1] != 4 && board[x][y+1]!= 3 && board[x][y+1] != 101 && board[x][y+1] != 102 && board[x][y+1] != 103 && board[x][y+1] != 104 && board[x][y+1] != 8 && board[x][y+1] != 9 && board[x][y+1] != 500 && board[x][y+1] != 600) {
+				y = y +1;
+				monsterCanMove =true;
+				tryAllMoves = tryAllMoves+2;
+				try2 =2;
+			}	
+		} 
+		if (move == 3) { //right
+			if (x < 13 && board[x+1][y] != 4 && board[x+1][y]!= 3 && board[x+1][y] != 101 && board[x+1][y] != 102 && board[x+1][y] != 103 && board[x+1][y] != 104 && board[x+1][y] != 8 && board[x+1][y] != 9 && board[x+1][y] != 500 && board[x+1][y] != 600) {
+				x = x +1;
+				monsterCanMove =true;
+				try3=3;
+			}
+		}
+		if (move == 4) { //left
+			if (x > 0 &&  board[x-1][y] != 4 && board[x-1][y]!= 3 && board[x-1][y]!= 101 && board[x-1][y]!= 102 && board[x-1][y]!= 103 && board[x-1][y]!= 104 && board[x-1][y] != 8 && board[x-1][y] != 9 && board[x-1][y] != 500 && board[x-1][y] != 600) {
+				x = x -1;
+				monsterCanMove =true;
+				try4=4;
+			}
+		}
+		tryAllMoves = try1+try2+try3+try4;	
+	}
+	board[monster.i][monster.j] = monster.notSeen;
+	monster.i = x;
+	monster.j = y;
+	if (board[monster.i][monster.j] == 2) {	
+		return false; //lose
+	}
+	else if (board[monster.i][monster.j] == 0 || board[monster.i][monster.j] == 5 || board[monster.i][monster.j] == 15 || board[monster.i][monster.j] == 25) {	
+		monster.notSeen = board[monster.i][monster.j];
+	}
+	board[monster.i][monster.j] = monster.id;
+	return true;
+	}
