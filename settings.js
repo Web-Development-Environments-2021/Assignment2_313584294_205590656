@@ -70,7 +70,6 @@ var dialog = document.getElementById('about');
 		}
 });
 
-
 //check register form
 //https://stackoverflow.com/questions/14460925/how-to-add-validation-rules-with-messages-in-jquery-validation
 //https://jqueryvalidation.org/
@@ -218,30 +217,85 @@ function updateLeft() {
 		$(document).unbind()
 	});
 }
+// function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
+// 	if (upKey == "---"){
+// 		window.alert("please choose an up key")
+// 	}
+// 	else if (downKey == "---"){
+// 		window.alert("please choose a down key")
+// 	}
+// 	else if (rightKey == "---"){
+// 		window.alert("please choose a right key")
+// 	}
+// 	else if (leftKey == "---"){
+// 		window.alert("please choose a left key")
+// 	}
+
+// 	// else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
+// 	// 	window.alert("number of balls must be between 50 to 90")
+// 	// }
+// 	// else if (colorBall5 == colorBall15 || colorBall5 == colorBall25 || colorBall15 == colorBall25){
+// 	// 	window.alert("please choose a different color for each ball")
+// 	// }
+// 	// else if (!(/^\d+$/.test(numOfBalls) && durationOfGame >= 60)){
+// 	// 	window.alert("game duration must be atleast 60 seconds")
+// 	// }
+// 	else{//The user entered all the settings
+// 		this.numOfBalls = numOfBalls;
+// 		this.colorBalls_5 = colorBalls_5;
+// 		this.colorBalls_15 = colorBalls_15;
+// 		this.colorBalls_25 = colorBalls_25;
+// 		this.numOfMonsters = parseInt(numOfMonsters);
+// 		this.durationOfGame = parseInt(durationOfGame);
+
+// 		document.getElementById('showUpKey').innerHTML = upKey;
+// 		document.getElementById('showDownKey').innerHTML = downKey;
+// 		document.getElementById('showRightKey').innerHTML = rightKey;
+// 		document.getElementById('showLeftKey').innerHTML = leftKey;
+// 		document.getElementById('showNumOfBalls').innerHTML = numOfBalls;
+
+// 		document.getElementById('showColorBall5').innerHTML = colorBalls_5;
+// 		document.getElementById('showColorBall5').style.color = colorBalls_5;
+
+// 		document.getElementById('showColorBall15').innerHTML = colorBalls_15;
+// 		document.getElementById('showColorBall15').style.color = colorBalls_15;
+
+// 		document.getElementById('showColorBall25').innerHTML = colorBalls_25;
+// 		document.getElementById('showColorBall25').style.color = colorBalls_25;
+
+// 		document.getElementById('showNumOfMonsters').innerHTML = numOfMonsters;
+// 		document.getElementById('showDurationOfGame').innerHTML = durationOfGame+" sec";
+
+// 		document.getElementById('showUserName').innerHTML = currentUser.username;
+// 		ShowDiv('ready');
+	
+// 	}
+// }
+
+
 function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
-	if (upKey == "---"){
+	if (upKey == "up key"){
 		window.alert("please choose an up key")
 	}
-	else if (downKey == "---"){
+	else if (downKey == "down key"){
 		window.alert("please choose a down key")
 	}
-	else if (rightKey == "---"){
+	else if (rightKey == "right key"){
 		window.alert("please choose a right key")
 	}
-	else if (leftKey == "---"){
+	else if (leftKey == "left key"){
 		window.alert("please choose a left key")
 	}
-
-	// else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
-	// 	window.alert("number of balls must be between 50 to 90")
-	// }
-	// else if (colorBall5 == colorBall15 || colorBall5 == colorBall25 || colorBall15 == colorBall25){
-	// 	window.alert("please choose a different color for each ball")
-	// }
-	// else if (!(/^\d+$/.test(numOfBalls) && durationOfGame >= 60)){
-	// 	window.alert("game duration must be atleast 60 seconds")
-	// }
-	else{//The user entered all the settings
+	else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
+		window.alert("number of balls must be between 50 to 90")
+	}
+	else if (colorBalls_5 == colorBalls_15 || colorBalls_5 == colorBalls_25 || colorBalls_15 == colorBalls_25){
+		window.alert("please choose a different color for each ball")
+	}
+	else if (!(/^\d+$/.test(numOfBalls) && durationOfGame >= 60)){
+		window.alert("game duration must be atleast 60 seconds")
+	}
+	else{
 		this.numOfBalls = numOfBalls;
 		this.colorBalls_5 = colorBalls_5;
 		this.colorBalls_15 = colorBalls_15;
@@ -249,41 +303,43 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 		this.numOfMonsters = parseInt(numOfMonsters);
 		this.durationOfGame = parseInt(durationOfGame);
 
+		// username not working
+		//document.getElementById('showUserName').innerHTML = currentUser.username;
 		document.getElementById('showUpKey').innerHTML = upKey;
 		document.getElementById('showDownKey').innerHTML = downKey;
 		document.getElementById('showRightKey').innerHTML = rightKey;
 		document.getElementById('showLeftKey').innerHTML = leftKey;
 		document.getElementById('showNumOfBalls').innerHTML = numOfBalls;
 
-		document.getElementById('showColorBall5').innerHTML = colorBalls_5;
-		document.getElementById('showColorBall5').style.color = colorBalls_5;
+		document.getElementById('showColorBalls_5').innerHTML = colorBalls_5;
+		document.getElementById('showColorBalls_5').style.color = colorBalls_5;
 
-		document.getElementById('showColorBall15').innerHTML = colorBalls_15;
-		document.getElementById('showColorBall15').style.color = colorBalls_15;
+		document.getElementById('showColorBalls_15').innerHTML = colorBalls_15;
+		document.getElementById('showColorBalls_15').style.color = colorBalls_15;
 
-		document.getElementById('showColorBall25').innerHTML = colorBalls_25;
-		document.getElementById('showColorBall25').style.color = colorBalls_25;
+		document.getElementById('showColorBalls_25').innerHTML = colorBalls_25;
+		document.getElementById('showColorBalls_25').style.color = colorBalls_25;
 
 		document.getElementById('showNumOfMonsters').innerHTML = numOfMonsters;
 		document.getElementById('showDurationOfGame').innerHTML = durationOfGame+" sec";
 
 		document.getElementById('showUserName').innerHTML = currentUser.username;
 		ShowDiv('ready');
-	
+		//Start();
 	}
 }
-
 function random(){
 	document.getElementById('up_key').value = 'ArrowUp';
 	document.getElementById('down_key').value = 'ArrowDown';
 	document.getElementById('right_key').value = 'ArrowRight';
 	document.getElementById('left_key').value = 'ArrowLeft';
+
 	document.getElementById('numOfBalls').value = getRandomNumber(50, 91);
 	var colors = new Array();
-	colors[1] = 'color-num1';
-	colors[2] = 'color-num2';
-	colors[3] = 'color-num3';
-	colors[4] = 'color-num4';
+	colors[1] = 'deeppink';
+	colors[2] = 'lime';
+	colors[3] = 'red';
+	colors[4] = 'orange';
 
 	var color5 = getRandomNumber(1, 5);
 	var color15 = getRandomNumber(1, 5);
@@ -299,8 +355,36 @@ function random(){
 	document.getElementById('colorBalls_15').value = colors[color15];
 	document.getElementById('colorBalls_25').value = colors[color25];
 	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
-	document.getElementById('durationOfGame').value = getRandomNumber(60, 241);
+	document.getElementById('durationOfGame').value = getRandomNumber(60, 181);
 }
+// function random(){
+// 	document.getElementById('up_key').value = 'ArrowUp';
+// 	document.getElementById('down_key').value = 'ArrowDown';
+// 	document.getElementById('right_key').value = 'ArrowRight';
+// 	document.getElementById('left_key').value = 'ArrowLeft';
+// 	document.getElementById('numOfBalls').value = getRandomNumber(50, 91);
+// 	var colors = new Array();
+// 	colors[1] = 'color-num1';
+// 	colors[2] = 'color-num2';
+// 	colors[3] = 'color-num3';
+// 	colors[4] = 'color-num4';
+
+// 	var color5 = getRandomNumber(1, 5);
+// 	var color15 = getRandomNumber(1, 5);
+// 	while(color5 == color15){
+// 		color15 = getRandomNumber(1, 5);
+// 	}
+// 	var color25 = getRandomNumber(1, 5);
+// 	while(color5 == color25 || color15 == color25){
+// 		color25 = getRandomNumber(1, 5);
+// 	}
+
+// 	document.getElementById('colorBalls_5').value = colors[color5];
+// 	document.getElementById('colorBalls_15').value = colors[color15];
+// 	document.getElementById('colorBalls_25').value = colors[color25];
+// 	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
+// 	document.getElementById('durationOfGame').value = getRandomNumber(60, 241);
+// }
 
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
