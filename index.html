@@ -8,9 +8,57 @@
 		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 	
+<<<<<<< HEAD
+	<!--slider code-->
+	<meta charset="utf-8">  
+      <title>jQuery UI Slider functionality</title>  
+      <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+ 
+
+	<!--slider balls number-->
+	<script>
+		$(function() {  
+			$( "#slider-numBalls" ).slider({  
+			orientation:"horizontal",  
+			value:50,
+			animate:"slow",  
+			min: 50,  
+			max: 90, 
+			slide: function( event, ui ) {  
+				$( "#numOfBalls" ).val( ui.value );  
+			}      
+		});  
+		numOfBalls = $( "#numOfBalls" ).val( $( "#slider-numBalls" ).slider( "value" ) );  
+ 		});  
+	</script>
+
+	<!--slider time game-->
+	<script>
+		$(function() {  
+			$( "#slider-timeGame" ).slider({  
+			orientation:"horizontal",  
+			value:50,
+			animate:"slow",  
+			min: 60,  
+			max: 240, 
+			slide: function( event, ui ) {  
+				$( "#durationOfGame" ).val( ui.value );  
+			}      
+		});  
+		interval = $( "#durationOfGame" ).val( $( "#slider-timeGame" ).slider( "value" ) );  
+		});  
+	</script>
+
+	<!--selectable-->  
+	<meta charset="utf-8">  
+		<title>jQuery UI selectable-1</title>  
+=======
 		<!--slider code-->
 		<meta charset="utf-8">  
 		<title>jQuery UI Slider functionality</title>  
+>>>>>>> 695cde4cc7655eac4e773ef07a64fe8a8da70fd6
 		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
 		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
@@ -199,7 +247,11 @@
 				</form>
 			</div>
 
+<<<<<<< HEAD
+			<div id="login" style="visibility:hidden;" class="view" align="center">
+=======
 			<div id="login" style="visibility:hidden;" class="view" >
+>>>>>>> 695cde4cc7655eac4e773ef07a64fe8a8da70fd6
 				<br>
 				<br>
 				<br>
@@ -237,12 +289,11 @@
 				<table>
 					<h3>Please enter your prefernces</h3>
 					<tr>
-
 						<td>
 							<label class="settings" >Choose up key</label><br>
 						</td>
 						<td>
-							<input type="text" id="up_key" size="12" onclick="keyUp = updateUp()" value=""><br>
+							<input  type="text" id="up_key" size="12" onclick="keyUp = updateUp()" value="---"><br>
 						</td>
 					</tr>
 					<tr>
@@ -250,7 +301,7 @@
 							<label class="settings" >Choose down key</label><br>
 						</td>
 						<td>
-							<input type="text" id="down_key" size="12" onclick="keyDown = updateDown()"  value=""><br>
+							<input type="text" id="down_key" size="12" onclick="keyDown = updateDown()"  value="---"><br>
 						</td>
 					</tr>
 					<tr>
@@ -258,7 +309,7 @@
 							<label class="settings" >Choose right key</label><br>
 						</td>
 						<td>
-							<input type="text" id="right_key"  size="12" onclick="keyRight = updateRight()" value=""><br>
+							<input type="text" id="right_key"  size="12" onclick="keyRight = updateRight()" value="---"><br>
 						</td>
 					</tr>
 					<tr>
@@ -267,22 +318,23 @@
 							<br>
 						</td>
 						<td>
-							<input type="text" id="left_key" size="12"  onclick="keyLeft = updateLeft()"value=""><br>
-						</td>
-					</tr>
-					<tr>
-						<td>
-								<label class="settings">Number of balls:</label>  
-								<input type="text" id="numBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
-						</td>
-						<td>
-							<div id="slider-numBalls"></div>  
+							<input type="text" id="left_key" size="12"  onclick="keyLeft = updateLeft()"value="---"><br>
 						</td>
 					</tr>
 					<tr>
 
 					</tr>
+					<!--
 					<tr>
+						<td>
+								<label class="settings">Number of balls:</label>  
+								<input type="text" id="numOfBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
+						</td>
+						<td>
+							<div id="slider-numBalls"></div>  
+						</td>
+					</tr>	
+					 <tr>
 						<td>
 							<label class="settings">Color of 5 pt ball:</label>
 						</td>
@@ -295,7 +347,7 @@
 						
 					</tr>
 					<tr>
-					</tr>
+</tr>
 					<tr>
 						<td>
 							<label class="settings">Color of 15 pt ball:</label>
@@ -336,12 +388,12 @@
 					<tr>
 						<td>
 							<label class="settings">Game duration (sec):</label>  
-							<input type="text" id="timeGame" size="1" style="border:0 ; color:blue; font-weight:bold;">  
+							<input type="text" id="durationOfGame" size="1" style="border:0 ; color:blue; font-weight:bold;">  
 						</td>
 						<td>
 							<div id="slider-timeGame"></div>  
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>
 							<button class="button" onclick="random()">Random</button>
@@ -349,10 +401,7 @@
 						<td>
 							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
 							document.getElementById('down_key').value, document.getElementById('right_key').value,
-							document.getElementById('left_key').value, document.getElementById('numOfBalls').value,
-							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
-							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
-							document.getElementById('durationOfGame').value)">Submit</button>
+							document.getElementById('left_key').value)">Submit</button>
 						</td>
 					</tr>
 				</table>
