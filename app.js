@@ -671,8 +671,8 @@ function UpdatePosition() {
 	keysDown[keyLeft] = false;
 
 	if(lives == 0){
-		mainMusic.pause();
-		mainMusic.currentTime = 0;
+		backgroundMusic.pause();
+		backgroundMusic.currentTime = 0;
 		if(!isMeut){
 			loseSound.play();
 		}
@@ -685,8 +685,8 @@ function UpdatePosition() {
 	}
 	else if (time_elapsed <= 0.00){
 		if (score < 100){
-			mainMusic.pause();
-			mainMusic.currentTime = 0;
+			backgroundMusic.pause();
+			backgroundMusic.currentTime = 0;
 			if(!isMeut){
 				loseSound.play();
 			}
@@ -698,8 +698,8 @@ function UpdatePosition() {
 
 		}
 		else{
-			mainMusic.pause();
-			mainMusic.currentTime = 0;
+			backgroundMusic.pause();
+			backgroundMusic.currentTime = 0;
 			if(!isMeut){
 				winSound.play();
 			}
