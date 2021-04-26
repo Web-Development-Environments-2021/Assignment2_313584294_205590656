@@ -4,124 +4,119 @@
 		<title>Pacman Game by Lahan & Nicole</title>
 		<link rel="stylesheet" type="text/css"  href="style.css" /> 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
-	<!--<script type="text/javascript" src="./app.js"></script>-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 	
-	<!--slider code-->
-	<meta charset="utf-8">  
-      <title>jQuery UI Slider functionality</title>  
-      <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
- 
-
-	<!--slider balls number-->
-	<script>
-		$(function() {  
-			$( "#slider-numBalls" ).slider({  
-			orientation:"horizontal",  
-			value:50,
-			animate:"slow",  
-			min: 50,  
-			max: 90, 
-			slide: function( event, ui ) {  
-				$( "#numBalls" ).val( ui.value );  
-			}      
-		});  
-		numOfBalls = $( "#numBalls" ).val( $( "#slider-numBalls" ).slider( "value" ) );  
- 		});  
-	</script>
-
-	<!--slider time game-->
-	<script>
-		$(function() {  
-			$( "#slider-timeGame" ).slider({  
-			orientation:"horizontal",  
-			value:50,
-			animate:"slow",  
-			min: 60,  
-			max: 240, 
-			slide: function( event, ui ) {  
-				$( "#timeGame" ).val( ui.value );  
-			}      
-		});  
-		interval = $( "#timeGame" ).val( $( "#slider-timeGame" ).slider( "value" ) );  
-		});  
-	</script>
-
-	<!--selectable-->  
-	<meta charset="utf-8">  
-		<title>jQuery UI selectable-1</title>  
+		<!--slider code-->
+		<meta charset="utf-8">  
+		<title>jQuery UI Slider functionality</title>  
 		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
 		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
-		<style>  
-		#selectable-5 .ui-selecting { background: #cdc8b1 ; }  
-		#selectable-5 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
-		#selectable-5 { list-style-type: none; margin: 0;   
-			padding: 0; width: 40%; }  
-		#selectable-5 li { margin: 3px; padding: 0.4em;   
-			font-size: 14px; height: 20px; }  
 
-		#selectable-15 .ui-selecting { background: #cdc8b1 ; }  
-		#selectable-15 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
-		#selectable-15 { list-style-type: none; margin: 0;   
-			padding: 0; width: 40%; }  
-		#selectable-15 li { margin: 3px; padding: 0.4em;   
-			font-size: 14px; height: 20px; }  
-		
-		#selectable-25 .ui-selecting { background: #cdc8b1 ; }  
-		#selectable-25 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
-		#selectable-25 { list-style-type: none; margin: 0;   
-			padding: 0; width: 40%; }  
-		#selectable-25 li { margin: 3px; padding: 0.4em;   
-			font-size: 14px; height: 20px; }  
+		<!--slider balls number-->
+		<script>
+			$(function() {  
+				$( "#slider-numBalls" ).slider({  
+				orientation:"horizontal",  
+				value:50,
+				animate:"slow",  
+				min: 50,  
+				max: 90, 
+				slide: function( event, ui ) {  
+					$( "#numBalls" ).val( ui.value );  
+				}      
+			});  
+			numOfBalls = $( "#numBalls" ).val( $( "#slider-numBalls" ).slider( "value" ) );  
+			});  
+		</script>
 
-		.color-num1 , .color-num5 {  
-			background: #7FFF00;  
-			border: 2px solid #DDDDDD;  
-			color: black;  
-		}  
-		.color-num2 , .color-num6 {  
-			background: #e832ee;  
-			border: 2px solid #DDDDDD;  
-			color: black;  
-		} 
-		.color-num3, .color-num7 {  
-			background: #ff5e00;  
-			border: 2px solid #DDDDDD;  
-			color: black;  
-		} 
-		.color-num4,  .color-num8 {  
-			background: #1c90d3;  
-			border: 2px solid #DDDDDD;  
-			color: black;  
-		} 
-		</style> 
-		 
-	<!--colors balls choose-->  
-	<script>
-		 $(function() {  
-		 $( "#selectable-5" ).selectable()
-		 $( "#selectable-15" ).selectable()		
-		 $( "#selectable-25" ).selectable()		
-		 document.getElementById("colorBalls_5").value= "#selectable-5";
-		 document.getElementById("colorBalls_15").value= "#selectable-15";
-		 document.getElementById("colorBalls_25").value= "#selectable-25";
+		<!--slider time game-->
+		<script>
+			$(function() {  
+				$( "#slider-timeGame" ).slider({  
+				orientation:"horizontal",  
+				value:50,
+				animate:"slow",  
+				min: 60,  
+				max: 240, 
+				slide: function( event, ui ) {  
+					$( "#timeGame" ).val( ui.value );  
+				}      
+			});  
+			interval = $( "#timeGame" ).val( $( "#slider-timeGame" ).slider( "value" ) );  
+			});  
+		</script>
 
-		 });  
+		<!--selectable-->  
+		<meta charset="utf-8">  
+			<title>jQuery UI selectable-1</title>  
+			<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+			<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+			<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+			<style>  
+			#selectable-5 .ui-selecting { background: #cdc8b1 ; }  
+			#selectable-5 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+			#selectable-5 { list-style-type: none; margin: 0;   
+				padding: 0; width: 40%; }  
+			#selectable-5 li { margin: 3px; padding: 0.4em;   
+				font-size: 14px; height: 20px; }  
 
-	</script>
+			#selectable-15 .ui-selecting { background: #cdc8b1 ; }  
+			#selectable-15 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+			#selectable-15 { list-style-type: none; margin: 0;   
+				padding: 0; width: 40%; }  
+			#selectable-15 li { margin: 3px; padding: 0.4em;   
+				font-size: 14px; height: 20px; }  
+			
+			#selectable-25 .ui-selecting { background: #cdc8b1 ; }  
+			#selectable-25 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+			#selectable-25 { list-style-type: none; margin: 0;   
+				padding: 0; width: 40%; }  
+			#selectable-25 li { margin: 3px; padding: 0.4em;   
+				font-size: 14px; height: 20px; }  
 
+			.color-num1 , .color-num5 {  
+				background: #7FFF00;  
+				border: 2px solid #DDDDDD;  
+				color: black;  
+			}  
+			.color-num2 , .color-num6 {  
+				background: #e832ee;  
+				border: 2px solid #DDDDDD;  
+				color: black;  
+			} 
+			.color-num3, .color-num7 {  
+				background: #ff5e00;  
+				border: 2px solid #DDDDDD;  
+				color: black;  
+			} 
+			.color-num4,  .color-num8 {  
+				background: #1c90d3;  
+				border: 2px solid #DDDDDD;  
+				color: black;  
+			} 
+			</style> 
+			
+		<!--colors balls choose-->  
+		<script>
+			$(function() {  
+			$( "#selectable-5" ).selectable()
+			$( "#selectable-15" ).selectable()		
+			$( "#selectable-25" ).selectable()		
+			document.getElementById("colorBalls_5").value= "#selectable-5";
+			document.getElementById("colorBalls_15").value= "#selectable-15";
+			document.getElementById("colorBalls_25").value= "#selectable-25";
 
+			});  
 
+		</script>
 	</head>
 	<body>
-		<!--<div id="divTop">-->
+		<div id="divTop">
 			<header>
-				<table id="headerHome">
+				<table id="tableHeader">
 					<tr>
 						<td align = "left">
 							<label style="color:#666362; font-family: fantasy; font-size: 13px;" align = "left">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
@@ -143,7 +138,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
-			<div id="welcome" style="visibility: hidden;" class="view" align="center">
+			<div id="welcome" style="visibility: visible;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
 				<br>
@@ -159,105 +154,62 @@
 						<br><br>
 						<tr >
 							<td >
-								<label> Username:</label>
-							</td>
-							<td >
-								<label> 
+								<label> Username:
 									<input id="UsernameRegister" name="UsernameRegister" type="text" class="check" >
-								</label>
+								</label>	
 							</td>					
 						</tr>
 						<tr>
 							<td >
-								<label> Password:</label>
-							</td>
-							<td >
-								<label> 
+								<label> Password:
 									<input id="PasswordRegister" name="PasswordRegister" type="password" class="check" >
 								</label>
 							</td>
 						</tr>
 						<tr >
 							<td >
-								<label> First Name: </label>
-							</td>
-							<td >
-								<label>
+								<label> First Name:
 									<input id="FirstName" name="FirstName" type="text" class="check" >
-								</label>
-							</td>			
-						</tr>
-						<tr>
-							<td >
-								<label> Last Name: </label>
-							</td>
-							<td >
-								<label> 
-									<input id="LastName" name="LastName" type="text" class="check" >
 								</label>
 							</td>		
 						</tr>
+						<tr>
+							<td >
+								<label> Last Name: 
+									<input id="LastName" name="LastName" type="text" class="check" >
+								</label>
+							</td>	
+						</tr>
 						<tr >
 							<td >
-								<label> Email:</label>
-							</td>
-							<td >
-								<label> 
+								<label> Email:
 									<input id="Email" name="Email" type="email" placeholder = "name@domain.com" class="check" >
 								</label>
 							</td>		
 						</tr>
 						<tr >
 							<td >
-								<label> Birth Date: </label>
-							</td>
-							<td >
-								<label> 
+								<label> Birth Date: 
 									<input id="BirthDate" name="BirthDate" type="date" class="check"><br>
 								</label>
-							</td>	
+							</td>
 						</tr>
-						<tr >
-    						<th colspan="2"><br>
-								<button class="button" id="submitForm" type="submit" >Submit</button>
-							</th>
-						</tr>
-					</table>    
+					</table> 
+					<button class="button" id="submitForm" type="submit" >Submit</button>   
 				</form>
 			</div>
 
-			<div id="login" style="visibility: hidden ;" class="view">
-				<form id = "loginForm" method ="get" action = "">
-					<br><br><br>
-					<table id="loginTable" align="center">
-						<tr >
-							<td >
-								<label> Username:</label>
-							</td>
-							<td >
-								<label> 
-									<input id="usernameLogin" name="username" value="" type="text" onclick="document.getElementById('usernameLogin').value=''" class="check" >
-								</label>
-							</td>					
-						</tr>
-						<tr >
-							<td >
-								<br>
-								<label> Password:</label>
-							</td>
-							<td >
-								<br>
-								<label> 
-									<input id="passwordLogin" name="password" value="" type="password" onclick="document.getElementById('passwordLogin').value=''" class="check" >								</label>
-							</td>					
-						</tr>
-						<tr >
-    						<th colspan="2"><br>
-								<button class="button" id="login" onclick="CheckLogIn(document.getElementById('usernameLogin').value, document.getElementById('passwordLogin').value)">Login</button>
-							</th>
-						</tr>
-					</table>
-				</form>
+			<div id="login" style="visibility:hidden;" class="view" >
+				<br>
+				<br>
+				<br>
+				<label> Username:<br>
+					<input id="usernameLogin" name="username" value="" type="text" class="check" onclick="document.getElementById('usernameLogin').value=''" class = "lbls"><br><br>
+				</label>
+				<label> Password:<br>
+					<input id="passwordLogin" name="password" value="" type="password" class="check" onclick="document.getElementById('passwordLogin').value=''" class = "lbls"><br><br>
+				</label>
+				<button class="button" onclick="CheckLogIn(document.getElementById('usernameLogin').value, document.getElementById('passwordLogin').value)">Login</button>
 			</div>
 
 			<dialog id="about" style ="font-family: system-ui;  background-color: #FFDFDD; color:red;" align="center">	
@@ -413,50 +365,46 @@
 				<img align="center" src="./resources/ready.jpg" id="readyPic"><br>
 				<br>	
 			</div>
-			<div id="game" style="visibility: visible;" class="view">
+			<div id="game" style="visibility: hidden;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
 						<td>
-							<br><label style= "font-size: 15px; font-family: fantasy;" id="userName">User name:</label>
+							<br><label style= "font-size: 20px; font-family: fantasy;" id="userName">User name:</label>
+							<label id="showUserName" type="text" style= "font-size: 20px; font-family: fantasy;" ></label>
 						</td>
+					</tr>
+					<tr>
 						<td>
-							<label id="showUserName" type="text"></label>
+							<img src="./resources/pacmanBoy.png" id="pacmanBoy"><br>
 						</td>
 					</tr>
 					<tr >
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Time Left:</label><br><br>
-						</td>
-						<td>
-							<label id="showTime" value = "" type="text"></label><br><br>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Time Left:</label>
+							<label id="showTime" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"></label><br><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Score:</label><br><br>
-						</td>		
-						<td>
-							<label id="showScore" value = "" type="text"></label><br><br>
-						</td>				
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Score:</label>
+							<label id="showScore" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"></label><br><br>
+						</td>						
 					</tr>	
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Lives:</label><br><br>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Lives:</label>
+							<label id="showLives" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"></label><br><br>
 						</td>
-						<td>
-							<label id="showLives" value = "" type="text"></label><br><br>
-						</td>	
-					</tr>
-					
+					</tr>	
 					<tr>
 						<td align="center">
-							<button  id="mute" class="button" style= "font-size: 20px;" onclick="mute()" >Mute</button><br><br>
+							<button  id="mute" class="button" style= "font-size: 20px;" onclick="mute()" >Mute</button><br>
 							<button  id="unmute" class="button" style= "font-size: 20px; display: none;" onclick="unmute()" >Unmute</button>
 						</td>						
 					</tr>
 					<tr>
 						<td align="center">
-							<button  class="button" style= "font-size: 20px;" onclick="newGame()" >New Game</button>
+							<button  class="button" style= "font-size: 20px;" onclick="newGame()" >New Game</button><br><br>
 						</td>						
 					</tr>	
 					<tr>
@@ -474,41 +422,31 @@
 					</tr>
 					<tr >
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Up Key:</label><br>
-						</td>
-						<td>
-							<label id="showUpKey" value = "" type="text"></label><br>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Up Key:</label>
+							<label id="showUpKey" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">nicole</label><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Down Key:</label><br>
-						</td>		
-						<td>
-							<label id="showDownKey" value = "" type="text"></label><br>
-						</td>				
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Down Key:</label>
+							<label id="showDownKey" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"></label><br>
+						</td>						
 					</tr>
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Right Key:</label><br>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Right Key:</label>
+							<label id="showRightKey" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">nicole</label><br>
 						</td>
-						<td>
-							<label id="showRightKey" value = "" type="text"></label><br>
-						</td>	
 					</tr>
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Left Key:</label><br>
-						</td>		
-						<td>
-							<label id="showLeftKey" value = "" type="text"></label><br>
-						</td>					
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Left Key:</label>
+							<label id="showLeftKey" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">nicole</label><br>
+						</td>						
 					</tr>
 					<tr>
 						<td>
-							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Num of balls:</label><br>
-						</td>
-						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Num of balls:</label>
 							<label id="showNumOfBalls" value = "" type="text"></label><br>
 						</td>	
 					</tr>
@@ -558,7 +496,7 @@
 			<footer id="downPage"  style="font-family: system-ui; font-size: 12px;" class="footer" align= "center">
 				<label style="text-align: left;">contact the developers: nicoled@post.bgu.ac.il | barmocha@post.bgu.ac.il 	&nbsp&nbsp&nbsp   אתר זה נבנה במסגרת קורס סביבות פיתוח באינטרנט במאי 2021</label>
 			</footer>
-		<!--</div>-->
+		</div>
 		
 	</body>
 	<script type="text/javascript" src="./app.js"></script>
