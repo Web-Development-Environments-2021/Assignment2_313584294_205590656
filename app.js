@@ -62,6 +62,7 @@ var intervalBoom;
 shape.i = null;
 shape.j = null;
 
+
 /************************** mute or umute  *************************/
 function mute(){ // Turns from unmute to mute
 	backgroundMusic.pause();
