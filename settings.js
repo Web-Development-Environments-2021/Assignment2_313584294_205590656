@@ -30,10 +30,11 @@ function ShowDiv(id)
 	div3.style.visibility="hidden";;
 	let div4 = document.getElementById('chooseSettings');
 	div4.style.visibility="hidden";
-	let div5 = document.getElementById('game');
+	let div5 = document.getElementById('ready');
 	div5.style.visibility="hidden";
-	let div6 = document.getElementById('ready');
+	let div6 = document.getElementById('game');
 	div6.style.visibility="hidden";
+	
 	
 	//show only one div
 	let selectedDiv = document.getElementById(id);
@@ -219,27 +220,28 @@ function updateLeft() {
 	});
 }
 function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
-	if (upKey == "up key"){
+	if (upKey == "---"){
 		window.alert("please choose an up key")
 	}
-	else if (downKey == "down key"){
+	else if (downKey == "---"){
 		window.alert("please choose a down key")
 	}
-	else if (rightKey == "right key"){
+	else if (rightKey == "---"){
 		window.alert("please choose a right key")
 	}
-	else if (leftKey == "left key"){
+	else if (leftKey == "---"){
 		window.alert("please choose a left key")
 	}
-	else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
-		window.alert("number of balls must be between 50 to 90")
-	}
-	else if (colorBall5 == colorBall15 || colorBall5 == colorBall25 || colorBall15 == colorBall25){
-		window.alert("please choose a different color for each ball")
-	}
-	else if (!(/^\d+$/.test(numOfBalls) && durationOfGame >= 60)){
-		window.alert("game duration must be atleast 60 seconds")
-	}
+
+	// else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
+	// 	window.alert("number of balls must be between 50 to 90")
+	// }
+	// else if (colorBall5 == colorBall15 || colorBall5 == colorBall25 || colorBall15 == colorBall25){
+	// 	window.alert("please choose a different color for each ball")
+	// }
+	// else if (!(/^\d+$/.test(numOfBalls) && durationOfGame >= 60)){
+	// 	window.alert("game duration must be atleast 60 seconds")
+	// }
 	else{//The user entered all the settings
 		this.numOfBalls = numOfBalls;
 		this.colorBalls_5 = colorBalls_5;
@@ -268,6 +270,7 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 
 		document.getElementById('showUserName').innerHTML = currentUser.username;
 		ShowDiv('ready');
+	
 	}
 }
 
