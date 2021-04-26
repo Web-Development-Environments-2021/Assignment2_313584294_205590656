@@ -30,15 +30,9 @@ function ShowDiv(id)
 	div3.style.visibility="hidden";;
 	var div4 = document.getElementById('chooseSettings');
 	div4.style.visibility="hidden";
-<<<<<<< HEAD
-	let div5 = document.getElementById('ready');
-	div5.style.visibility="hidden";
-	let div6 = document.getElementById('game');
-=======
 	var div5 = document.getElementById('game');
 	div5.style.visibility="hidden";
 	var div6 = document.getElementById('ready');
->>>>>>> 695cde4cc7655eac4e773ef07a64fe8a8da70fd6
 	div6.style.visibility="hidden";
 	
 	
