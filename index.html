@@ -280,7 +280,7 @@
 				</p>
 			</dialog>
 
-			<div id="chooseSettings" align="center" style="visibility: visible;" class="view">
+			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
 			<form>
 				<table>
 					<h3>Please enter your prefernces</h3>
@@ -399,7 +399,7 @@
 							document.getElementById('left_key').value, document.getElementById('numOfBalls').value,
 							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
 							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
-							document.getElementById('gameDuration').value)">Submit</button>
+							document.getElementById('durationOfGame').value)">Submit</button>
 						</td>
 					</tr>
 				</table>
@@ -412,45 +412,145 @@
 				<img align="center" src="./resources/ready.jpg" id="readyPic"><br>
 				<br>	
 			</div>
-			<div id="game" style="visibility: hidden;" class="view">
+			<div id="game" style="visibility: visible;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
 						<td>
-							<label for="userName">User name:</label>
+							<br><label style= "font-size: 15px; font-family: fantasy;" id="userName">User name:</label>
 						</td>
 						<td>
 							<label id="showUserName" type="text"></label>
 						</td>
 					</tr>
-					<tr>
+					<tr >
 						<td>
-							<div id="score" style="visibility: hidden;">
-								<label for="lblScore">SCORE:</label>
-								<input id="lblScore" type="text" />
-							</div>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Time Left:</label><br><br>
+						</td>
+						<td>
+							<label id="showTime" value = "" type="text"></label><br><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div id="time" style="visibility: hidden;">
-								<label for="lblTime">TIME:</label>
-								<input id="lblTime" type="text" />
-							</div>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Score:</label><br><br>
+						</td>		
+						<td>
+							<label id="showScore" value = "" type="text"></label><br><br>
+						</td>				
+					</tr>	
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Lives:</label><br><br>
 						</td>
+						<td>
+							<label id="showLives" value = "" type="text"></label><br><br>
+						</td>	
+					</tr>
+					
+					<tr>
+						<td align="center">
+							<button  id="mute" class="button" style= "font-size: 20px;" onclick="mute()" >Mute</button><br><br>
+							<button  id="unmute" class="button" style= "font-size: 20px; display: none;" onclick="unmute()" >Unmute</button>
+						</td>						
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td align="center">
+							<button  class="button" style= "font-size: 20px;" onclick="newGame()" >New Game</button>
+						</td>						
+					</tr>	
+					<tr>
+						<td align="center">
 							<label style="font-size: 26px; font-family: fantasy;">GOOD LUCK!</label>
 						</td>
 					</tr>
 				</table>
-				<canvas id="canvas" height="422" width="600" ></canvas>
+				<canvas id="canvas" height="422" width="600"></canvas>	
 				<table id ="RightSideGameSetting" align="right" >
 					<tr>
-						<td colspan="2">
-							<label style="font-size: 26px; font-family: fantasy;">Game Setting:</label>
+						<td align="center">
+							<label style="font-size: 26px; font-family: fantasy;">Your Game Setting:</label><br><br>
 						</td>
 					</tr>
+					<tr >
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Up Key:</label><br>
+						</td>
+						<td>
+							<label id="showUpKey" value = "" type="text"></label><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Down Key:</label><br>
+						</td>		
+						<td>
+							<label id="showDownKey" value = "" type="text"></label><br>
+						</td>				
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Right Key:</label><br>
+						</td>
+						<td>
+							<label id="showRightKey" value = "" type="text"></label><br>
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Left Key:</label><br>
+						</td>		
+						<td>
+							<label id="showLeftKey" value = "" type="text"></label><br>
+						</td>					
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Num of balls:</label><br>
+						</td>
+						<td>
+							<label id="showNumOfBalls" value = "" type="text"></label><br>
+						</td>	
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">5 point ball color:</label><br>
+						</td>	
+						<td>
+							<label id="showColorBall_5" value = "" type="text"></label><br>
+						</td>					
+					</tr>	
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">15 point ball color:</label><br>
+						</td>	
+						<td>
+							<label id="showColorBall_15" value = "" type="text"></label><br>
+						</td>						
+					</tr>	
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">25 point ball color:</label><br>
+						</td>		
+						<td>
+							<label id="showColorBall_25" value = "" type="text"></label><br>
+						</td>					
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Num of monsters:</label><br>
+						</td>		
+						<td>
+							<label id="showNumOfMonsters" value = "" type="text"></label><br>
+						</td>					
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Duration Game:</label><br>
+						</td>	
+						<td>
+							<label id="showDurationOfGame" value = "" type="text"></label><br>
+						</td>						
+					</tr>	
 				</table>
 			</div>
 
