@@ -297,7 +297,7 @@ function random(){
 	document.getElementById('colorBalls_15').value = colors[color15];
 	document.getElementById('colorBalls_25').value = colors[color25];
 	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
-	document.getElementById('gameDuration').value = getRandomNumber(60, 241);
+	document.getElementById('durationOfGame').value = getRandomNumber(60, 241);
 }
 
 function getRandomNumber(min, max) {
