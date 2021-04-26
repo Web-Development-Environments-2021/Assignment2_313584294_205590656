@@ -96,6 +96,10 @@ function Start() {
 	if(!isMeut){
 		backgroundMusic.play();
 	}
+	
+	canvas = document.getElementById("canvas");	
+	context = canvas.getContext("2d");
+
 	loseSound = new Audio('./resources/loseSound.mp3');
 	winSound = new Audio('./resources/winSound.mp3');
 	encounterSound = new Audio('./resources/encounterSound.mp3');
