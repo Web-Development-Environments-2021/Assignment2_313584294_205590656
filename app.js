@@ -614,18 +614,18 @@ function UpdatePosition() {
 		}
 	}
 	if (x == 2) {
-		if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
+		if (shape.j < 7 && board[shape.i][shape.j + 1] != 4) {
 			shape.j++;
 		}
 	}
 	if (x == 3) {
-		if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
-			shape.i--;
+		if (shape.i < 13 && board[shape.i + 1][shape.j] != 4) {
+			shape.i++;
 		}
 	}
 	if (x == 4) {
-		if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
-			shape.i++;
+		if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
+			shape.i--;
 		}
 	}
 	if (board[shape.i][shape.j] == 5) {
@@ -658,14 +658,57 @@ function UpdatePosition() {
 	}	
 	board[shape.i][shape.j] = 999;
 	var currentTime = new Date();
-	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 20 && time_elapsed <= 10) {
-		pac_color = "green";
-	}
-	if (score == 50) {
+	time_elapsed = durationOfGame + extraTime - (currentTime - start_time) / 1000;
+	time_elapsed = time_elapsed.toFixed(2);
+	document.getElementById('showTime').innerHTML = time_elapsed;
+	document.getElementById('showScore').innerHTML = score;
+	document.getElementById('showLives').innerHTML = lives;
+	keysDown[keyUp] = false;
+	keysDown[keyDown] = false;
+	keysDown[keyRight] = false;
+	keysDown[keyLeft] = false;
+
+	if(lives == 0){
+		mainMusic.pause();
+		mainMusic.currentTime = 0;
+		if(!isMeut){
+			loseSound.play();
+		}
+		window.alert("Loser!");
 		window.clearInterval(interval);
-		window.alert("Game completed");
-	} else {
+		window.clearInterval(intervalMonsters);
+		window.clearInterval(intervalPoints_50);
+		window.clearInterval(intervalBoom);
+
+	}
+	else if (time_elapsed <= 0.00){
+		if (score < 100){
+			mainMusic.pause();
+			mainMusic.currentTime = 0;
+			if(!isMeut){
+				loseSound.play();
+			}
+			window.alert("You are better than " + score + " points!");
+			window.clearInterval(interval);
+			window.clearInterval(intervalMonsters);
+			window.clearInterval(intervalPoints_50);
+			window.clearInterval(intervalBoom);
+
+		}
+		else{
+			mainMusic.pause();
+			mainMusic.currentTime = 0;
+			if(!isMeut){
+				winSound.play();
+			}
+			window.alert("Winner!!!");
+			window.clearInterval(interval);
+			window.clearInterval(intervalMonsters);
+			window.clearInterval(intervalPoints_50);;
+			window.clearInterval(intervalBoom);
+		}
+	}
+	else {
 		Draw();
 	}
 }
