@@ -1,6 +1,5 @@
 var context;
 var shape = new Object();
-
 var board;
 var score;
 var pac_color;
