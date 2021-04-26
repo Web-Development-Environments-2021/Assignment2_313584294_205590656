@@ -188,7 +188,37 @@ function CheckLogIn(username,password){
 	}
 }
 
-function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBall_5, colorBall_15, colorBall_25, numOfMonsters, durationOfGame){
+function updateUp() {
+	$(document).keydown(function(event){
+		document.getElementById('up_key').value = event.key;
+		keyUp = event.key;
+		$(document).unbind()
+	});
+}
+function updateDown() {
+	$(document).keydown(function(event){
+		document.getElementById('down_key').value = event.key;
+		keyDown = event.key;
+		$(document).unbind()
+	});
+}
+
+function updateRight() {
+	$(document).keydown(function(event){
+		document.getElementById('right_key').value = event.key;
+		keyRight = event.key;
+		$(document).unbind()
+	});
+}
+
+function updateLeft() {
+	$(document).keydown(function(event){
+		document.getElementById('left_key').value = event.key;
+		keyLeft = event.key;
+		$(document).unbind()
+	});
+}
+function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
 	if (upKey == "up key"){
 		window.alert("please choose an up key")
 	}
@@ -212,9 +242,9 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBall_
 	}
 	else{//The user entered all the settings
 		this.numOfBalls = numOfBalls;
-		this.colorBall_5 = colorBall_5;
-		this.colorBall_15 = colorBall_15;
-		this.colorBall_25 = colorBall_25;
+		this.colorBalls_5 = colorBalls_5;
+		this.colorBalls_15 = colorBalls_15;
+		this.colorBalls_25 = colorBalls_25;
 		this.numOfMonsters = parseInt(numOfMonsters);
 		this.durationOfGame = parseInt(durationOfGame);
 
@@ -224,14 +254,14 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBall_
 		document.getElementById('showLeftKey').innerHTML = leftKey;
 		document.getElementById('showNumOfBalls').innerHTML = numOfBalls;
 
-		document.getElementById('showColorBall5').innerHTML = colorBall5;
-		document.getElementById('showColorBall5').style.color = colorBall5;
+		document.getElementById('showColorBall5').innerHTML = colorBalls_5;
+		document.getElementById('showColorBall5').style.color = colorBalls_5;
 
-		document.getElementById('showColorBall15').innerHTML = colorBall15;
-		document.getElementById('showColorBall15').style.color = colorBall15;
+		document.getElementById('showColorBall15').innerHTML = colorBalls_15;
+		document.getElementById('showColorBall15').style.color = colorBalls_15;
 
-		document.getElementById('showColorBall25').innerHTML = colorBall25;
-		document.getElementById('showColorBall25').style.color = colorBall25;
+		document.getElementById('showColorBall25').innerHTML = colorBalls_25;
+		document.getElementById('showColorBall25').style.color = colorBalls_25;
 
 		document.getElementById('showNumOfMonsters').innerHTML = numOfMonsters;
 		document.getElementById('showDurationOfGame').innerHTML = durationOfGame+" sec";
@@ -248,10 +278,10 @@ function random(){
 	document.getElementById('left_key').value = 'ArrowLeft';
 	document.getElementById('numOfBalls').value = getRandomNumber(50, 91);
 	var colors = new Array();
-	colors[1] = 'deeppink';
-	colors[2] = 'lime';
-	colors[3] = 'red';
-	colors[4] = 'orange';
+	colors[1] = 'color-num1';
+	colors[2] = 'color-num2';
+	colors[3] = 'color-num3';
+	colors[4] = 'color-num4';
 
 	var color5 = getRandomNumber(1, 5);
 	var color15 = getRandomNumber(1, 5);
@@ -263,13 +293,14 @@ function random(){
 		color25 = getRandomNumber(1, 5);
 	}
 
-	document.getElementById('colorBall5').value = colors[color5];
-	document.getElementById('colorBall15').value = colors[color15];
-	document.getElementById('colorBall25').value = colors[color25];
+	document.getElementById('colorBalls_5').value = colors[color5];
+	document.getElementById('colorBalls_15').value = colors[color15];
+	document.getElementById('colorBalls_25').value = colors[color25];
 	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
-	document.getElementById('durationOfGame').value = getRandomNumber(60, 181);
+	document.getElementById('gameDuration').value = getRandomNumber(60, 241);
 }
 
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
+

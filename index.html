@@ -15,25 +15,107 @@
       <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
       <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
-      <!-- Javascript -->  
-      <script>  
-         $(function() {  
-            $( "#slider-4" ).slider({  
-               orientation:"horizontal"   
-            });  
-            $( "#slider-5" ).slider({  
-               orientation:"horizontal",  
-               value:50,
-			   animate:"slow",  
-               min: 50,  
-               max: 90, 
-               slide: function( event, ui ) {  
-                  $( "#minval" ).val( ui.value );  
-               }      
-            });  
-            $( "#minval" ).val( $( "#slider-5" ).slider( "value" ) );  
-         });  
-      </script>  
+ 
+
+	<!--slider balls number-->
+	<script>
+		$(function() {  
+			$( "#slider-numBalls" ).slider({  
+			orientation:"horizontal",  
+			value:50,
+			animate:"slow",  
+			min: 50,  
+			max: 90, 
+			slide: function( event, ui ) {  
+				$( "#numBalls" ).val( ui.value );  
+			}      
+		});  
+		numOfBalls = $( "#numBalls" ).val( $( "#slider-numBalls" ).slider( "value" ) );  
+ 		});  
+	</script>
+
+	<!--slider time game-->
+	<script>
+		$(function() {  
+			$( "#slider-timeGame" ).slider({  
+			orientation:"horizontal",  
+			value:50,
+			animate:"slow",  
+			min: 60,  
+			max: 240, 
+			slide: function( event, ui ) {  
+				$( "#timeGame" ).val( ui.value );  
+			}      
+		});  
+		interval = $( "#timeGame" ).val( $( "#slider-timeGame" ).slider( "value" ) );  
+		});  
+	</script>
+
+	<!--selectable-->  
+	<meta charset="utf-8">  
+		<title>jQuery UI selectable-1</title>  
+		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+		<style>  
+		#selectable-5 .ui-selecting { background: #cdc8b1 ; }  
+		#selectable-5 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+		#selectable-5 { list-style-type: none; margin: 0;   
+			padding: 0; width: 40%; }  
+		#selectable-5 li { margin: 3px; padding: 0.4em;   
+			font-size: 14px; height: 20px; }  
+
+		#selectable-15 .ui-selecting { background: #cdc8b1 ; }  
+		#selectable-15 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+		#selectable-15 { list-style-type: none; margin: 0;   
+			padding: 0; width: 40%; }  
+		#selectable-15 li { margin: 3px; padding: 0.4em;   
+			font-size: 14px; height: 20px; }  
+		
+		#selectable-25 .ui-selecting { background: #cdc8b1 ; }  
+		#selectable-25 .ui-selected { background: #808080; color: #000000; border: #DDDDDD;}  
+		#selectable-25 { list-style-type: none; margin: 0;   
+			padding: 0; width: 40%; }  
+		#selectable-25 li { margin: 3px; padding: 0.4em;   
+			font-size: 14px; height: 20px; }  
+
+		.color-num1 , .color-num5 {  
+			background: #7FFF00;  
+			border: 2px solid #DDDDDD;  
+			color: black;  
+		}  
+		.color-num2 , .color-num6 {  
+			background: #e832ee;  
+			border: 2px solid #DDDDDD;  
+			color: black;  
+		} 
+		.color-num3, .color-num7 {  
+			background: #ff5e00;  
+			border: 2px solid #DDDDDD;  
+			color: black;  
+		} 
+		.color-num4,  .color-num8 {  
+			background: #1c90d3;  
+			border: 2px solid #DDDDDD;  
+			color: black;  
+		} 
+		</style> 
+		 
+	<!--colors balls choose-->  
+	<script>
+		 $(function() {  
+		 $( "#selectable-5" ).selectable()
+		 $( "#selectable-15" ).selectable()		
+		 $( "#selectable-25" ).selectable()		
+		 document.getElementById("colorBalls_5").value= "#selectable-5";
+		 document.getElementById("colorBalls_15").value= "#selectable-15";
+		 document.getElementById("colorBalls_25").value= "#selectable-25";
+
+		 });  
+
+	</script>
+
+
 
 	</head>
 	<body>
@@ -204,84 +286,85 @@
 					<h3>Please enter your prefernces</h3>
 					<tr>
 						<td>
-							<label class="settings" onclick="keyUp = updateUp()">Choose up key</label><br>
+							<label class="settings" >Choose up key</label><br>
 						</td>
 						<td>
-							<input type="text" id="up_key" size="12" value=""><br>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label class="settings" onclick="keyDown = updateDown()">Choose down key</label><br>
-						</td>
-						<td>
-							<input type="text" id="down_key" size="12" value=""><br>
+							<input type="text" id="up_key" size="12" onclick="keyUp = updateUp()" value=""><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label class="settings" onclick="keyRight = updateRight()">Choose right key</label><br>
+							<label class="settings" >Choose down key</label><br>
 						</td>
 						<td>
-							<input type="text" id="Right_key" size="12" value=""><br>
+							<input type="text" id="down_key" size="12" onclick="keyDown = updateDown()"  value=""><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label class="settings" onclick="keyLeft = updateLeft()">Choose left key</label>
+							<label class="settings" >Choose right key</label><br>
+						</td>
+						<td>
+							<input type="text" id="right_key"  size="12" onclick="keyRight = updateRight()" value=""><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label class="settings" >Choose left key</label>
 							<br>
 						</td>
 						<td>
-							<input type="text" id="Left_key" size="12" value=""><br>
+							<input type="text" id="left_key" size="12"  onclick="keyLeft = updateLeft()"value=""><br>
 						</td>
 					</tr>
 					<tr>
 						<td>
-								
 								<label class="settings">Number of balls:</label>  
-								<input type="text" id="minval" size="1" style="border:0 ; color:blue; font-weight:bold;">  
+								<input type="text" id="numBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
 						</td>
 						<td>
-						<div id="slider-5"></div>  
+							<div id="slider-numBalls"></div>  
 						</td>
+					</tr>
+					<tr>
+
 					</tr>
 					<tr>
 						<td>
 							<label class="settings">Color of 5 pt ball:</label>
 						</td>
-						<td>
-							<select name="list" id="colorBall5" >
-								<option value="deeppink">deeppink</option>
-								<option value="red">red</option>
-								<option value="lime">lime</option>
-								<option value="orange">orange</option>
-							</select>
+						<td  id="selectable-5" style="width: fit-content; " value="">
+							<label class="color-num1">green</label>
+							<label class="color-num2">pink</label>
+							<label class="color-num3">orange</label>
+							<label class="color-num4">blue</label>
 						</td>
+						
+					</tr>
+					<tr>
 					</tr>
 					<tr>
 						<td>
 							<label class="settings">Color of 15 pt ball:</label>
 						</td>
-						<td>
-							<select name="list" id="colorBall15" >
-								<option value="deeppink">deeppink</option>
-								<option value="red">red</option>
-								<option value="lime">lime</option>
-								<option value="orange">orange</option>
-							</select>
+						<td  id="selectable-15" style="width: fit-content;" value="">
+							<label class="color-num5">green</label>
+							<label class="color-num6">pink</label>
+							<label class="color-num7">orange</label>
+							<label class="color-num8">blue</label>
 						</td>
+					</tr>
+					<tr>
 					</tr>
 					<tr>
 						<td>
 							<label class="settings">Color of 25 pt ball:</label>
 						</td>
-						<td>
-							<select name="list" id="colorBall25" >
-								<option value="deeppink">deeppink</option>
-								<option value="red">red</option>
-								<option value="lime">lime</option>
-								<option value="orange">orange</option>
-							</select>
+						<td  id="selectable-25" style="width: fit-content;" value="">
+							<label class="color-num1">green</label>
+							<label class="color-num2">pink</label>
+							<label class ="color-num3">orange</label>
+							<label class ="color-num4">blue</label>
 						</td>
 					</tr>
 					<tr>
@@ -299,10 +382,11 @@
 					</tr>
 					<tr>
 						<td>
-							<label class="settings">Game duration (sec):</label>
+							<label class="settings">Game duration (sec):</label>  
+							<input type="text" id="timeGame" size="1" style="border:0 ; color:blue; font-weight:bold;">  
 						</td>
 						<td>
-							<input id="gameDuration" type="text" size="12" value="min 60" onclick="document.getElementById('gameDuration').value=''"/>
+							<div id="slider-timeGame"></div>  
 						</td>
 					</tr>
 					<tr>
@@ -313,8 +397,8 @@
 							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
 							document.getElementById('down_key').value, document.getElementById('right_key').value,
 							document.getElementById('left_key').value, document.getElementById('numOfBalls').value,
-							document.getElementById('colorBall5').value,document.getElementById('colorBall15').value,
-							document.getElementById('colorBall25').value,document.getElementById('numOfMonsters').value,
+							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
+							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
 							document.getElementById('gameDuration').value)">Submit</button>
 						</td>
 					</tr>
