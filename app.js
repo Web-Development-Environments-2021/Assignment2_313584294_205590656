@@ -457,6 +457,8 @@ function monsters_Move() {
 		}
 	}
 }
+
+
 function Boom_Move() {
 	if (disapeerBoom.i != null && disapeerBoom.j!=null){
 		board[disapeerBoom.i][disapeerBoom.j] = 0;
