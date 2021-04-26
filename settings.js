@@ -14,7 +14,7 @@ class User{
 }
 
 $(document).ready(function(){
-	var user = new User('k','k','k','k','k@gmail.com','25.09.1994');
+	var user = new User('k','k','k','k','p@gmail.com','8.12.1994');
 	savedUsers.push(user);
 	currentUser = user;        
 })
@@ -22,21 +22,21 @@ $(document).ready(function(){
 function ShowDiv(id)
 {	
 	//hide all divs
-	let div1 = document.getElementById('welcome');
+	var div1 = document.getElementById('welcome');
 	div1.style.visibility="hidden";
-	let div2 = document.getElementById('register');
+	var div2 = document.getElementById('register');
 	div2.style.visibility="hidden";
-	let div3 = document.getElementById('login');
+	var div3 = document.getElementById('login');
 	div3.style.visibility="hidden";;
-	let div4 = document.getElementById('chooseSettings');
+	var div4 = document.getElementById('chooseSettings');
 	div4.style.visibility="hidden";
-	let div5 = document.getElementById('game');
+	var div5 = document.getElementById('game');
 	div5.style.visibility="hidden";
-	let div6 = document.getElementById('ready');
+	var div6 = document.getElementById('ready');
 	div6.style.visibility="hidden";
 	
 	//show only one div
-	let selectedDiv = document.getElementById(id);
+	var selectedDiv = document.getElementById(id);
 	selectedDiv.style.visibility = "visible";
 	
 	if(id != 'game'){
@@ -62,8 +62,8 @@ function CloseDialog(){
 //https://stackoverflow.com/questions/25864259/how-to-close-the-new-html-dialog-tag-by-clicking-on-its-backdrop
 var dialog = document.getElementById('about');
 	dialog.addEventListener('click', function (event) {
-		let rect = dialog.getBoundingClientRect();
-		let isInDialog=(rect.top <= event.clientY && event.clientY <= rect.top + rect.height
+		var rect = dialog.getBoundingClientRect();
+		var isInDialog=(rect.top <= event.clientY && event.clientY <= rect.top + rect.height
 		&& rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
 		if (!isInDialog) {
 			dialog.close();
@@ -186,7 +186,7 @@ function CheckLogIn(username,password){
 	else{
 		window.alert("Please insert a username and password");
 	}
-}
+	}
 
 function updateUp() {
 	$(document).keydown(function(event){
