@@ -296,126 +296,6 @@
 			</dialog>
 
 			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
-				<br>
-				<table>
-				<tr>
-					<td >
-						<button class="buttonSettings" onclick="keyUp = updateUp()">Choose Up Key<br><br>
-					</td>
-					<td>
-						<input type="text" id="up_key" size="12" value="up key"/>
-					</td>
-				</tr>
-				<tr >
-					<td >
-						<button class="buttonSettings" onclick="keyDown = updateDown()">Choose Down Key<br><br>
-					</td>
-					<td>
-						<input type="text" id="down_key" size="12" value="down key"/>
-					</td>
-				</tr>
-				<tr >
-					<td >
-						<button class="buttonSettings" onclick="keyRight = updateRight()">Choose Right Key<br><br>
-					</td>
-					<td>
-						<input type="text" id="right_key" size="12" value="right key"/>
-					</td>
-				</tr>
-				<tr >
-					<td >
-						<button class="buttonSettings" onclick="keyLeft = updateLeft()">Choose Left Key<br><br>
-					</td>
-					<td>
-						<input type="text" id="left_key" size="12" value="left key"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Number of balls:</label>
-					</td>
-					<td>
-						<input id="numOfBalls" type="text" size="12" value="min 50, max 90" onclick="document.getElementById('numOfBalls').value=''"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Color of 5 pt ball:</label>
-					</td>
-					<td>
-						<select name="list" id="colorBalls_5" >
-							<option value="deeppink">deeppink</option>
-							<option value="red">red</option>
-							<option value="lime">lime</option>
-							<option value="orange">orange</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Color of 15 pt ball:</label>
-					</td>
-					<td>
-						<select name="list" id="colorBalls_15" >
-							<option value="deeppink">deeppink</option>
-							<option value="red">red</option>
-							<option value="lime">lime</option>
-							<option value="orange">orange</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Color of 25 pt ball:</label>
-					</td>
-					<td>
-						<select name="list" id="colorBalls_25" >
-							<option value="deeppink">deeppink</option>
-							<option value="red">red</option>
-							<option value="lime">lime</option>
-							<option value="orange">orange</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Number of Monsters:</label>
-					</td>
-					<td>
-						<select name="list" id="numOfMonsters" >
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<label>Game duration (sec):</label>
-					</td>
-					<td>
-						<input id="durationOfGame" type="text" size="12" value="min 60" onclick="document.getElementById('durationOfGame').value=''"/>
-					</td>
-				</tr>
-				<tr></tr>
-					<tr>
-					
-						<td>
-							<button class="button" onclick="random()">Random</button>
-						</td>
-						<td>
-							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
-							document.getElementById('down_key').value, document.getElementById('right_key').value,
-							document.getElementById('left_key').value, document.getElementById('numOfBalls').value,
-							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
-							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
-							document.getElementById('durationOfGame').value)">Submit</button>
-						</td>
-					</tr>
-			</table>
-			<!--<form>
 				<table>
 					<h3>Please enter your prefernces</h3>
 					<tr>
@@ -452,6 +332,94 @@
 						</td>
 					</tr>
 					<tr>
+						<td>
+							<label class="settings" >Number of balls:</label>
+						</td>
+						<td>
+							<input id="num_Balls" type="text" size="12" value="min 50, max 90" onclick=" numOfBalls = updateBalls()"/>
+						</td>
+					</tr>
+					<tr>
+
+					<td>
+						<label class="settings">Color of 5 pt ball:</label>
+					</td>
+					<td>
+						<select name="list" id="colorBalls_5" >
+							<option value="deeppink">deeppink</option>
+							<option value="red">red</option>
+							<option value="lime">lime</option>
+							<option value="orange">orange</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="settings">Color of 15 pt ball:</label>
+					</td>
+					<td>
+						<select name="list" id="colorBalls_15" >
+							<option value="deeppink">deeppink</option>
+							<option value="red">red</option>
+							<option value="lime">lime</option>
+							<option value="orange">orange</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="settings">Color of 25 pt ball:</label>
+					</td>
+					<td>
+						<select name="list" id="colorBalls_25" >
+							<option value="deeppink">deeppink</option>
+							<option value="red">red</option>
+							<option value="lime">lime</option>
+							<option value="orange">orange</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="settings">Number of Monsters:</label>
+					</td>
+					<td>
+						<select name="list" id="numOfMonsters" >
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label class="settings">Game duration (sec):</label>
+					</td>
+					<td>
+						<input id="durationOfGame" type="text" size="12" value="min 60" onclick="document.getElementById('durationOfGame').value=''"/>
+					</td>
+				</tr>
+				<tr></tr>
+					<tr>
+					
+						<td>
+							<button class="button" onclick="random()">Random</button>
+						</td>
+						<td>
+							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
+							document.getElementById('down_key').value, document.getElementById('right_key').value,
+							document.getElementById('left_key').value, document.getElementById('num_Balls').value,
+							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
+							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
+							document.getElementById('durationOfGame').value)">Submit</button>
+						</td>
+					</tr>
+			</table>
+			<!--<form>
+				
+					<tr>
 
 					</tr>
 					
@@ -477,7 +445,7 @@
 					</tr>
 					<tr>
 					</tr>
-<!--
+
 					<tr>
 						<td>
 							<label class="settings">Color of 15 pt ball:</label>
