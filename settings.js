@@ -30,11 +30,9 @@ function ShowDiv(id)
 	div3.style.visibility="hidden";;
 	var div4 = document.getElementById('chooseSettings');
 	div4.style.visibility="hidden";
-	var div5 = document.getElementById('game');
+	var div5 = document.getElementById('ready');
 	div5.style.visibility="hidden";
-	var div6 = document.getElementById('ready');
-	div6.style.visibility="hidden";
-	
+	var div6 = document.getElementById('game');
 	
 	//show only one div
 	var selectedDiv = document.getElementById(id);
