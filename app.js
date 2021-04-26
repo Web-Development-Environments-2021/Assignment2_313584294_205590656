@@ -1,7 +1,6 @@
 var context;
 var shape = new Object();
-shape.i = null;
-shape.j = null;
+
 var board;
 var score;
 var pac_color;
@@ -60,7 +59,8 @@ var disapeerBoom = new Object();
 disapeerBoom.i = null;
 disapeerBoom.j = null;
 var intervalBoom;
-
+shape.i = null;
+shape.j = null;
 
 /************************** mute or umute  *************************/
 function mute(){ // Turns from unmute to mute
@@ -97,9 +97,8 @@ function Start() {
 		backgroundMusic.play();
 	}
 	
-	canvas = document.getElementById("canvas");	
-	context = canvas.getContext("2d");
-
+	// var backgroundCanvas = new Image();
+	// backgroundCanvas.src = "./resources/black.jpg";
 	loseSound = new Audio('./resources/loseSound.mp3');
 	winSound = new Audio('./resources/winSound.mp3');
 	encounterSound = new Audio('./resources/encounterSound.mp3');
@@ -116,10 +115,14 @@ function Start() {
 	var serialNumberOfMonsters=111 //start from 111
 	var pacman_remain = 1;
 	start_time = new Date();
+	extraTime = 0;
+	lives = 5;
+	points_50_Game =true;
 	keyUp = $("#up_key").val();
 	keyDown = $("#down_key").val();
 	keyRight = $("#right_key").val();
 	keyLeft = $("#left_key").val();
+
 	for (var i = 0; i < 14; i++) {
 		board[i] = new Array();
 		for (var j = 0; j < 8; j++) {
@@ -131,7 +134,8 @@ function Start() {
 			}
 			// walls
 			else if((i == 4 && j == 1) || (i == 4 && j == 2) || (i == 1 && j == 2) || (i == 7 && j == 2) ||
-			(i==7 && j==3) || (i==6 && j==2) || (i==5 && j==5) || (i==5 && j==6) || (i==2 && j==6) || (i==2 && j==7) ){
+			(i==7 && j==3) || (i==6 && j==2) || (i==5 && j==5) || (i==5 && j==6) || (i==11 && j==5) || (i==11 && j==6)||
+			(i==12 && j==6) || (i==13 && j==6) || (i==2 && j==6) || (i==2 && j==7) || (i==12 && j==1)){
 				board[i][j] = 4;
 			}
 			//Moving score - 50 point
@@ -446,6 +450,7 @@ function Draw() {
 			center.y = j * 60 + 30;
 			if (board[i][j] == 999) { //place of pacman
 				context.beginPath();
+				// context.fillStyle = pac_color; //color
 				if(direction === "up"){//pacman move up
 					context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle up   
 				}
@@ -461,7 +466,9 @@ function Draw() {
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
 				context.fill();
+				//context.stroke();
 				context.beginPath();
+				//context.fillStyle = "black"; //color
 				if(direction === "up"){//pacman move up
 					context.arc(center.x + 15, center.y - 5, 5, 0, 2 * Math.PI); // circle
 				}
@@ -476,6 +483,7 @@ function Draw() {
 				}
 				context.fillStyle = "black"; //color
 				context.fill();
+				//context.stroke();
 			} else if (board[i][j] == 5) { // place of ball 5
 				context.beginPath();
 				context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
@@ -561,7 +569,9 @@ function Draw() {
 }
 
 function UpdatePosition() {
-	board[shape.i][shape.j] = 0;
+	if(shape.i != null && shape.j != null){
+		board[shape.i][shape.j] = 0;
+	}
 	var x = GetKeyPressed();
 	if (x == 1) {
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
@@ -638,14 +648,14 @@ function UpdateNextStepMonster(monster) { //to change
 		}
 		
 		if (move == 1) { // up
-			if (y > 0 && board[x][y-1] != 4 && board[x][y-1]!= 3 && board[x][y-1] != 101 && board[x][y-1] != 102 && board[x][y-1] != 103 && board[x][y-1] != 104 && board[x][y-1] != 8 && board[x][y-1] != 9 && board[x][y-1] != 500 && board[x][y-1] != 600) {
+			if (y > 0 && board[x][y-1] != 4 && board[x][y-1] != 111 && board[x][y-1] != 112 && board[x][y-1] != 113 && board[x][y-1] != 114 && board[x][y-1] != 50 && board[x][y-1] != 10) {
 				y = y -1;
 				monsterCanMove=true;
 				try1 = 1;
 			}	
 		}
 		if (move == 2) { //down
-			if (y < 7 &&  board[x][y+1] != 4 && board[x][y+1]!= 3 && board[x][y+1] != 101 && board[x][y+1] != 102 && board[x][y+1] != 103 && board[x][y+1] != 104 && board[x][y+1] != 8 && board[x][y+1] != 9 && board[x][y+1] != 500 && board[x][y+1] != 600) {
+			if (y < 7 &&  board[x][y+1] != 4 && board[x][y+1] != 111 && board[x][y+1] != 112 && board[x][y+1] != 113 && board[x][y+1] != 114 && board[x][y+1] != 50 && board[x][y+1] != 10) {
 				y = y +1;
 				monsterCanMove =true;
 				tryAllMoves = tryAllMoves+2;
@@ -653,14 +663,14 @@ function UpdateNextStepMonster(monster) { //to change
 			}	
 		} 
 		if (move == 3) { //right
-			if (x < 13 && board[x+1][y] != 4 && board[x+1][y]!= 3 && board[x+1][y] != 101 && board[x+1][y] != 102 && board[x+1][y] != 103 && board[x+1][y] != 104 && board[x+1][y] != 8 && board[x+1][y] != 9 && board[x+1][y] != 500 && board[x+1][y] != 600) {
+			if (x < 13 && board[x+1][y] != 4 && board[x+1][y] != 111 && board[x+1][y] != 112 && board[x+1][y] != 113 && board[x+1][y] != 114 && board[x+1][y] != 50 && board[x+1][y] != 10) {
 				x = x +1;
 				monsterCanMove =true;
 				try3=3;
 			}
 		}
 		if (move == 4) { //left
-			if (x > 0 &&  board[x-1][y] != 4 && board[x-1][y]!= 3 && board[x-1][y]!= 101 && board[x-1][y]!= 102 && board[x-1][y]!= 103 && board[x-1][y]!= 104 && board[x-1][y] != 8 && board[x-1][y] != 9 && board[x-1][y] != 500 && board[x-1][y] != 600) {
+			if (x > 0 &&  board[x-1][y] != 4 && board[x-1][y]!= 111 && board[x-1][y]!= 112 && board[x-1][y]!= 113 && board[x-1][y]!= 114 && board[x-1][y] != 50 && board[x-1][y] != 10) {
 				x = x -1;
 				monsterCanMove =true;
 				try4=4;
@@ -671,7 +681,7 @@ function UpdateNextStepMonster(monster) { //to change
 	board[monster.i][monster.j] = monster.notSeen;
 	monster.i = x;
 	monster.j = y;
-	if (board[monster.i][monster.j] == 2) {	
+	if (board[monster.i][monster.j] == 999) {	
 		return false; //lose
 	}
 	else if (board[monster.i][monster.j] == 0 || board[monster.i][monster.j] == 5 || board[monster.i][monster.j] == 15 || board[monster.i][monster.j] == 25) {	
@@ -680,3 +690,30 @@ function UpdateNextStepMonster(monster) { //to change
 	board[monster.i][monster.j] = monster.id;
 	return true;
 	}
+
+function isMonster(monster){
+	if(monster.id == 101 || monster.id == 102 || monster.id == 103 || monster.id == 104){
+		return true;
+	}
+	return false;
+}
+		
+function iAmClose(monster){
+	if(isMonster(monster)){
+		if(monster.j > shape.j){ //up
+			return 1; 
+		}
+		if(monster.j < shape.j){ //down
+			return 2;
+		}
+		if(monster.i < shape.i){ //right
+			return 3; 
+		}
+		if(monster.i < shape.i){ //left
+			return 4;
+		}
+	}
+	else{
+		return 0;
+	}
+}
