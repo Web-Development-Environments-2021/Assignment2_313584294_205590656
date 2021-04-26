@@ -11,9 +11,9 @@
 	<!--slider code-->
 	<meta charset="utf-8">  
       <title>jQuery UI Slider functionality</title>  
-      <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+       <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>   -->
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
  
 
 	<!--slider balls number-->
@@ -51,12 +51,11 @@
 	</script>
 
 	<!--selectable-->  
-	<meta charset="utf-8">  
+	 <meta charset="utf-8">  
 		<title>jQuery UI selectable-1</title>  
 		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
-
+		<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  -->
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>   
 		<!--slider balls number-->
 		<script>
 			$(function() {  
@@ -92,7 +91,7 @@
 		</script>
 
 		<!--selectable-->  
-		<meta charset="utf-8">  
+		<!-- <meta charset="utf-8">  
 			<title>jQuery UI selectable-1</title>  
 			<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
 			<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
@@ -140,7 +139,7 @@
 				color: black;  
 			} 
 			</style>  
-			
+			 -->
 		<!--colors balls choose-->  
 		 <!-- <script>
 			$(function() {  
@@ -178,7 +177,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
-			<div id="welcome" style="visibility: visible;" class="view" align="center">
+			<div id="welcome" style="visibility: hidden;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
 				<br>
@@ -194,48 +193,70 @@
 						<br><br>
 						<tr >
 							<td >
-								<label> Username:
+								<label> Username:</label>
+							</td>
+							<td >
+								<label> 
 									<input id="UsernameRegister" name="UsernameRegister" type="text" class="check" >
-								</label>	
+								</label>
 							</td>					
 						</tr>
 						<tr>
 							<td >
-								<label> Password:
+								<label> Password:</label>
+							</td>
+							<td >
+								<label> 
 									<input id="PasswordRegister" name="PasswordRegister" type="password" class="check" >
 								</label>
 							</td>
 						</tr>
 						<tr >
 							<td >
-								<label> First Name:
+								<label> First Name: </label>
+							</td>
+							<td >
+								<label>
 									<input id="FirstName" name="FirstName" type="text" class="check" >
 								</label>
-							</td>		
+							</td>			
 						</tr>
 						<tr>
 							<td >
-								<label> Last Name: 
+								<label> Last Name: </label>
+							</td>
+							<td >
+								<label> 
 									<input id="LastName" name="LastName" type="text" class="check" >
 								</label>
-							</td>	
+							</td>		
 						</tr>
 						<tr >
 							<td >
-								<label> Email:
+								<label> Email:</label>
+							</td>
+							<td >
+								<label> 
 									<input id="Email" name="Email" type="email" placeholder = "name@domain.com" class="check" >
 								</label>
 							</td>		
 						</tr>
 						<tr >
 							<td >
-								<label> Birth Date: 
+								<label> Birth Date: </label>
+							</td>
+							<td >
+								<label> 
 									<input id="BirthDate" name="BirthDate" type="date" class="check"><br>
 								</label>
-							</td>
+							</td>	
 						</tr>
-					</table> 
-					<button class="button" id="submitForm" type="submit" >Submit</button>   
+						<tr >
+    						<th colspan="2"><br>
+								<button class="button" id="submitForm" type="submit" >Submit</button>
+							</th>
+						</tr>
+					</table>    
 				</form>
 			</div>
 
@@ -397,12 +418,12 @@
 			</div>
 			<div id="ready" style="visibility: hidden;" class="view" align="center">
 				<br>
-				<button class="button" style="font-family: fantasy; font-size: 30px" onclick="ShowDiv('game'); Start()">START</button>
 				<br>
 				<img align="center" src="./resources/ready.jpg" id="readyPic"><br>
-				<br>	
+				<br>
+				<button class="button" style="font-family: fantasy; font-size: 30px" onclick="ShowDiv('game'); Start()">START</button>
 			</div>
-			<div id="game" style="visibility: hidden;" class="view">
+			<div id="game" style="visibility: visible;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
 						<td>

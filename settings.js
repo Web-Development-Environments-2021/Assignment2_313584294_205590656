@@ -33,6 +33,7 @@ function ShowDiv(id)
 	var div5 = document.getElementById('ready');
 	div5.style.visibility="hidden";
 	var div6 = document.getElementById('game');
+	div6.style.visibility="hidden";
 	
 	//show only one div
 	var selectedDiv = document.getElementById(id);
