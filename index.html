@@ -11,15 +11,9 @@
 	<!--slider code-->
 	<meta charset="utf-8">  
       <title>jQuery UI Slider functionality</title>  
-<<<<<<< HEAD
-      <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
-      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
-=======
        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
       <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>   -->
       <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
->>>>>>> 9d394784746f5c4cacf3174f885df318efaf6f92
  
 
 	<!--slider balls number-->
@@ -61,12 +55,7 @@
 		<title>jQuery UI selectable-1</title>  
 		<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
 		<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  -->
-<<<<<<< HEAD
-		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
-
-=======
 		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>   
->>>>>>> 9d394784746f5c4cacf3174f885df318efaf6f92
 		<!--slider balls number-->
 		<script>
 			$(function() {  
@@ -102,7 +91,7 @@
 		</script>
 
 		<!--selectable-->  
-		<!-- <meta charset="utf-8">  
+		 <meta charset="utf-8">  
 			<title>jQuery UI selectable-1</title>  
 			<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
 			<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
@@ -150,19 +139,18 @@
 				color: black;  
 			} 
 			</style>  
-			 -->
-		<!--colors balls choose-->  
-		 <!-- <script>
-			$(function() {  
-			$( "#selectable-5" ).selectable()
-			$( "#selectable-15" ).selectable()		
-			$( "#selectable-25" ).selectable()		
-			document.getElementById("colorBalls_5").value= "#selectable-5";
-			document.getElementById("colorBalls_15").value= "#selectable-15";
-			document.getElementById("colorBalls_25").value= "#selectable-25";
-			});  
-		</script> -->
-	</head>
+	<script>
+		//colors balls choose
+		$(function() {  
+		$( "#selectable-5" ).selectable()
+		// $( "#selectable-15" ).selectable()		
+		// $( "#selectable-25" ).selectable()		
+		document.getElementById('selectable-5').value= 'colorBalls_5';
+		// document.getElementById("colorBalls_15").value= "#selectable-15";
+		// document.getElementById("colorBalls_25").value= "#selectable-25";
+		});  
+	</script>	
+</head>
 	<body>
 		<div id="divTop">
 			<header>
@@ -188,7 +176,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
-			<div id="welcome" style="visibility: hidden;" class="view" align="center">
+			<div id="welcome" style="visibility: visible;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
 				<br>
@@ -337,12 +325,12 @@
 							<br>
 						</td>
 						<td>
-							<input type="text" id="left_key" size="12"  onclick="keyLeft = updateLeft()"value="---"><br>
+							<input type="text" id="left_key" size="12"  onclick="keyLeft = updateLeft()" value="---"><br>
 						</td>
 					</tr>
 					<tr>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td>
 							<label class="settings">Number of balls:</label>  
 							<input type="text" id="numOfBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
@@ -350,30 +338,29 @@
 						<td>
 							<div id="slider-numBalls"></div>  
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>
 							<label class="settings">Number of balls:</label>
 						</td>
 						<td>
-							<input type="text" id="numOfBalls" size="12" value="" onclick="document.getElementById('numOfBalls').value=''"/>
+							<input type="text" id="num_Balls" size="12" value="min 50, max 90" onclick="numOfBalls= updateBalls()"/>
 						</td>
 					</tr>	
-					<!--
 					 <tr>
 						<td>
 							<label class="settings">Color of 5 pt ball:</label>
 						</td>
-						<td  id="selectable-5" style="width: fit-content; " value="">
+						<td  id="selectable-5" style="width: fit-content;" value="" >
 							<label class="color-num1">green</label>
 							<label class="color-num2">pink</label>
 							<label class="color-num3">orange</label>
 							<label class="color-num4">blue</label>
 						</td>
-						
 					</tr>
 					<tr>
-</tr>
+					</tr>
+<!--
 					<tr>
 						<td>
 							<label class="settings">Color of 15 pt ball:</label>
@@ -427,7 +414,7 @@
 						<td>
 							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
 							document.getElementById('down_key').value, document.getElementById('right_key').value,
-							document.getElementById('left_key').value)">Submit</button>
+							document.getElementById('left_key').value, document.getElementById('num_Balls').value, document.getElementById('selectable-5').value )">Submit</button>
 						</td>
 					</tr>
 				</table>
@@ -439,7 +426,7 @@
 				<br>
 				<button class="button" style="font-family: fantasy; font-size: 30px" onclick="ShowDiv('game'); Start()">START</button>
 			</div>
-			<div id="game" style="visibility: visible;" class="view">
+			<div id="game" style="visibility: hidden;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
 						<td>

@@ -218,6 +218,12 @@ function updateLeft() {
 		$(document).unbind()
 	});
 }
+
+function updateBalls() {
+	document.getElementById('num_Balls').value='';
+}
+
+
 function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
 	if (upKey == "---"){
 		window.alert("please choose an up key")
@@ -243,7 +249,7 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 	// }
 	else{//The user entered all the settings
 		 this.numOfBalls = numOfBalls;
-		// this.colorBalls_5 = colorBalls_5;
+		 this.colorBalls_5 = colorBalls_5;
 		// this.colorBalls_15 = colorBalls_15;
 		// this.colorBalls_25 = colorBalls_25;
 		// this.numOfMonsters = parseInt(numOfMonsters);
@@ -255,8 +261,8 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 		document.getElementById('showLeftKey').innerHTML = leftKey;
 		document.getElementById('showNumOfBalls').innerHTML = numOfBalls;
 
-		// document.getElementById('showColorBall5').innerHTML = colorBalls_5;
-		// document.getElementById('showColorBall5').style.color = colorBalls_5;
+		//document.getElementById('showColorBall5').innerHTML = colorBalls_5;
+		//document.getElementById('showColorBall5').style.color = colorBalls_5;
 
 		// document.getElementById('showColorBall15').innerHTML = colorBalls_15;
 		// document.getElementById('showColorBall15').style.color = colorBalls_15;
@@ -278,7 +284,7 @@ function random(){
 	document.getElementById('down_key').value = 'ArrowDown';
 	document.getElementById('right_key').value = 'ArrowRight';
 	document.getElementById('left_key').value = 'ArrowLeft';
-	document.getElementById('numOfBalls').value = getRandomNumber(50, 91);
+	document.getElementById('num_Balls').value = getRandomNumber(50, 91);
 	var colors = new Array();
 	colors[1] = 'color-num1';
 	colors[2] = 'color-num2';
@@ -305,4 +311,5 @@ function random(){
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
+
 
