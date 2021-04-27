@@ -452,14 +452,14 @@ function Draw() {
 /*************************************** move interval *****************************************/
 function monsters_Move() {
 	if (numOfMonsters == 1) {
-		if (UpdateNextStepMonster(monster1) == false) {
+		if (UpdateMonsterLocation(monster1) == false) {
 			board[monster1.i][monster1.j] = monster1.notSeen;
 			GhostEatPacman();
 			board[0][0] = 111;
 		}
 	}
 	else if (numOfMonsters == 2) {
-		if (UpdateNextStepMonster(monster1) == false || UpdateNextStepMonster(monster2) == false) {
+		if (UpdateMonsterLocation(monster1) == false || UpdateMonsterLocation(monster2) == false) {
 			board[monster1.i][monster1.j] = monster1.notSeen;
 			board[monster2.i][monster2.j] = monster2.notSeen;
 			GhostEatPacman();
@@ -468,7 +468,7 @@ function monsters_Move() {
 		}
 	}
 	else if (numOfMonsters == 3) {
-		if (UpdateNextStepMonster(monster1) == false || UpdateNextStepMonster(monster2) == false || UpdateNextStepMonster(monster3) == false) {
+		if (UpdateMonsterLocation(monster1) == false || UpdateMonsterLocation(monster2) == false || UpdateMonsterLocation(monster3) == false) {
 			board[monster1.i][monster1.j] = monster1.notSeen;
 			board[monster2.i][monster2.j] = monster2.notSeen;
 			board[monster3.i][monster3.j] = monster3.notSeen;
@@ -479,7 +479,7 @@ function monsters_Move() {
 		}
 	}
 	else if (numOfMonsters == 4) {
-		if (UpdateNextStepMonster(monster1) == false || UpdateNextStepMonster(monster2) == false || UpdateNextStepMonster(monster3) == false || UpdateNextStepMonster(monster4) == false) {
+		if (UpdateMonsterLocation(monster1) == false || UpdateMonsterLocation(monster2) == false || UpdateMonsterLocation(monster3) == false || UpdateMonsterLocation(monster4) == false) {
 			board[monster1.i][monster1.j] = monster1.notSeen;
 			board[monster2.i][monster2.j] = monster2.notSeen;
 			board[monster3.i][monster3.j] = monster3.notSeen;
@@ -501,7 +501,7 @@ function Boom_Move() {
 }
 
 function Points_50_Move(){
-	if(points_50_Game && UpdateNextStepMonster(points_50) == false){ //pacman eat 50 points
+	if(points_50_Game && UpdateNextStep(points_50) == false){ //pacman eat 50 points
 		board[points_50.i][points_50.j] = 0;
 		points_50_Game = false;
 		score = score +50 +points_50.notSeen;
@@ -641,7 +641,71 @@ function GhostEatPacman(){
 }
 
 
-function UpdateNextStepMonster(monster) { //to change
+function UpdateMonsterLocation(monster){
+	
+	var position_i = monster.i;
+	var position_j = monster.j;
+	
+	var monsterCanMove = false;
+	var distance_minimum = 100;
+	var distance;
+	//check left move
+	// can not move if there is : end of board, wall, other monster, clock, heart, 50 coin 
+	if(monster.i > 0 && board[monster.i-1][monster.j] != 4 && board[monster.i-1][monster.j] != 10 && board[monster.i-1][monster.j] != 20 && board[monster.i-1][monster.j] >= 0 && board[monster.i-1][monster.j] < 50){
+		distance =  Math.sqrt( Math.pow(monster.i-1-shape.i,2) + Math.pow(monster.j-shape.j,2));
+		if(distance < distance_minimum){
+			distance_minimum = distance;
+			position_i=monster.i-1;
+			position_j=monster.j;
+		}
+	}
+	//check right move
+	if(monster.i < 13 && board[monster.i+1][monster.j] != 4 && board[monster.i+1][monster.j] != 10 && board[monster.i+1][monster.j] != 20 && board[monster.i+1][monster.j] >= 0 && board[monster.i+1][monster.j] < 50){
+		distance =  Math.sqrt( Math.pow(monster.i+1-shape.i,2) + Math.pow(monster.j-shape.j,2));
+		if(distance < distance_minimum){
+			distance_minimum = distance;
+			position_i=monster.i+1;
+			position_j=monster.j;
+		}
+	}
+
+	//check up move
+	if(monster.j > 0 && board[monster.i][monster.j-1] != 4 && board[monster.i][monster.j-1] != 10 && board[monster.i][monster.j-1] != 20 && board[monster.i][monster.j-1] >= 0 && board[monster.i][monster.j-1] < 50){
+		distance =  Math.sqrt( Math.pow(monster.i-shape.i,2) + Math.pow(monster.j-1-shape.j,2));
+		if(distance < distance_minimum){
+			distance_minimum = distance;
+			position_i=monster.i;
+			position_j=monster.j-1;
+		}
+	}
+
+		//check down move
+		if(monster.j < 7 && board[monster.i][monster.j+1] != 4 && board[monster.i][monster.j+1] != 10 && board[monster.i][monster.j+1] != 20 && board[monster.i][position_j+1] >= 0 && board[monster.i][monster.j+1] < 50){
+			distance =  Math.sqrt( Math.pow(monster.i-shape.i,2) + Math.pow(monster.j+1-shape.j,2));
+			if(distance < distance_minimum){
+				distance_minimum = distance;
+				position_i=monster.i;
+				position_j=monster.j+1;
+			}
+		}
+	board[monster.i][monster.j] = monster.notSeen;
+	//update new location
+	monster.i = position_i;
+	monster.j = position_j;
+	if (board[monster.i][monster.j] == 999) {	//pacman and monster meet
+		return false; 
+	}
+	else if (board[monster.i][monster.j] == 0 || board[monster.i][monster.j] == 5 || board[monster.i][monster.j] == 15 || board[monster.i][monster.j] == 25) {	
+		monster.notSeen = board[monster.i][monster.j];
+	}
+	board[monster.i][monster.j] = monster.id;
+	return true;
+				
+
+}
+
+
+function UpdateNextStep(monster) { //to change
 	var x=monster.i;
 	var y= monster.j;
 	var move;
