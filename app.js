@@ -709,6 +709,8 @@ function UpdateMonsterLocation(monster){
 }
 
 
+
+
 function UpdateNextStep(monster) { //to change
 	var x=monster.i;
 	var y= monster.j;
