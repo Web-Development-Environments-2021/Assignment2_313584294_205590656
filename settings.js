@@ -165,7 +165,7 @@ function AddUser(username ,password ,firstName ,lastName ,email ,birthDate){
 	var user = new User(username , password, firstName ,lastName ,email ,birthDate);
 	savedUsers.push(user);
 	currentUser = user;
-	ShowDiv('login');	
+	ShowDiv('welcome');	
 }
 
 function CheckLogIn(username,password){
