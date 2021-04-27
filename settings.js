@@ -34,6 +34,10 @@ function ShowDiv(id)
 	div5.style.visibility="hidden";
 	var div6 = document.getElementById('game');
 	div6.style.visibility="hidden";
+	var div7 = document.getElementById('male');
+	div7.style.visibility="hidden";
+	var div8 = document.getElementById('femal');
+	div8.style.visibility="hidden";
 	
 	//show only one div
 	var selectedDiv = document.getElementById(id);
@@ -220,17 +224,17 @@ function updateBalls() {
 	document.getElementById('num_Balls').value='';
 }
 
-function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, durationOfGame){
-	if (upKey == "up key"){
+function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, typeOfGender, durationOfGame){
+	if (upKey == "---"){
 		window.alert("please choose an up key")
 	}
-	else if (downKey == "down key"){
+	else if (downKey == "---"){
 		window.alert("please choose a down key")
 	}
-	else if (rightKey == "right key"){
+	else if (rightKey == "---"){
 		window.alert("please choose a right key")
 	}
-	else if (leftKey == "left key"){
+	else if (leftKey == "---"){
 		window.alert("please choose a left key")
 	}
 	else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
@@ -248,6 +252,7 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 		this.colorBalls_15 = colorBalls_15;
 		this.colorBalls_25 = colorBalls_25;
 		this.numOfMonsters = parseInt(numOfMonsters);
+		this.typeOfGender = typeOfGender;
 		this.durationOfGame = parseInt(durationOfGame);
 
 		// username not working
@@ -270,9 +275,10 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 		document.getElementById('showNumOfMonsters').innerHTML = numOfMonsters;
 		document.getElementById('showDurationOfGame').innerHTML = durationOfGame+" sec";
 
+		document.getElementById('showGender').innerHTML = typeOfGender;
+		document.getElementById('showGender').style.getPropertyValue = typeOfGender;
 		document.getElementById('showUserName').innerHTML = currentUser.username;
 		ShowDiv('ready');
-		//Start();
 	}
 }
 function random(){
@@ -297,16 +303,21 @@ function random(){
 		color25 = getRandomNumber(1, 5);
 	}
 
+	var genderType = new Array();
+	genderType[1] = 'Male';
+	genderType[2] = 'Fimale';
+	var gender = getRandomNumber(1,3);
+
 	document.getElementById('colorBalls_5').value = colors[color5];
 	document.getElementById('colorBalls_15').value = colors[color15];
 	document.getElementById('colorBalls_25').value = colors[color25];
 	document.getElementById('numOfMonsters').value = getRandomNumber(1, 5);
 	document.getElementById('durationOfGame').value = getRandomNumber(60, 181);
+	document.getElementById('typeOfGender').value = genderType[gender];
 }
 
 
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
-
 
