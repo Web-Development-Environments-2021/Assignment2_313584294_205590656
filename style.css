@@ -210,25 +210,29 @@ label{
 	padding: 0px;
 }
 
-
 #RightSideGameSetting{
-align-content: right;
-padding: 5px;
-margin: 20px;
+	align-content: right;
+	padding: 5px;
+	margin: 20px;
 }
 #close{
-float: right;
+	float: right;
 }
 #femal{
-width: 60px;
-height: 60px;
-align-content: center;
+	width: 60px;
+	height: 60px;
+	align-content: center;
+	padding:0;
+	margin:0;
+	left: 70px;
 }
 #male{
-width: 60px;
-height: 60px;
-align-content: center;
-
+	width: 60px;
+	height: 60px;
+	align-content: center;
+	padding:0;
+	margin:0;
+	left: 70px;
 }
 #readyPic{
 width: 220px;
