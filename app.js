@@ -651,7 +651,8 @@ function UpdateMonsterLocation(monster){
 	var distance;
 	//check left move
 	// can not move if there is : end of board, wall, other monster, clock, heart, 50 coin 
-	if(monster.i > 0 && board[monster.i-1][monster.j] != 4 && board[monster.i-1][monster.j] != 10 && board[monster.i-1][monster.j] != 20 && board[monster.i-1][monster.j] >= 0 && board[monster.i-1][monster.j] < 50){
+	if(monster.i > 0 && board[monster.i-1][monster.j] != 4 && board[monster.i-1][monster.j] != 10 && board[monster.i-1][monster.j] != 20 && board[monster.i-1][monster.j] < 50
+		 && board[monster.i-1][monster.j] < 111 && board[monster.i-1][monster.j] < 112 && board[monster.i-1][monster.j] < 113 && board[monster.i-1][monster.j] < 114){
 		distance =  Math.sqrt( Math.pow(monster.i-1-shape.i,2) + Math.pow(monster.j-shape.j,2));
 		if(distance < distance_minimum){
 			distance_minimum = distance;
@@ -660,7 +661,8 @@ function UpdateMonsterLocation(monster){
 		}
 	}
 	//check right move
-	if(monster.i < 13 && board[monster.i+1][monster.j] != 4 && board[monster.i+1][monster.j] != 10 && board[monster.i+1][monster.j] != 20 && board[monster.i+1][monster.j] >= 0 && board[monster.i+1][monster.j] < 50){
+	if(monster.i < 13 && board[monster.i+1][monster.j] != 4 && board[monster.i+1][monster.j] != 10 && board[monster.i+1][monster.j] != 20 && board[monster.i+1][monster.j] != 50
+		&& board[monster.i+1][monster.j] != 111 && board[monster.i+1][monster.j] != 112 && board[monster.i+1][monster.j] != 113 && board[monster.i+1][monster.j] != 114){
 		distance =  Math.sqrt( Math.pow(monster.i+1-shape.i,2) + Math.pow(monster.j-shape.j,2));
 		if(distance < distance_minimum){
 			distance_minimum = distance;
@@ -670,7 +672,8 @@ function UpdateMonsterLocation(monster){
 	}
 
 	//check up move
-	if(monster.j > 0 && board[monster.i][monster.j-1] != 4 && board[monster.i][monster.j-1] != 10 && board[monster.i][monster.j-1] != 20 && board[monster.i][monster.j-1] >= 0 && board[monster.i][monster.j-1] < 50){
+	if(monster.j > 0 && board[monster.i][monster.j-1] != 4 && board[monster.i][monster.j-1] != 10 && board[monster.i][monster.j-1] != 20  && board[monster.i][monster.j-1] !=50
+		&& board[monster.i][monster.j-1] != 111  && board[monster.i][monster.j-1] != 112  && board[monster.i][monster.j-1] != 113  && board[monster.i][monster.j-1] != 114){
 		distance =  Math.sqrt( Math.pow(monster.i-shape.i,2) + Math.pow(monster.j-1-shape.j,2));
 		if(distance < distance_minimum){
 			distance_minimum = distance;
@@ -679,20 +682,21 @@ function UpdateMonsterLocation(monster){
 		}
 	}
 
-		//check down move
-		if(monster.j < 7 && board[monster.i][monster.j+1] != 4 && board[monster.i][monster.j+1] != 10 && board[monster.i][monster.j+1] != 20 && board[monster.i][position_j+1] >= 0 && board[monster.i][monster.j+1] < 50){
-			distance =  Math.sqrt( Math.pow(monster.i-shape.i,2) + Math.pow(monster.j+1-shape.j,2));
-			if(distance < distance_minimum){
-				distance_minimum = distance;
-				position_i=monster.i;
-				position_j=monster.j+1;
-			}
+	//check down move
+	if(monster.j < 7 && board[monster.i][monster.j+1] != 4 && board[monster.i][monster.j+1] != 10 && board[monster.i][monster.j+1] != 20 &&  board[monster.i][monster.j+1] != 50 &&
+		board[monster.i][monster.j+1] != 111 && board[monster.i][monster.j+1] != 112 && board[monster.i][monster.j+1] != 113&& board[monster.i][monster.j+1] != 114){
+		distance =  Math.sqrt( Math.pow(monster.i-shape.i,2) + Math.pow(monster.j+1-shape.j,2));
+		if(distance < distance_minimum){
+			distance_minimum = distance;
+			position_i=monster.i;
+			position_j=monster.j+1;
 		}
+	}	
 	board[monster.i][monster.j] = monster.notSeen;
 	//update new location
 	monster.i = position_i;
 	monster.j = position_j;
-	if (board[monster.i][monster.j] == 999) {	//pacman and monster meet
+	if (board[monster.i][monster.j] == 999) {	//pacman and monster meet- 
 		return false; 
 	}
 	else if (board[monster.i][monster.j] == 0 || board[monster.i][monster.j] == 5 || board[monster.i][monster.j] == 15 || board[monster.i][monster.j] == 25) {	
