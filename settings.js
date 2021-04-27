@@ -189,32 +189,32 @@ function CheckLogIn(username,password){
 	}
 	}
 
-function updateUp() {
+function updateKeyUp() {
 	$(document).keydown(function(event){
-		document.getElementById('up_key').value = event.key;
-		keyUp = event.key;
+		document.getElementById('up_key').value = '';
+		//keyUp = event.key;
 		$(document).unbind()
 	});
 }
-function updateDown() {
+function updateKeyDown() {
 	$(document).keydown(function(event){
-		document.getElementById('down_key').value = event.key;
+		document.getElementById('down_key').value = '';
 		keyDown = event.key;
 		$(document).unbind()
 	});
 }
 
-function updateRight() {
+function updateKeyRight() {
 	$(document).keydown(function(event){
-		document.getElementById('right_key').value = event.key;
+		document.getElementById('right_key').value ='';
 		keyRight = event.key;
 		$(document).unbind()
 	});
 }
 
-function updateLeft() {
+function updateKeyLeft() {
 	$(document).keydown(function(event){
-		document.getElementById('left_key').value = event.key;
+		document.getElementById('left_key').value = '';
 		keyLeft = event.key;
 		$(document).unbind()
 	});
