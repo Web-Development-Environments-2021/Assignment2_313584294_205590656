@@ -40,7 +40,7 @@ This game was created as part of the course Internet Programming Environments, A
 #### Game Page:
 ![Game](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/GamePage.png)
 
-
+## Hope you enjoy our game :)
 
 
 
