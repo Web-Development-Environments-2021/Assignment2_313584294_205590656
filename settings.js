@@ -288,10 +288,10 @@ function random(){
 	document.getElementById('left_key').value = 'ArrowLeft';
 	document.getElementById('num_Balls').value = getRandomNumber(50, 91);
 	var colors = new Array();
-	colors[1] = 'deeppink';
+	colors[1] = 'indigo';
 	colors[2] = 'lime';
-	colors[3] = 'red';
-	colors[4] = 'orange';
+	colors[3] = 'tomato';
+	colors[4] = 'deepSkyBlue';
 
 	var color5 = getRandomNumber(1, 5);
 	var color15 = getRandomNumber(1, 5);

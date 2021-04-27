@@ -380,7 +380,7 @@ function Draw() {
 				var ghost1Img = new Image;
 				monster1.i = i;
 				monster1.j = j;
-				ghost1Img.src = "./resources/ghost1.png";
+				ghost1Img.src = "./resources/redGhose.png";
 				context.beginPath();
 				context.drawImage(ghost1Img,center.x - 30, center.y - 30, 60, 60 * ghost1Img.height / ghost1Img.width);	
 			} 
@@ -388,7 +388,7 @@ function Draw() {
 				var ghost2Img = new Image;
 				monster2.i = i;
 				monster2.j = j;
-				ghost2Img.src = "./resources/ghost2.png";
+				ghost2Img.src = "./resources/greenGhose.png";
 				context.beginPath();
 				context.drawImage(ghost2Img,center.x - 30, center.y - 30, 60, 60 * ghost2Img.height / ghost2Img.width);
 			} 
@@ -396,7 +396,7 @@ function Draw() {
 				var ghost3Img = new Image;
 				monster3.i = i;
 				monster3.j = j;
-				ghost3Img.src = "./resources/ghost3.png";
+				ghost3Img.src = "./resources/orgGhose.png";
 				context.beginPath();
 				context.drawImage(ghost3Img,center.x - 30, center.y - 30, 60, 60 * ghost3Img.height / ghost3Img.width);
 			} 
@@ -405,7 +405,7 @@ function Draw() {
 				var ghost4Img = new Image;
 				monster4.i = i;
 				monster4.j = j;
-				ghost4Img.src = "./resources/ghost4.png";
+				ghost4Img.src = "./resources/blueGhose.png";
 				context.beginPath();
 				context.drawImage(ghost4Img,center.x - 30, center.y - 30, 60, 60 * ghost4Img.height / ghost4Img.width);
 			}
