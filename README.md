@@ -20,10 +20,23 @@ This game was created as part of the course Internet Programming Environments.
 #### Wellcome Page:
 ![Wellcome](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/WelcomePage.png)
 #### Register Page:
-![Register](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgRegister.jpeg)
-![Login](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgLogin.jpeg)
-![Game](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgGame.jpeg)
-![Setting](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgGame.jpeg)
+![Register](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/RegisterPage.png)
+#### Register Error Page:
+![RegisterErrorPage](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/RegisterPageError.png)
+#### Login Page:
+![Login](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/LoginPage.png)
+#### About Page:
+![About](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/AboutPage.png)
+#### Setting Page:
+![Setting](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/SettingsPage.png)
+#### Setting Random Page:
+![SettingRandom](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/SettingsPageRandom.png)
+#### Ready Page:
+![Ready](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/GetReadyPage.png)
+#### Game Page:
+![Game](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/GamePage.png)
+
+
 
 
 
