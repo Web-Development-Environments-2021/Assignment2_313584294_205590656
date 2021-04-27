@@ -34,7 +34,7 @@ points_50.notSeen = 0;
 points_50.id = 50;
 
 //Music
-var isMeut = false;
+var isMute = false;
 var backgroundMusic = new Audio('./resources/pacmanMusic.mp3');
 var loseSound;
 var winSound;
@@ -82,14 +82,7 @@ function newGame(){
 	window.clearInterval(intervalBoom);
 	Start();
 }
-function newGame2(){
-	backgroundMusic.currentTime = 0;
-	window.clearInterval(interval);
-	window.clearInterval(intervalMonsters);
-	window.clearInterval(intervalPoints_50);
-	window.clearInterval(intervalBoom);
-	ShowDiv('chooseSettings');
-}
+
 /************************** mute or umute  *************************/
 function mute(){ // Turns from unmute to mute
 	backgroundMusic.pause();
@@ -97,7 +90,7 @@ function mute(){ // Turns from unmute to mute
 	encounterSound.pause();
 	$("#mute").hide();
 	$("#unmute").show();
-	isMeut = true;	
+	isMute = true;	
 }
 function unmute (){ //// Turns from mute to unmute
 	backgroundMusic.play();
@@ -105,7 +98,7 @@ function unmute (){ //// Turns from mute to unmute
 	encounterSound.play();
 	$("#unmute").hide();
 	$("#mute").show();	
-	isMeut = false;	
+	isMute = false;	
 }
 
 
@@ -144,7 +137,7 @@ function Start() {
 	}	
 	
 
-	if(!isMeut){
+	if(!isMute){
 		backgroundMusic.play();
 	}
 	loseSound = new Audio('./resources/loseSound.mp3');
@@ -559,7 +552,7 @@ function UpdatePosition() {
 	if(lives == 0){
 		backgroundMusic.pause();
 		backgroundMusic.currentTime = 0;
-		if(!isMeut){
+		if(!isMute){
 			loseSound.play();
 		}
 		window.alert("Loser!");
@@ -572,7 +565,7 @@ function UpdatePosition() {
 		if (score < 100){
 			backgroundMusic.pause();
 			backgroundMusic.currentTime = 0;
-			if(!isMeut){
+			if(!isMute){
 				loseSound.play();
 			}
 			window.alert("You are better than " + score + " points!");
@@ -584,7 +577,7 @@ function UpdatePosition() {
 		else{
 			backgroundMusic.pause();
 			backgroundMusic.currentTime = 0;
-			if(!isMeut){
+			if(!isMute){
 				winSound.play();
 			}
 			window.alert("Winner!!!");
@@ -602,7 +595,7 @@ function UpdatePosition() {
 
 function GhostEatPacman(){
 	board[shape.i][shape.j] = 700;
-	if(!isMeut){
+	if(!isMute){
 		encounterSound.play();
 	}
 	lives--;
