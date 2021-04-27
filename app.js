@@ -82,7 +82,14 @@ function newGame(){
 	window.clearInterval(intervalBoom);
 	Start();
 }
-
+function newGame2(){
+	backgroundMusic.currentTime = 0;
+	window.clearInterval(interval);
+	window.clearInterval(intervalMonsters);
+	window.clearInterval(intervalPoints_50);
+	window.clearInterval(intervalBoom);
+	ShowDiv('chooseSettings');
+}
 /************************** mute or umute  *************************/
 function mute(){ // Turns from unmute to mute
 	backgroundMusic.pause();
