@@ -24,10 +24,10 @@ monster1.id = 111;
 monster2.id = 112;
 monster3.id = 113;
 monster4.id = 114;
-monster1.behind = false;
-monster2.behind = false;
-monster3.behind = false;
-monster4.behind = false;
+monster1.notSeen = 0;
+monster2.notSeen = 0;
+monster3.notSeen = 0;
+monster4.notSeen = 0;
 var intervalMonsters;
 
 //points_50
@@ -687,7 +687,7 @@ function UpdateMonsterLocation(monster){
 		}
 	}	
 	board[monster.i][monster.j] = monster.notSeen;
-	//update new location
+	//update new position
 	monster.i = position_i;
 	monster.j = position_j;
 	if (board[monster.i][monster.j] == 999) {	//pacman and monster meet
