@@ -21,11 +21,15 @@ body{
 label.error{
     position:fixed;
 	color: red;
+	font-size: 15px;
+	font-family: cursive;
     background-repeat:no-repeat;
     padding-left: 10px;
     margin-left: .5em;
     vertical-align:left-side;
+	background-color:  lemonchiffon;
 }
+
 
 .menu ul {
 	margin: 0;
