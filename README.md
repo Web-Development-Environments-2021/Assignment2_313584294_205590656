@@ -19,6 +19,7 @@ This game was created as part of the course Internet Programming Environments.
 ## Screen Shot:
 # Wellcome Page:
 ![Wellcome](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/WelcomePage.png)
+
 ![Register](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgRegister.jpeg)
 ![Login](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgLogin.jpeg)
 ![Game](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgGame.jpeg)
