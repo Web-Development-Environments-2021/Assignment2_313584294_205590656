@@ -411,7 +411,7 @@ function Draw() {
 			}
 			else if (board[i][j] == 4) {//wall
 				var wallImg = new Image;
-				wallImg.src="./resources/wallwhite.png"
+				wallImg.src="./resources/wall.png"
 				context.beginPath();
 				context.drawImage(wallImg,center.x - 30, center.y - 30, 60, 60 * wallImg.height / wallImg.width);
 			}
