@@ -294,32 +294,16 @@ function Draw() {
 				context.beginPath();
 				context.fillStyle = pac_color; //color
 				if(direction === "up"){//pacman move up
-					context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle up 
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();  
+					context.arc(center.x, center.y, 30, 1.65 * Math.PI, 1.35 * Math.PI); // half circle up  
 				}
 				else if(direction === "down"){//pacman move down
 					context.arc(center.x, center.y, 30, 0.65 * Math.PI, 0.35 * Math.PI); // half circle down
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				else if(direction === "left"){//pacman move left
 					context.arc(center.x, center.y, 30, 1.15 * Math.PI, 0.85 * Math.PI); // half circle left
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				else {//pacman move right	
 					context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle right
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
@@ -329,31 +313,15 @@ function Draw() {
 				context.fillStyle = "black"; //color
 				if(direction === "up"){//pacman move up
 					context.arc(center.x + 15, center.y - 5, 5, 0, 2 * Math.PI); // circle
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				else if(direction === "down"){//pacman move down
 					context.arc(center.x - 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				else if(direction === "left"){//pacman move left
 					context.arc(center.x - 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				else {//pacman move right
 					context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-					// context.beginPath();
-					// context.arc(center.x, center.y, 6, 0, 2 * Math.PI); // circle
-					// context.fillStyle = "black"; //color of 5
-					// context.fill();
 				}
 				context.fillStyle = "black"; //color
 				context.fill();
