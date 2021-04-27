@@ -80,28 +80,30 @@ label.error{
 }	
 .button{
 	background-color: black;
-	color: white;
-	border: 3px solid navy; 
+	color: yellow;
+	border: 7px solid white; 
 	border-radius: 10px;
-	font-size: 24px;
+	font-size: 20px;
 	font-family: fantasy; 
 }
 .button:hover {
-	background-color: mediumblue;
+	background-color: mediumseagreen;
+	color: black;
 	/*font-weight: bold;*/
  
 }
 .button2{
 	background-color: black;
-	color: white;
-	border: 3px solid navy; 
+	color: yellow;
+	border: 7px solid white; 
 	border-radius: 10px;
-	font-size: 24px;
+	font-size: 20px;
 	font-family: fantasy;
 	width:100%;
 }
 .button2:hover {
-	background-color: mediumblue;
+	background-color: mediumseagreen;
+	color: black;
 }
 
 #menu{
@@ -164,9 +166,9 @@ label{
 	color: white;
 	border: 3px solid yellow; 
 	border-radius: 8px;
-	padding: 0.7px 0.7px 0.7px 0.7px;
+	/* padding: 0.7px 0.7px 0.7px 0.7px; */
 	width: 100px;
-	height: 25px;
+	height: 100%;
 	font-size: 12px;
 	font-family: system-ui; 
 }
@@ -206,7 +208,7 @@ label{
 	margin:0;
 	padding-bottom: 0;
 	position: absolute;
-	top: 5px;
+	top: 0px;
 	width: 15%;
 	height: 40%;
 	text-align: center;
@@ -241,13 +243,15 @@ label{
   #close{
 	float: right;
   }
-  #pacmanGirl{
-	width: 180px;
-	height: 200px;
+  #femal{
+	width: 60px;
+	height: 60px;
+	align-content: center;
   }
-  #pacmanBoy{
-	width: 100px;
-	height: 100px;
+  #male{
+	width: 60px;
+	height: 60px;
+	align-content: center;
 
   }
   #readyPic{

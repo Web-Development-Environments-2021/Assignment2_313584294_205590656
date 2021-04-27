@@ -297,7 +297,12 @@
 
 			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
 				<table>
-					<h3>Please enter your prefernces</h3>
+					<tr>
+						<td colspan="2">
+							Please enter your prefernces
+						</td>
+						
+					</tr>
 					<tr>
 						<td>
 							<label class="settings" >Choose up key</label><br>
@@ -397,9 +402,9 @@
 						<label class="settings">Gender:</label>
 					</td>
 					<td>
-						<select name="list" id="typrOfGender" >
-							<option value="Male"><img align="center" src="./resources/pacmanBoy.PNG" id="pacmanBoy">	</option>
-							<option value="Female"><img align="center" src="./resources/pacmanGirl.PNG" id="pacmanGirl"></option>
+						<select name="list" id="typeOfGender">
+							<option  valve='Male'  > Male</option>
+							<option  value='Fimale' >Fimale  </option>
 						</select>
 					</td>
 				</tr>
@@ -422,7 +427,7 @@
 							document.getElementById('down_key').value, document.getElementById('right_key').value,
 							document.getElementById('left_key').value, document.getElementById('num_Balls').value,
 							document.getElementById('colorBalls_5').value,document.getElementById('colorBalls_15').value,
-							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value,
+							document.getElementById('colorBalls_25').value,document.getElementById('numOfMonsters').value, document.getElementById('typeOfGender').value,
 							document.getElementById('durationOfGame').value)">Submit</button>
 						</td>
 					</tr>
@@ -525,43 +530,54 @@
 			<div id="game" style="visibility: hidden;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
-						<td>
+						<td align="center">
 							<br><label style= "font-size: 20px; font-family: fantasy;" id="userName">User name:</label>
 							<label id="showUserName" type="text" style= "font-size: 20px; font-family: fantasy;" ></label>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<img src="./resources/pacmanBoy.png" id="pacmanBoy"><br>
+					<tr >
+						<td align="center">
+							<label id="showGender" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">
+							</label>
+							<div id="male" style="visibility: hidden;" class="view" >
+								<img align="center" src="./resources/pacmanBoy.png" id="male">
+							</div>
+							<div id="femal" style="visibility: hidden;" class="view" >
+								<img align="center" src="./resources/pacmanGirl.png" id="femal">
+							</div>
+						
+							<!-- <img src="./resources/pacmanBoy.png" id="male">
+							<img src="./resources/pacmanGirl.png" id="femal"><br> -->
 						</td>
 					</tr>
 					<tr >
-						<td>
+						<td align="center">
+							<br><br><br>
 							<label for="showTime" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Time Left:</label>
 							<input id="showTime" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"/><br><br>
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td align="center">
 							<label for="showScore" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Score:</label>
 							<input id="showScore" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"/><br><br>
 						</td>						
 					</tr>	
 					<tr>
-						<td>
+						<td align="center">
 							<label style="font-size: 13px; font-family: cursive;background-color: whitesmoke;">Lives:</label>
 							<label id="showLives" value = "" type="text" style="font-size: 13px; font-family: cursive;background-color: whitesmoke;"></label><br><br>
 						</td>
 					</tr>	
 					<tr>
 						<td align="center">
-							<button  id="mute" class="button" style= "font-size: 20px;" onclick="mute()" >Mute</button><br>
+							<button  id="mute" class="button" style= "font-size: 20px;" onclick="mute()" >Mute</button>
 							<button  id="unmute" class="button" style= "font-size: 20px; display: none;" onclick="unmute()" >Unmute</button>
 						</td>						
 					</tr>
 					<tr>
 						<td align="center">
-							<button  class="button" style= "font-size: 20px;" onclick="newGame()" >New Game</button><br><br>
+							<button  class="button" style= "font-size: 20px;" onclick="newGame()" >New Game</button><br>
 						</td>						
 					</tr>	
 					<tr>

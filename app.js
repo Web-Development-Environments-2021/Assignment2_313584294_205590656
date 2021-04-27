@@ -9,7 +9,7 @@ var interval;
 var durationOfGame;
 var extraTime;
 var blocked;
-
+var typeOfGender;
 //Monsters
 var numOfMonsters;
 var monster1 = new Object();
@@ -122,6 +122,20 @@ function Start() {
 	extraTime = 0;
 	lives = 5;
 	points_50_Game =true;
+	 
+	//gender
+	typeOfGender = $("#typeOfGender").val();
+	var div1 = document.getElementById('male');
+	div1.style.visibility="hidden";
+	var div2 = document.getElementById('femal');
+	div2.style.visibility="hidden";
+	if(typeOfGender=='Male'){
+		div1.style.visibility = "visible";
+	}
+	else{
+		div2.style.visibility = "visible";
+	}	
+	
 
 	if(!isMeut){
 		backgroundMusic.play();
@@ -129,8 +143,6 @@ function Start() {
 	loseSound = new Audio('./resources/loseSound.mp3');
 	winSound = new Audio('./resources/winSound.mp3');
 	encounterSound = new Audio('./resources/encounterSound.mp3');
-	
-	
 	
 	keyUp = $("#up_key").val();
 	keyDown = $("#down_key").val();
@@ -784,3 +796,4 @@ function iAmClose(monster){
 		return 0;
 	}
 }
+
