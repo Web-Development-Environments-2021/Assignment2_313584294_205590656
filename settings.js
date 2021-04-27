@@ -36,7 +36,7 @@ function ShowDiv(id)
 	div6.style.visibility="hidden";
 	var div7 = document.getElementById('male');
 	div7.style.visibility="hidden";
-	var div8 = document.getElementById('femal');
+	var div8 = document.getElementById('female');
 	div8.style.visibility="hidden";
 	
 	//show only one div

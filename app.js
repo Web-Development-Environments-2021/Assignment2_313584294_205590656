@@ -127,7 +127,7 @@ function Start() {
 	typeOfGender = $("#typeOfGender").val();
 	var div1 = document.getElementById('male');
 	div1.style.visibility="hidden";
-	var div2 = document.getElementById('femal');
+	var div2 = document.getElementById('female');
 	div2.style.visibility="hidden";
 	if(typeOfGender=='Male'){
 		div1.style.visibility = "visible";
