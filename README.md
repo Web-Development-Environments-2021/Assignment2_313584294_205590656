@@ -1,16 +1,14 @@
-# Pacman Game
+# Assignment2 - Pacman Game
 
-This game was created as part of the course Internet Programming Environments
+This game was created as part of the course Internet Programming Environments.
 
 ## Developers:
-  * Adi Avinun - 313957409
+  * Lahan Barmocha - 205590656
   * Nicole Dezoraive - 313584294
 
 
 ## Website:
-[Pacman Game by Adi & Nicole](https://sise-web-development-environments.github.io/assignment2-adi-nicole/)
-
-https://sise-web-development-environments.github.io/assignment2-adi-nicole/
+[Pacman Game by Lahan & Nicole](https://web-development-environments-2021.github.io/Assignment2_313584294_205590656/)
 
 ## Functionality:
 
