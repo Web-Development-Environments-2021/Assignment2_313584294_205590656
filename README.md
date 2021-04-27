@@ -17,7 +17,7 @@ This game was created as part of the course Internet Programming Environments.
   3. Extra: We added a sound effect and picture when the pacman and monster collide, and we added a sound effect at the end of the game.
 
 ## Screen Shot:
-# Wellcome Page:
+### Wellcome Page:
 ![Wellcome](https://github.com/Web-Development-Environments-2021/Assignment2_313584294_205590656/blob/master/resources/WelcomePage.png)
 
 ![Register](https://github.com/SISE-Web-Development-Environments/assignment2-adi-nicole/blob/master/resources/imgRegister.jpeg)
