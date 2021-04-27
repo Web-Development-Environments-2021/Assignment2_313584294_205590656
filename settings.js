@@ -72,7 +72,7 @@ var dialog = document.getElementById('about');
 		}
 });
 
-//check register form
+/************************** check register form *********************************************/
 //https://stackoverflow.com/questions/14460925/how-to-add-validation-rules-with-messages-in-jquery-validation
 //https://jqueryvalidation.org/
 $(document).ready(function(){
@@ -109,24 +109,24 @@ $(document).ready(function(){
 		},
 		messages: {
 			UsernameRegister: {
-				required:"Please enter a username",
-				minlength: "Please enter a username",
+				required:"Please enter a username in English",
+				minlength: "Please enter a username in English",
 				doesUsernameNotExist: "This username already exists, please enter another username",
 			},
 			PasswordRegister: {
 				required: "Please provide a password",
 				minlength: "Your password must be at least 6 characters long",
-				isLegalPassword: "The password must include only letters and digits",
+				isLegalPassword: "The password must include only letters in English and digits",
 			},
 			FirstName: {
-				required: "Please enter your First Name",
-				minlength: "Please enter your First Name",
-				checkIfOnlyLetters: "First name must include only letters",
+				required: "Please enter your First Name in English",
+				minlength: "Please enter your First Name in English",
+				checkIfOnlyLetters: "First name must include only letters in English",
 				},
 			LastName: {
-				required: "Please enter your Last Name",
-				minlength: "Please enter your Last Name",
-				checkIfOnlyLetters: "Last name must include only letters",
+				required: "Please enter your Last Name in English",
+				minlength: "Please enter your Last Name in English",
+				checkIfOnlyLetters: "Last name must include only letters in English",
 			},
 			Email: {
 				required: "Please enter a valid email address",
