@@ -1,6 +1,7 @@
+//Settings - user and game
+
 var savedUsers = new Array();
 var currentUser;
-
 
 class User{
 	constructor(username , password , firstName , lastName , email ,birthDate) {
@@ -13,12 +14,14 @@ class User{
 	}
 }
 
+//Adding a regular user k all the time
 $(document).ready(function(){
 	var user = new User('k','k','k','k','k@gmail.com','8.12.1994');
 	savedUsers.push(user);
 	currentUser = user;        
 })
 
+/************************************* Show Div relevent  **************************************/
 function ShowDiv(id)
 {	
 	//hide all divs
@@ -137,7 +140,6 @@ $(document).ready(function(){
 				minlength: "Please enter your birth date",	
 			},
 		},
-
 		submitHandler : function(form) {
 			AddUser(document.getElementById('UsernameRegister').value,document.getElementById('PasswordRegister').value,
 			document.getElementById('FirstName').value,document.getElementById('LastName').value,document.getElementById('Email').value,document.getElementById('BirthDate').value);	
@@ -161,6 +163,7 @@ $(document).ready(function(){
 
 });
 
+/************************** Add User *********************************************/
 function AddUser(username ,password ,firstName ,lastName ,email ,birthDate){
 	var user = new User(username , password, firstName ,lastName ,email ,birthDate);
 	savedUsers.push(user);
@@ -168,6 +171,7 @@ function AddUser(username ,password ,firstName ,lastName ,email ,birthDate){
 	ShowDiv('welcome');	
 }
 
+/************************** Check LogIn *********************************************/
 function CheckLogIn(username,password){
 	if(username != "" && password != ""){
 		var isExist = false;
@@ -187,8 +191,9 @@ function CheckLogIn(username,password){
 	else{
 		window.alert("Please insert a username and password");
 	}
-	}
+}
 
+/************************** Settings direction *********************************************/
 function updateKeyUp() {
 	$(document).keydown(function(event){
 		document.getElementById('up_key').value = '';
@@ -203,7 +208,6 @@ function updateKeyDown() {
 		$(document).unbind()
 	});
 }
-
 function updateKeyRight() {
 	$(document).keydown(function(event){
 		document.getElementById('right_key').value ='';
@@ -211,7 +215,6 @@ function updateKeyRight() {
 		$(document).unbind()
 	});
 }
-
 function updateKeyLeft() {
 	$(document).keydown(function(event){
 		document.getElementById('left_key').value = '';
@@ -224,6 +227,7 @@ function updateBalls() {
 	document.getElementById('num_Balls').value='';
 }
 
+/************************** Check Settings *********************************************/
 function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls_5, colorBalls_15, colorBalls_25, numOfMonsters, typeOfGender, durationOfGame){
 	if (upKey == "---"){
 		window.alert("please choose an up key")
@@ -255,8 +259,6 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 		this.typeOfGender = typeOfGender;
 		this.durationOfGame = parseInt(durationOfGame);
 
-		// username not working
-		//document.getElementById('showUserName').innerHTML = currentUser.username;
 		document.getElementById('showUpKey').innerHTML = upKey;
 		document.getElementById('showDownKey').innerHTML = downKey;
 		document.getElementById('showRightKey').innerHTML = rightKey;
@@ -277,10 +279,13 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 
 		document.getElementById('showGender').innerHTML = typeOfGender;
 		document.getElementById('showGender').style.getPropertyValue = typeOfGender;
+
 		document.getElementById('showUserName').innerHTML = currentUser.username;
 		ShowDiv('ready');
 	}
 }
+
+/************************** random Settings *********************************************/
 function random(){
 	document.getElementById('up_key').value = 'ArrowUp';
 	document.getElementById('down_key').value = 'ArrowDown';
@@ -315,7 +320,6 @@ function random(){
 	document.getElementById('durationOfGame').value = getRandomNumber(60, 181);
 	document.getElementById('typeOfGender').value = genderType[gender];
 }
-
 
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);

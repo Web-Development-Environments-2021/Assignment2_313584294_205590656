@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- The app will run through it -->
 <html  lang="en">
 	<head>
 		<title>Pacman Game by Lahan & Nicole</title>
@@ -7,16 +8,16 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-
-</head>
+	</head>
 	</head>
 	<body>
 		<div id="divTop">
+			<!-- ************************ header ****************************** -->
 			<header>
 				<table id="tableHeader">
 					<tr>
 						<td align = "left">
-							<label style="color:#666362; font-family: fantasy; font-size: 13px;" align = "left">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
+							<label style="color:yellow; font-family: fantasy; font-size: 18px;" align = "left">Created by: <br>Lahan Barmocha & Nicole Dezoraive</label>
 						</td>
 						<td>							
 							<img align="center" src="./resources/PacMan.png" id="pacmanTitleMiddle">	
@@ -27,6 +28,7 @@
 					</tr>
 				</table>   
 			</header>
+			<!-- ************************ menu options****************************** -->
 			<div id="menu" class="menu" align="center">
 				<ul>
 					<a button="#welcome" onclick="ShowDiv('welcome')" class="item" style="color:yellow;">Welcome</a>|
@@ -35,6 +37,7 @@
 					<a button="#about" onclick="ShowDialog()" class="item" style="color:yellow;">About</a>
 				</ul>
 			</div>
+			<!-- ************************ welcome ********************************** -->
 			<div id="welcome" style="visibility: visible;" class="view" align="center">
 				<br>
 				<img src="./resources/welcomeToFreePacman.jpg" id="welcomeToFreePacman">
@@ -44,7 +47,7 @@
 				<button class="button" style="font-family: fantasy; font-size: 28px" onclick="ShowDiv('login')">Login</button>
 				<br>
 			</div>
-
+			<!-- *************************** register ****************************** -->
 			<div id="register" style="visibility: hidden;" class="view">
 				<form id = "registerForm" method ="get" action = "">
 					<table id="registerTable" align="center">
@@ -117,7 +120,7 @@
 					</table>    
 				</form>
 			</div>
-
+			<!-- *************************** login ****************************** -->
 			<div id="login" style="visibility:hidden;" class="view" align="center">
 				<br>
 				<br>
@@ -130,7 +133,7 @@
 				</label>
 				<button class="button" onclick="CheckLogIn(document.getElementById('usernameLogin').value, document.getElementById('passwordLogin').value)">Login</button>
 			</div>
-
+			<!-- *************************** about dialog ****************************** -->
 			<dialog id="about" style ="font-family: system-ui;  background-color: #FFDFDD; color:red;" align="center">	
 				<p align="center" style="font-size: 13px; font-family: cursive;">
 					<button id="close" onclick="CloseDialog()" >X</button>
@@ -152,7 +155,7 @@
 					 and they can't step over eachother. This part took us the longest to do.
 				</p>
 			</dialog>
-
+			<!-- *************************** settings ****************************** -->
 			<div id="chooseSettings" align="center" style="visibility: hidden;" class="view">
 				<table>
 					<tr>
@@ -289,93 +292,7 @@
 						</td>
 					</tr>
 			</table>
-			<!--<form>
-				
-					<tr>
-
-					</tr>
-					
-					<tr>
-						<td>
-								<label class="settings">Number of balls:</label>  
-								<input type="text" id="numOfBalls" size="1" style="border:0 ; color:blue; font-weight:bold;">  
-						</td>
-						<td>
-							<div id="slider-numBalls"></div>  
-						</td>
-					</tr>	
-					 <tr>
-						<td>
-							<label class="settings">Color of 5 pt ball:</label>
-						</td>
-						<td  id="selectable-5" style="width: fit-content;" value="" >
-							<label class="color-num1">green</label>
-							<label class="color-num2">pink</label>
-							<label class="color-num3">orange</label>
-							<label class="color-num4">blue</label>
-						</td>
-					</tr>
-					<tr>
-					</tr>
-
-					<tr>
-						<td>
-							<label class="settings">Color of 15 pt ball:</label>
-						</td>
-						<td  id="selectable-15" style="width: fit-content;" value="">
-							<label class="color-num5">green</label>
-							<label class="color-num6">pink</label>
-							<label class="color-num7">orange</label>
-							<label class="color-num8">blue</label>
-						</td>
-					</tr>
-					<tr>
-					</tr>
-					<tr>
-						<td>
-							<label class="settings">Color of 25 pt ball:</label>
-						</td>
-						<td  id="selectable-25" style="width: fit-content;" value="">
-							<label class="color-num1">green</label>
-							<label class="color-num2">pink</label>
-							<label class ="color-num3">orange</label>
-							<label class ="color-num4">blue</label>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label class="settings">Number of Monsters:</label>
-						</td>
-						<td>
-							<select name="list" id="numOfMonsters" >
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label class="settings">Game duration (sec):</label>  
-							<input type="text" id="durationOfGame" size="1" style="border:0 ; color:blue; font-weight:bold;">  
-						</td>
-						<td>
-							<div id="slider-timeGame"></div>  
-						</td>
-					</tr> 
-					<tr>
-						<td>
-							<button class="button" onclick="random()">Random</button>
-						</td>
-						<td>
-							<button class="button2" onclick="CheckSettings(document.getElementById('up_key').value,
-							document.getElementById('down_key').value, document.getElementById('right_key').value,
-							document.getElementById('left_key').value, document.getElementById('num_Balls').value, document.getElementById('selectable-5').value )">Submit</button>
-						</td>
-					</tr>
-				</table>
-			</form>-->
+			<!-- *************************** get ready ****************************** -->
 			</div>
 			<div id="ready" style="visibility: hidden;" class="view" align="center">
 				<br>
@@ -384,6 +301,7 @@
 				<br>
 				<button class="button" style="font-family: fantasy; font-size: 30px" onclick="ShowDiv('game'); Start()">START</button>
 			</div>
+			<!-- *************************** game ****************************** -->
 			<div id="game" style="visibility: hidden;" class="view">
 				<table id ="leftSideGameInfo" align="left">
 					<tr>
@@ -523,12 +441,11 @@
 					</tr>	
 				</table>
 			</div>
-
+			<!-- ************************ footer ****************************** -->
 			<footer id="downPage"  style="font-family: system-ui; font-size: 12px;" class="footer" align= "center">
 				<label style="text-align: left;">contact the developers: nicoled@post.bgu.ac.il | barmocha@post.bgu.ac.il 	&nbsp&nbsp&nbsp   אתר זה נבנה במסגרת קורס סביבות פיתוח באינטרנט באפריל 2021</label>
 			</footer>
 		</div>
-		
 	</body>
 	<script type="text/javascript" src="./app.js"></script>
 	<script type="text/javascript" src="./settings.js"></script>

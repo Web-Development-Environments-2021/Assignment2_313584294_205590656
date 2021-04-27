@@ -1,3 +1,4 @@
+ /* designs */
 body{
 	color: black;
 	font-family: fantasy;
@@ -90,9 +91,7 @@ label.error{
 }
 .button:hover {
 	background-color: mediumseagreen;
-	color: black;
-	/*font-weight: bold;*/
- 
+	color: black; 
 }
 .button2{
 	background-color: black;
@@ -107,8 +106,6 @@ label.error{
 	background-color: mediumseagreen;
 	color: black;
 }
-
-
 
 a.item {
 	background-color: #0C090A;
@@ -140,12 +137,10 @@ a.item:hover {
 h3{
 	color: black;
 	font-family: fantasy;
-
 }
 label{
 	color: black;
 	font-weight: bold;
-
 }
 #game{
 	color:white; 
@@ -166,15 +161,13 @@ label{
 	font-family: system-ui; 
 }
 
-
 .footer {
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	color: #B6B6B4;
-  }
-
+}
 
 #RightSideGameSetting{
 	table-layout: fixed;  
@@ -187,7 +180,13 @@ label{
 	width: 23%;
 	text-align: center;
 }
-  #leftSideGameInfo{
+
+#RightSideGameSetting{
+	align-content: right;
+	padding: 5px;
+	margin: 20px;
+}
+#leftSideGameInfo{
 	table-layout: fixed;
 	padding:0;
 	margin:0;
@@ -197,8 +196,9 @@ label{
 	width: 15%;
 	height: 40%;
 	text-align: center;
-  }
-  #canvas {
+}
+
+#canvas {
 	top:3px;
 	right: 24%;
     width: 60%;
@@ -210,14 +210,10 @@ label{
 	padding: 0px;
 }
 
-#RightSideGameSetting{
-	align-content: right;
-	padding: 5px;
-	margin: 20px;
-}
 #close{
 	float: right;
 }
+
 #female{
 	width: 60px;
 	height: 60px;
@@ -234,30 +230,28 @@ label{
 	margin:0;
 	left: 70px;
 }
+
 #readyPic{
 width: 220px;
 height: 180px;
 align-content: center;
 }
+
 #Lahan_Nicole{
 width: 300px;
 height: 150px;
 align-content: center;
 }
 
-select.list option.indigo
-{
+select.list option.indigo{
     background-color: indigo;
 }
-select.list option.tomato
-{
+select.list option.tomato{
     background-color: tomato;
 }
-select.list option.lime
-{
+select.list option.lime{
     background-color: lime;
 }
-select.list option.deepSkyBlue
-{
+select.list option.deepSkyBlue{
     background-color: deepSkyBlue;
 }
