@@ -305,7 +305,7 @@ function random(){
 
 	var genderType = new Array();
 	genderType[1] = 'Male';
-	genderType[2] = 'Fimale';
+	genderType[2] = 'Female';
 	var gender = getRandomNumber(1,3);
 
 	document.getElementById('colorBalls_5').value = colors[color5];
