@@ -500,7 +500,7 @@ function Boom_Move() {
 }
 
 function Points_50_Move(){
-	if(points_50_Game && UpdateNextStep(points_50) == false){ //pacman eat 50 points
+	if(points_50_Game && UpdateExtaPointLocation(points_50) == false){ //pacman eat 50 points
 		board[points_50.i][points_50.j] = 0;
 		points_50_Game = false;
 		score = score +50 +points_50.notSeen;
@@ -700,70 +700,68 @@ function UpdateMonsterLocation(monster){
 	return true;
 }
 
-function UpdateNextStep(monster) { //to change
-	var x=monster.i;
-	var y= monster.j;
-	var move;
-	var priority = iAmClose(monster);
-	var monsterCanMove = false;
-	var firstTry = true;
-	var try1 = 0;
-	var try2 = 0;
-	var try3 = 0;
-	var try4 = 0;
-	var tryAllMoves = 0;
-	while ((!monsterCanMove  && tryAllMoves < 10)){
-		if(priority > 0 && firstTry){
-			move = priority;
-			firstTry = false;
+
+
+function UpdateExtaPointLocation(points_50){	
+	var position_i = points_50.i;
+	var position_j = points_50.j;
+	var distance_maximum = 0;
+	var distance;
+	//check left move
+	// can not move if there is : end of board, wall, other monster, clock, heart, 50 coin 
+	if(points_50.i > 0 && board[points_50.i-1][points_50.j] != 4 && board[points_50.i-1][points_50.j] != 10 && board[points_50.i-1][points_50.j] != 20 && board[points_50.i-1][points_50.j] < 50
+		 && board[points_50.i-1][points_50.j] < 111 && board[points_50.i-1][points_50.j] < 112 && board[points_50.i-1][points_50.j] < 113 && board[points_50.i-1][points_50.j] < 114){
+		distance =  Math.sqrt( Math.pow(points_50.i-1-shape.i,2) + Math.pow(points_50.j-shape.j,2));
+		if(distance > distance_maximum){
+			distance_maximum = distance;
+			position_i=points_50.i-1;
+			position_j=points_50.j;
 		}
-		else{
-			move = Math.floor(Math.random() * 5 + 1);
-		}
-		
-		if (move == 1) { // up
-			if (y > 0 && board[x][y-1] != 4 && board[x][y-1] != 111 && board[x][y-1] != 112 && board[x][y-1] != 113 && board[x][y-1] != 114 && board[x][y-1] != 50 && board[x][y-1] != 10 && board[x][y-1] != 20) {
-				y = y -1;
-				monsterCanMove=true;
-				try1 = 1;
-			}	
-		}
-		if (move == 2) { //down
-			if (y < 7 &&  board[x][y+1] != 4 && board[x][y+1] != 111 && board[x][y+1] != 112 && board[x][y+1] != 113 && board[x][y+1] != 114 && board[x][y+1] != 50 && board[x][y+1] != 10 && board[x][y+1] != 20) {
-				y = y +1;
-				monsterCanMove =true;
-				tryAllMoves = tryAllMoves+2;
-				try2 =2;
-			}	
-		} 
-		if (move == 3) { //right
-			if (x < 13 && board[x+1][y] != 4 && board[x+1][y] != 111 && board[x+1][y] != 112 && board[x+1][y] != 113 && board[x+1][y] != 114 && board[x+1][y] != 50 && board[x+1][y] != 10  && board[x+1][y] != 20) {
-				x = x +1;
-				monsterCanMove =true;
-				try3=3;
-			}
-		}
-		if (move == 4) { //left
-			if (x > 0 &&  board[x-1][y] != 4 && board[x-1][y]!= 111 && board[x-1][y]!= 112 && board[x-1][y]!= 113 && board[x-1][y]!= 114 && board[x-1][y] != 50 && board[x-1][y] != 10  && board[x-1][y] != 20) {
-				x = x -1;
-				monsterCanMove =true;
-				try4=4;
-			}
-		}
-		tryAllMoves = try1+try2+try3+try4;	
 	}
-	board[monster.i][monster.j] = monster.notSeen;
-	monster.i = x;
-	monster.j = y;
-	if (board[monster.i][monster.j] == 999) {	
-		return false; //lose
+	//check right move
+	if(points_50.i < 13 && board[points_50.i+1][points_50.j] != 4 && board[points_50.i+1][points_50.j] != 10 && board[points_50.i+1][points_50.j] != 20 && board[points_50.i+1][points_50.j] != 50
+		&& board[points_50.i+1][points_50.j] != 111 && board[points_50.i+1][points_50.j] != 112 && board[points_50.i+1][points_50.j] != 113 && board[points_50.i+1][points_50.j] != 114){
+		distance =  Math.sqrt( Math.pow(points_50.i+1-shape.i,2) + Math.pow(points_50.j-shape.j,2));
+		if(distance > distance_maximum){
+			distance_maximum = distance;
+			position_i=points_50.i+1;
+			position_j=points_50.j;
+		}
 	}
-	else if (board[monster.i][monster.j] == 0 || board[monster.i][monster.j] == 5 || board[monster.i][monster.j] == 15 || board[monster.i][monster.j] == 25) {	
-		monster.notSeen = board[monster.i][monster.j];
+	//check up move
+	if(points_50.j > 0 && board[points_50.i][points_50.j-1] != 4 && board[points_50.i][points_50.j-1] != 10 && board[points_50.i][points_50.j-1] != 20  && board[points_50.i][points_50.j-1] !=50
+		&& board[points_50.i][points_50.j-1] != 111  && board[points_50.i][points_50.j-1] != 112  && board[points_50.i][points_50.j-1] != 113  && board[points_50.i][points_50.j-1] != 114){
+		distance =  Math.sqrt( Math.pow(points_50.i-shape.i,2) + Math.pow(points_50.j-1-shape.j,2));
+		if(distance > distance_maximum){
+			distance_maximum = distance;
+			position_i=points_50.i;
+			position_j=points_50.j-1;
+		}
 	}
-	board[monster.i][monster.j] = monster.id;
+	//check down move
+	if(points_50.j < 7 && board[points_50.i][points_50.j+1] != 4 && board[points_50.i][points_50.j+1] != 10 && board[points_50.i][points_50.j+1] != 20 &&  board[points_50.i][points_50.j+1] != 50 &&
+		board[points_50.i][points_50.j+1] != 111 && board[points_50.i][points_50.j+1] != 112 && board[points_50.i][points_50.j+1] != 113&& board[points_50.i][points_50.j+1] != 114){
+		distance =  Math.sqrt( Math.pow(points_50.i-shape.i,2) + Math.pow(points_50.j+1-shape.j,2));
+		if(distance > distance_maximum){
+			distance_maximum = distance;
+			position_i=points_50.i;
+			position_j=points_50.j+1;
+		}
+	}	
+	board[points_50.i][points_50.j] = points_50.notSeen;
+	//update new position
+	points_50.i = position_i;
+	points_50.j = position_j;
+	if (board[points_50	.i][points_50.j] == 999) {	//pacman eat point 50 coin
+		return false; 
+	}
+	else if (board[points_50.i][points_50.j] == 0 || board[points_50.i][points_50.j] == 5 || board[points_50.i][points_50.j] == 15 || board[points_50.i][points_50.j] == 25) {	
+		points_50.notSeen = board[points_50.i][points_50.j];
+	}
+	board[points_50.i][points_50.j] = points_50.id;
 	return true;
-	}
+}
+
 
 function isMonster(monster){
 	if(monster.id == 101 || monster.id == 102 || monster.id == 103 || monster.id == 104){
@@ -772,23 +770,4 @@ function isMonster(monster){
 	return false;
 }
 		
-function iAmClose(monster){
-	if(isMonster(monster)){
-		if(monster.j > shape.j){ //up
-			return 1; 
-		}
-		if(monster.j < shape.j){ //down
-			return 2;
-		}
-		if(monster.i < shape.i){ //right
-			return 3; 
-		}
-		if(monster.i < shape.i){ //left
-			return 4;
-		}
-	}
-	else{
-		return 0;
-	}
-}
 
