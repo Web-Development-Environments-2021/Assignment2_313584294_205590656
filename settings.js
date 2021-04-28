@@ -196,28 +196,28 @@ function CheckLogIn(username,password){
 /************************** Settings direction *********************************************/
 function updateKeyUp() {
 	$(document).keydown(function(event){
-		document.getElementById('up_key').value = '';
-		//keyUp = event.key;
+		document.getElementById('up_key').value = event.key;
+		keyUp = event.key;
 		$(document).unbind()
 	});
 }
 function updateKeyDown() {
 	$(document).keydown(function(event){
-		document.getElementById('down_key').value = '';
+		document.getElementById('down_key').value = event.key;
 		keyDown = event.key;
 		$(document).unbind()
 	});
 }
 function updateKeyRight() {
 	$(document).keydown(function(event){
-		document.getElementById('right_key').value ='';
+		document.getElementById('right_key').value =event.key;
 		keyRight = event.key;
 		$(document).unbind()
 	});
 }
 function updateKeyLeft() {
 	$(document).keydown(function(event){
-		document.getElementById('left_key').value = '';
+		document.getElementById('left_key').value = event.key;
 		keyLeft = event.key;
 		$(document).unbind()
 	});
@@ -240,6 +240,9 @@ function CheckSettings(upKey, downKey, rightKey, leftKey, numOfBalls, colorBalls
 	}
 	else if (leftKey == "---"){
 		window.alert("please choose a left key")
+	}
+	else if (upKey == downKey || upKey == rightKey || upKey == leftKey || downKey == rightKey || downKey == leftKey || rightKey == leftKey ){
+		window.alert("please choose diffrent keys for directions")
 	}
 	else if (!(/^\d+$/.test(numOfBalls)) || !(numOfBalls >= 50 && numOfBalls <= 90)){
 		window.alert("number of balls must be between 50 to 90")

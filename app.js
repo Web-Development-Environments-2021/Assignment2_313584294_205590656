@@ -500,7 +500,7 @@ function Boom_Move() {
 }
 
 function Points_50_Move(){
-	if(points_50_Game && UpdateExtaPointLocation(points_50) == false){ //pacman eat 50 points
+	if(points_50_Game && UpdateExtraPointLocation(points_50) == false){ //pacman eat 50 points
 		board[points_50.i][points_50.j] = 0;
 		points_50_Game = false;
 		score = score +50 +points_50.notSeen;
@@ -701,8 +701,9 @@ function UpdateMonsterLocation(monster){
 }
 
 
-
-function UpdateExtaPointLocation(points_50){	
+//extra points coin moves away from pacman by this algorithm
+//we think that this way is more challenging then regular random move 
+function UpdateExtraPointLocation(points_50){	
 	var position_i = points_50.i;
 	var position_j = points_50.j;
 	var distance_maximum = 0;
